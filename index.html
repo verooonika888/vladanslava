@@ -38,40 +38,60 @@
 </head>
 <body class="font-sans antialiased selection:bg-redAccent selection:text-white">
 
-    <!-- БЛОК 1: Оновлений Героїчний екран (Фото на фоні) -->
-    <!-- ВАЖЛИВО: Замініть url('main.JPEG') на правильний шлях до вашого фото -->
+    <!-- БЛОК 1: Оновлений Героїчний екран -->
     <header class="relative min-h-[95vh] flex flex-col justify-between pt-8 pb-12 px-4" 
-            style="background-image: url('main.JPEG'); background-size: cover; background-position: center top;">
+            style="background-image: url('vlada.jpg'); background-size: cover; background-position: center top;">
         
-        <!-- Градієнтне затемнення: зверху прозоре (для обличчя), знизу темне (для тексту) -->
-        <div class="absolute inset-0 bg-gradient-to-b from-black/10 via-black/70 to-[#0f0f0f] z-0"></div>
+        <!-- Градієнтне затемнення -->
+        <div class="absolute inset-0 bg-gradient-to-b from-black/10 via-black/80 to-[#0f0f0f] z-0"></div>
 
-        <!-- Верхня частина: Плашка (тепер на самому верху) -->
+        <!-- Верхня частина: Плашка -->
         <div class="relative z-10 w-full flex justify-center">
             <div class="bg-redAccent/90 backdrop-blur-sm text-white border border-red-500 px-6 py-2 rounded-full text-xs md:text-sm font-bold tracking-widest uppercase shadow-lg shadow-redAccent/30">
                 Персональна діагностика
             </div>
         </div>
 
-        <!-- Нижня частина: Текст (опущений під обличчя) -->
-        <div class="relative z-10 w-full max-w-4xl mx-auto text-center mt-auto pt-32">
-            <h1 class="text-3xl md:text-5xl lg:text-6xl font-extrabold leading-tight mb-6 uppercase drop-shadow-xl">
-                Отримай рішення, як позбавитись від <br class="hidden md:block"><span class="text-redAccent">постійної боротьби</span> з обставинами
+        <!-- Нижня частина: Текст -->
+        <div class="relative z-10 w-full max-w-5xl mx-auto text-center mt-auto pt-24 md:pt-32">
+            <!-- ОНОВЛЕНИЙ ЗАГОЛОВОК -->
+            <h1 class="text-2xl md:text-4xl lg:text-5xl font-extrabold leading-tight mb-6 uppercase drop-shadow-xl">
+                Отримай рішення, як вийти з циклу <span class="text-redAccent">хронічної незадоволеності</span> і повторюваності болючих подій життя та повернути спокій і цілісність без «відлітання» від реальності
             </h1>
-            <p class="text-base md:text-xl text-gray-200 mb-8 font-light drop-shadow-md max-w-3xl mx-auto">
-                що руйнують тебе зсередини, та повернути спокій і гармонію зі своїм призначенням.
+            
+            <!-- ОНОВЛЕНИЙ ПІДЗАГОЛОВОК -->
+            <p class="text-base md:text-lg text-gray-200 mb-8 font-light drop-shadow-md max-w-3xl mx-auto">
+                Отримай персональну діагностику енергополя, на якій я детально розберу причини твого застою, виявлю деструктивні родові програми та дам чіткий вектор руху до твого справжнього призначення.
             </p>
             
-            <!-- Блок з ціною та таймером -->
-            <div class="bg-black/60 backdrop-blur-md p-6 rounded-2xl border border-white/10 max-w-md mx-auto shadow-2xl">
-                <p class="text-xl font-bold mb-2 text-white">Спеціальна ціна: <span class="text-redAccent text-3xl">590 ₴</span> <strike class="text-gray-500 text-lg">2500 ₴</strike></p>
-                <div class="flex justify-center gap-4 text-2xl font-bold mb-5 text-white" id="timer">
+            <!-- ОНОВЛЕНИЙ БЛОК З ЦІНОЮ ТА ТАЙМЕРОМ -->
+            <div class="bg-black/70 backdrop-blur-md p-8 rounded-3xl border border-white/10 max-w-md mx-auto shadow-2xl flex flex-col items-center">
+                
+                <!-- Нова ціна -->
+                <div class="text-redAccent text-5xl md:text-6xl font-extrabold drop-shadow-[0_0_15px_rgba(211,47,47,0.6)] leading-none">
+                    590 ₴
+                </div>
+                
+                <!-- Стара перекреслена ціна -->
+                <div class="text-gray-500 text-xl md:text-2xl font-medium mt-2 mb-6">
+                    <strike>2500 ₴</strike>
+                </div>
+
+                <!-- Текст до таймера -->
+                <div class="text-xs md:text-sm text-gray-300 uppercase tracking-widest mb-3 font-semibold">
+                    до збільшення ціни:
+                </div>
+
+                <!-- Таймер -->
+                <div class="flex justify-center gap-4 text-3xl font-bold mb-6 text-white" id="timer">
                     <div class="flex flex-col items-center"><span id="mins">15</span><span class="text-[10px] text-gray-400 font-normal uppercase tracking-wider mt-1">Хвилин</span></div>
-                    <div class="pb-4">:</div>
+                    <div class="pb-2">:</div>
                     <div class="flex flex-col items-center"><span id="secs">00</span><span class="text-[10px] text-gray-400 font-normal uppercase tracking-wider mt-1">Секунд</span></div>
                 </div>
-                <a href="#order-form" class="block w-full bg-redAccent hover:bg-red-700 text-white font-bold py-4 px-8 rounded-lg uppercase tracking-wide transition transform hover:scale-105 shadow-[0_0_20px_rgba(211,47,47,0.5)]">
-                    Отримати розбір
+
+                <!-- Оновлена кнопка -->
+                <a href="#order-form" class="block w-full bg-redAccent hover:bg-red-700 text-white font-extrabold text-lg py-4 px-8 rounded-xl uppercase tracking-wider transition transform hover:scale-105 shadow-[0_0_20px_rgba(211,47,47,0.5)]">
+                    ХОЧУ НА КОНСУЛЬТАЦІЮ
                 </a>
             </div>
         </div>
@@ -163,7 +183,7 @@
                 <div class="bg-darkCard px-6 py-8 rounded-xl">
                     <p class="text-xl md:text-2xl font-bold mb-6">ЦІННІСТЬ — ЕКОНОМІЯ РОКІВ ЖИТТЯ В ІЛЮЗІЯХ ТА БОЛЮ</p>
                     <a href="#order-form" class="inline-block w-full md:w-auto bg-redAccent hover:bg-red-700 text-white font-bold py-4 px-10 rounded-lg uppercase tracking-wide transition transform hover:scale-105 shadow-lg shadow-red-500/30">
-                        Хочу персональний розбір
+                        ХОЧУ НА КОНСУЛЬТАЦІЮ
                     </a>
                 </div>
             </div>
