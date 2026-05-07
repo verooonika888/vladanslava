@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Персональна діагностика | Владислава</title>
+    <title>Персональна консультація | Владислава</title>
     <!-- Підключення шрифтів -->
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;800&display=swap" rel="stylesheet">
     <!-- Підключення Tailwind CSS -->
@@ -36,71 +36,82 @@
         // !function(f,b,e,v,n,t,s) ... fbq('init', 'ВАШ_ID_ПІКСЕЛЯ');
     </script>
 </head>
-<body class="font-sans antialiased selection:bg-redAccent selection:text-white">
+<body class="font-sans antialiased selection:bg-redAccent selection:text-white pb-20 md:pb-0"> 
+    <!-- pb-20 додано для того, щоб фіксована кнопка на мобільному не перекривала самий низ сайту (футер) -->
+
+    <!-- ФІКСОВАНА КНОПКА ДЛЯ МОБІЛЬНИХ (З'являється тільки на телефонах) -->
+    <div class="fixed bottom-0 left-0 w-full z-50 p-3 bg-black/80 backdrop-blur-md border-t border-redAccent/30 md:hidden">
+        <a href="#order-form" class="block w-full bg-redAccent hover:bg-red-700 text-white font-extrabold text-sm py-3 text-center rounded-xl uppercase tracking-wider shadow-[0_0_15px_rgba(211,47,47,0.5)]">
+            ХОЧУ НА КОНСУЛЬТАЦІЮ
+        </a>
+    </div>
 
     <!-- БЛОК 1: Оновлений Героїчний екран -->
-    <header class="relative min-h-[95vh] flex flex-col justify-between pt-8 pb-12 px-4" 
-            style="background-image: url('main.JPEG'); background-size: cover; background-position: center top;">
+    <header class="relative min-h-[95vh] flex flex-col justify-between pt-6 pb-8 px-4" 
+            style="background-image: url('vlada.jpg'); background-size: cover; background-position: center top;">
         
         <!-- Градієнтне затемнення -->
         <div class="absolute inset-0 bg-gradient-to-b from-black/10 via-black/80 to-[#0f0f0f] z-0"></div>
 
-        <!-- Верхня частина: Плашка -->
+        <!-- Верхня частина: Плашка (Змінено слово) -->
         <div class="relative z-10 w-full flex justify-center">
-            <div class="bg-redAccent/90 backdrop-blur-sm text-white border border-red-500 px-6 py-2 rounded-full text-xs md:text-sm font-bold tracking-widest uppercase shadow-lg shadow-redAccent/30">
-                Персональна діагностика
+            <div class="bg-redAccent/90 backdrop-blur-sm text-white border border-red-500 px-5 py-1.5 rounded-full text-xs font-bold tracking-widest uppercase shadow-lg shadow-redAccent/30">
+                Персональна консультація
             </div>
         </div>
 
-        <!-- Нижня частина: Текст -->
-        <div class="relative z-10 w-full max-w-5xl mx-auto text-center mt-auto pt-24 md:pt-32">
+        <!-- Нижня частина: Текст (Піднято вище через pt-10 замість pt-24) -->
+        <div class="relative z-10 w-full max-w-5xl mx-auto text-center mt-auto pt-10 md:pt-20">
             
-            <!-- ОНОВЛЕНИЙ ЗАГОЛОВОК З ЧЕРВОНИМ ВИДІЛЕННЯМ -->
-            <h1 class="text-2xl md:text-4xl lg:text-5xl font-extrabold leading-tight mb-6 uppercase drop-shadow-xl">
+            <!-- ЗАГОЛОВОК ЗІ ЗМЕНШЕНИМ ЧЕРВОНИМ ТЕКСТОМ ТА ПРИБРАНИМ ПРОБІЛОМ -->
+            <h1 class="text-2xl md:text-4xl lg:text-5xl font-extrabold leading-tight mb-4 uppercase drop-shadow-xl">
                 Отримай рішення, як вийти з циклу <span class="text-redAccent">хронічної незадоволеності</span> і повторюваності болючих подій життя 
-                <span class="block mt-5 mb-2">
-                    <span class="normal-case text-lg md:text-2xl lg:text-3xl font-bold bg-redAccent text-white px-4 py-1 leading-relaxed box-decoration-clone shadow-lg">
+                <span class="block mt-2"> <!-- Змінено mt-5 mb-2 на mt-2 -->
+                    <span class="normal-case text-sm md:text-xl font-bold bg-redAccent text-white px-3 py-1 leading-snug box-decoration-clone shadow-sm"> <!-- Зменшено текст -->
                         та повернути спокій і цілісність без «відлітання» від реальності
                     </span>
                 </span>
             </h1>
             
-            <p class="text-base md:text-lg text-gray-200 mb-8 font-light drop-shadow-md max-w-3xl mx-auto">
+            <!-- Опис під заголовком -->
+            <p class="text-sm md:text-base text-gray-200 mb-6 font-light drop-shadow-md max-w-3xl mx-auto leading-relaxed">
                 Отримай персональну діагностику енергополя, на якій я детально розберу причини твого застою, виявлю деструктивні родові програми та дам чіткий вектор руху до твого справжнього призначення.
             </p>
             
-            <!-- БЛОК З ЦІНОЮ ТА ТАЙМЕРОМ -->
-            <div class="bg-black/70 backdrop-blur-md p-8 rounded-3xl border border-white/10 max-w-md mx-auto shadow-2xl flex flex-col items-center">
+            <!-- ЗМЕНШЕНИЙ БЛОК З ЦІНОЮ ТА ТАЙМЕРОМ -->
+            <div class="bg-black/70 backdrop-blur-md p-5 rounded-2xl border border-white/10 max-w-xs md:max-w-sm mx-auto shadow-2xl flex flex-col items-center">
                 
-                <div class="text-redAccent text-5xl md:text-6xl font-extrabold drop-shadow-[0_0_15px_rgba(211,47,47,0.6)] leading-none">
+                <div class="text-redAccent text-4xl md:text-5xl font-extrabold drop-shadow-[0_0_15px_rgba(211,47,47,0.6)] leading-none">
                     590 ₴
                 </div>
                 
-                <div class="text-gray-500 text-xl md:text-2xl font-medium mt-2 mb-6">
+                <div class="text-gray-500 text-lg md:text-xl font-medium mt-1 mb-4">
                     <strike>2500 ₴</strike>
                 </div>
 
-                <div class="text-xs md:text-sm text-gray-300 uppercase tracking-widest mb-3 font-semibold">
+                <div class="text-[10px] md:text-xs text-gray-300 uppercase tracking-widest mb-2 font-semibold">
                     до збільшення ціни:
                 </div>
 
-                <div class="flex justify-center gap-4 text-3xl font-bold mb-6 text-white" id="timer">
-                    <div class="flex flex-col items-center"><span id="mins">15</span><span class="text-[10px] text-gray-400 font-normal uppercase tracking-wider mt-1">Хвилин</span></div>
-                    <div class="pb-2">:</div>
-                    <div class="flex flex-col items-center"><span id="secs">00</span><span class="text-[10px] text-gray-400 font-normal uppercase tracking-wider mt-1">Секунд</span></div>
+                <div class="flex justify-center gap-3 text-2xl font-bold mb-4 text-white" id="timer">
+                    <div class="flex flex-col items-center"><span id="mins">15</span><span class="text-[9px] text-gray-400 font-normal uppercase tracking-widest mt-1">Хв</span></div>
+                    <div class="pb-1">:</div>
+                    <div class="flex flex-col items-center"><span id="secs">00</span><span class="text-[9px] text-gray-400 font-normal uppercase tracking-widest mt-1">Сек</span></div>
                 </div>
 
-                <a href="#order-form" class="block w-full bg-redAccent hover:bg-red-700 text-white font-extrabold text-lg py-4 px-8 rounded-xl uppercase tracking-wider transition transform hover:scale-105 shadow-[0_0_20px_rgba(211,47,47,0.5)]">
+                <!-- Зменшена кнопка всередині блоку (на ПК вона єдина, на моб дублюється фіксованою знизу) -->
+                <a href="#order-form" class="block w-full bg-redAccent hover:bg-red-700 text-white font-bold text-sm md:text-base py-3 px-4 rounded-xl uppercase tracking-wider transition transform hover:scale-105 shadow-[0_0_15px_rgba(211,47,47,0.5)]">
                     ХОЧУ НА КОНСУЛЬТАЦІЮ
                 </a>
             </div>
         </div>
     </header>
 
-    <!-- БЛОК 2: Результати -->
+    <!-- БЛОК 2: Результати (Змінено заголовок) -->
     <section class="py-20 bg-[#0f0f0f] px-4 border-t border-gray-900">
         <div class="max-w-4xl mx-auto">
-            <h2 class="text-2xl md:text-4xl font-bold text-center mb-12 uppercase">Ось як змінюється життя <span class="text-redAccent text-nowrap">після діагностики</span></h2>
+            <!-- ЗМІНЕНО СЛОВА ТУТ -->
+            <h2 class="text-2xl md:text-4xl font-bold text-center mb-12 uppercase">Ось що відбувається <span class="text-redAccent text-nowrap">після консультації</span></h2>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div class="glass-card p-6 rounded-xl relative overflow-hidden group">
                     <div class="absolute top-0 right-0 w-32 h-32 bg-redAccent/5 rounded-full -mr-10 -mt-10 transition-transform group-hover:scale-150 blur-2xl"></div>
