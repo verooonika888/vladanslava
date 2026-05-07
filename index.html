@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Персональна діагностика | Владислава</title>
+    <!-- Підключення шрифтів -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <!-- Підключення Tailwind CSS для дизайну -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        redAccent: '#d32f2f', // Червоний колір з кардигану
+                        darkBg: '#0f0f0f',
+                        darkCard: '#1a1a1a'
+                    },
+                    fontFamily: {
+                        sans: ['Montserrat', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { background-color: #0f0f0f; color: #ffffff; }
+        .red-shadow { box-shadow: 0 4px 30px rgba(211, 47, 47, 0.4); }
+        .glass-card { background: rgba(26, 26, 26, 0.8); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.1); }
+        html { scroll-behavior: smooth; }
+    </style>
+
+    <!-- ========================================== -->
+    <!-- ТУТ ВСТАВТЕ КОД FACEBOOK PIXEL (ID ПІКСЕЛЯ) -->
+    <!-- ========================================== -->
+    <script>
+        // Приклад:
+        // !function(f,b,e,v,n,t,s) ... fbq('init', 'ВАШ_ID_ПІКСЕЛЯ');
+    </script>
+</head>
+<body class="font-sans antialiased selection:bg-redAccent selection:text-white">
+
+    <!-- БЛОК 1: Офер та Героїчний блок -->
+    <header class="relative pt-10 pb-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-10">
+        <!-- Фото (Мобільна версія - зверху) -->
+        <div class="w-full md:w-1/2 flex justify-center order-1 md:order-2">
+            <img src="vlada.jpg" alt="Владислава" class="w-full max-w-md rounded-2xl red-shadow object-cover border border-redAccent/30">
+        </div>
+        
+        <!-- Текст -->
+        <div class="w-full md:w-1/2 order-2 md:order-1 text-center md:text-left">
+            <div class="inline-block bg-redAccent/20 text-redAccent border border-redAccent px-4 py-1 rounded-full text-sm font-semibold tracking-wider mb-6">
+                ПЕРСОНАЛЬНА ДІАГНОСТИКА
+            </div>
+            <h1 class="text-3xl md:text-5xl font-extrabold leading-tight mb-6 uppercase">
+                Отримай рішення, як позбавитись від <span class="text-redAccent">постійної боротьби</span> з обставинами
+            </h1>
+            <p class="text-lg text-gray-300 mb-6 font-light">
+                що руйнують тебе зсередини, та повернути спокій і гармонію зі своїм призначенням.
+            </p>
+            <p class="text-base text-gray-400 mb-8 border-l-4 border-redAccent pl-4 text-left">
+                Я покажу істинний корінь твого «застою» через призму родових програм та кармічних циклів. Ти отримаєш розуміння, як припинити зливати ресурс у порожнечу та направити свою силу в реальний результат.
+            </p>
+            
+            <div class="bg-darkCard p-6 rounded-xl border border-gray-800 text-center red-shadow">
+                <p class="text-xl font-bold mb-2">Спеціальна ціна: <span class="text-redAccent text-3xl">590 ₴</span> <strike class="text-gray-500 text-lg">2500 ₴</strike></p>
+                <div class="flex justify-center gap-4 text-2xl font-bold mb-4" id="timer">
+                    <div><span id="mins">15</span><span class="text-sm text-gray-400 block font-normal">хв</span></div>
+                    <div>:</div>
+                    <div><span id="secs">00</span><span class="text-sm text-gray-400 block font-normal">сек</span></div>
+                </div>
+                <a href="#order-form" class="block w-full bg-redAccent hover:bg-red-700 text-white font-bold py-4 px-8 rounded-lg uppercase tracking-wide transition transform hover:scale-105">
+                    Отримати розбір-діагностику
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- БЛОК 2: Результати -->
+    <section class="py-20 bg-darkCard px-4">
+        <div class="max-w-4xl mx-auto">
+            <h2 class="text-2xl md:text-4xl font-bold text-center mb-12 uppercase">Ось як змінюється життя <span class="text-redAccent">після діагностики</span></h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="glass-card p-6 rounded-xl">
+                    <div class="text-redAccent text-3xl mb-4">⛓️</div>
+                    <h3 class="text-xl font-bold mb-2">Звільнення від боротьби</h3>
+                    <p class="text-gray-400">Обставини перестають тебе «бити», бо ти бачиш їхній істинний зміст.</p>
+                </div>
+                <div class="glass-card p-6 rounded-xl">
+                    <div class="text-redAccent text-3xl mb-4">🌑</div>
+                    <h3 class="text-xl font-bold mb-2">Інтеграція Тіні</h3>
+                    <p class="text-gray-400">Те, що тебе руйнувало (гнів, тривога, контроль), стає паливом для твоєї реалізації.</p>
+                </div>
+                <div class="glass-card p-6 rounded-xl">
+                    <div class="text-redAccent text-3xl mb-4">🧭</div>
+                    <h3 class="text-xl font-bold mb-2">Відчуття «свого місця»</h3>
+                    <p class="text-gray-400">Ти більше не шукаєш відповіді зовні — ти дієш із внутрішньої стабільності.</p>
+                </div>
+                <div class="glass-card p-6 rounded-xl">
+                    <div class="text-redAccent text-3xl mb-4">🚀</div>
+                    <h3 class="text-xl font-bold mb-2">Вихід із «застою»</h3>
+                    <p class="text-gray-400">Енергія розблоковується і трансформується у гроші, здорові стосунки та спокій.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- БЛОК 3: Помилки (Чому ти в тупіку) -->
+    <section class="py-20 px-4 max-w-5xl mx-auto">
+        <h2 class="text-2xl md:text-4xl font-bold text-center mb-4 uppercase">Чому ти тупцюєш на місці <br><span class="text-redAccent">та втрачаєш себе?</span></h2>
+        <p class="text-center text-gray-400 mb-12">90% людей роблять одні й ті самі системні помилки:</p>
+        
+        <div class="space-y-6">
+            <div class="flex flex-col md:flex-row bg-darkCard border-l-4 border-redAccent p-6 rounded-r-xl items-center gap-6">
+                <div class="text-5xl font-extrabold text-gray-800">01</div>
+                <div>
+                    <h3 class="text-xl font-bold mb-2">Боротьба з верхівкою айсберга</h3>
+                    <p class="text-gray-400">Ти намагаєшся змінити роботу чи партнера, не бачачи, що причина — у родовому сценарії, який ти підсвідомо копіюєш.</p>
+                </div>
+            </div>
+            <div class="flex flex-col md:flex-row bg-darkCard border-l-4 border-redAccent p-6 rounded-r-xl items-center gap-6">
+                <div class="text-5xl font-extrabold text-gray-800">02</div>
+                <div>
+                    <h3 class="text-xl font-bold mb-2">Контроль як ілюзія безпеки</h3>
+                    <p class="text-gray-400">Твоє намагання все передбачити лише блокує потік сили. Замість керування життям, ти стаєш заручником тривоги.</p>
+                </div>
+            </div>
+            <div class="flex flex-col md:flex-row bg-darkCard border-l-4 border-redAccent p-6 rounded-r-xl items-center gap-6">
+                <div class="text-5xl font-extrabold text-gray-800">03</div>
+                <div>
+                    <h3 class="text-xl font-bold mb-2">Ігнорування Тіні</h3>
+                    <p class="text-gray-400">Ти намагаєшся бути «хорошою», придушуючи свою справжню силу. Це призводить до внутрішнього вибуху та хаосу навколо.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- БЛОК 4: Унікальність -->
+    <section class="py-20 bg-darkCard px-4 text-center">
+        <div class="max-w-3xl mx-auto">
+            <h2 class="text-2xl md:text-4xl font-bold mb-8 uppercase">Я не даю порад — я показую <span class="text-redAccent">твою істинну структуру</span></h2>
+            <p class="text-gray-300 mb-8 text-lg">Я глибоко аналізую твій запит і стан, записуючи детальні розбори, які стають твоєю дорожньою картою.</p>
+            
+            <div class="flex flex-col md:flex-row justify-center gap-8 mb-12">
+                <div class="w-full md:w-1/2 p-4 border border-gray-700 rounded-lg">
+                    <h4 class="text-redAccent font-bold text-lg mb-2">Рентген підсвідомості</h4>
+                    <p class="text-gray-400 text-sm">Я поясню, де ти зрадила себе і чому твоє призначення зараз заблоковане.</p>
+                </div>
+                <div class="w-full md:w-1/2 p-4 border border-gray-700 rounded-lg">
+                    <h4 class="text-redAccent font-bold text-lg mb-2">Розблокування сили</h4>
+                    <p class="text-gray-400 text-sm">Ти отримаєш план: як перестати боротися з обставинами та почати використовувати їх.</p>
+                </div>
+            </div>
+            <p class="text-xl font-bold mb-8">ЦІННІСТЬ — ЕКОНОМІЯ РОКІВ ЖИТТЯ В ІЛЮЗІЯХ ТА БОЛЮ</p>
+            <a href="#order-form" class="inline-block bg-redAccent hover:bg-red-700 text-white font-bold py-4 px-10 rounded-lg uppercase tracking-wide transition transform hover:scale-105 shadow-lg shadow-red-500/50">
+                ХОЧУ ПЕРСОНАЛЬНИЙ РОЗБІР
+            </a>
+        </div>
+    </section>
+
+    <!-- БЛОК 5: Про експерта -->
+    <section class="py-20 px-4 max-w-6xl mx-auto flex flex-col md:flex-row items-center gap-12">
+        <div class="w-full md:w-1/2">
+            <img src="vlada.jpg" alt="Владислава" class="w-full rounded-2xl grayscale hover:grayscale-0 transition duration-500 border border-gray-800">
+        </div>
+        <div class="w-full md:w-1/2">
+            <h2 class="text-3xl font-bold mb-6 uppercase">Я бачу не хаос, <span class="text-redAccent">а причину</span></h2>
+            <p class="text-gray-300 mb-4 font-light leading-relaxed">
+                <strong class="text-white">Привіт, я Владислава</strong> — провідник до твоєї істинної суті та сили.
+            </p>
+            <p class="text-gray-300 mb-4 font-light leading-relaxed">
+                Я пропрацювала з сотнями заплутаних життєвих сценаріїв. Мій підхід базується на глибокому баченні системних процесів: від родової ієрархії до кармічних циклів. Я не вірю в «просто невдачу», я вірю, що хаос — це лише невпорядкована сила.
+            </p>
+            <p class="text-gray-300 mb-4 font-light leading-relaxed">
+                Багато дівчат приходять до мене в стані повної втрати орієнтирів. Моє завдання — не просто втішити, а дати тобі інструмент, щоб ти сама стала архітектором свого життя.
+            </p>
+            <p class="text-xl font-bold text-redAccent mt-6 border-l-2 border-redAccent pl-4">
+                На діагностиці я розберу саме ТВОЮ ситуацію, щоб ти вийшла з тупіку та нарешті відчула: «Я там, де маю бути».
+            </p>
+        </div>
+    </section>
+
+    <!-- БЛОК 6: Відгуки (Слайдер/Грід) -->
+    <section class="py-20 bg-darkCard px-4 overflow-hidden">
+        <h2 class="text-2xl md:text-4xl font-bold text-center mb-12 uppercase">Результати <span class="text-redAccent">після розборів</span></h2>
+        
+        <!-- Горизонтальний скрол для мобільних (прикольний дизайн) -->
+        <div class="flex overflow-x-auto gap-6 pb-8 snap-x snap-mandatory hide-scroll max-w-6xl mx-auto px-4">
+            <!-- Відгук 1 -->
+            <div class="min-w-[85vw] md:min-w-[300px] bg-[#111] p-6 rounded-xl border border-gray-800 snap-center shrink-0">
+                <div class="flex text-redAccent mb-3">★★★★★</div>
+                <p class="text-gray-300 text-sm italic mb-4">"Я роками боролася з фінансовим потолком. Після діагностики Влади зрозуміла, чию родову програму я тягнула. Енергія з'явилася миттєво..."</p>
+                <p class="font-bold">- Олена, 29 років</p>
+            </div>
+            <!-- Відгук 2 -->
+            <div class="min-w-[85vw] md:min-w-[300px] bg-[#111] p-6 rounded-xl border border-gray-800 snap-center shrink-0">
+                <div class="flex text-redAccent mb-3">★★★★★</div>
+                <p class="text-gray-300 text-sm italic mb-4">"Знайшла корінь своєї тривожності. Виявилося, це моя невизнана тіньова сила. Влада розклала все по поличках. Я нарешті дихаю вільно."</p>
+                <p class="font-bold">- Марія, 34 роки</p>
+            </div>
+            <!-- Відгук 3 -->
+            <div class="min-w-[85vw] md:min-w-[300px] bg-[#111] p-6 rounded-xl border border-gray-800 snap-center shrink-0">
+                <div class="flex text-redAccent mb-3">★★★★★</div>
+                <p class="text-gray-300 text-sm italic mb-4">"Чітко, глибоко, без води. Це не просто психологія, це рентген душі. Зрозуміла своє істинне призначення."</p>
+                <p class="font-bold">- Катерина, 31 рік</p>
+            </div>
+        </div>
+        <style>
+            .hide-scroll::-webkit-scrollbar { display: none; }
+            .hide-scroll { -ms-overflow-style: none; scrollbar-width: none; }
+        </style>
+    </section>
+
+    <!-- БЛОК ФОРМИ ТА ОПЛАТИ -->
+    <section id="order-form" class="py-20 px-4 max-w-md mx-auto">
+        <div class="glass-card p-8 rounded-2xl red-shadow border border-redAccent">
+            <h3 class="text-2xl font-bold text-center mb-2 uppercase">Оформлення заявки</h3>
+            <p class="text-center text-gray-400 text-sm mb-6">Заповніть дані для доступу до оплати</p>
+            
+            <!-- Форма -->
+            <form id="leadForm" class="space-y-4">
+                <div>
+                    <input type="text" id="name" name="name" placeholder="Ваше ім'я" required class="w-full bg-[#111] border border-gray-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-redAccent transition">
+                </div>
+                <div>
+                    <input type="text" id="phone" name="phone" placeholder="Телефон або Telegram" required class="w-full bg-[#111] border border-gray-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-redAccent transition">
+                </div>
+                
+                <button type="submit" class="w-full bg-redAccent hover:bg-red-700 text-white font-bold py-4 rounded-lg uppercase tracking-wide transition mt-4">
+                    Перейти до оплати (590 ₴)
+                </button>
+                <p class="text-xs text-center text-gray-500 mt-2">Натискаючи кнопку, ви погоджуєтесь з політикою конфіденційності</p>
+            </form>
+        </div>
+    </section>
+
+    <footer class="py-8 text-center border-t border-gray-800 text-gray-600 text-sm">
+        <p>Всі права захищено © 2024</p>
+    </footer>
+
+    <!-- СКРИПТИ (Таймер та обробка форми) -->
+    <script>
+        // 1. Таймер зворотного відліку (15 хвилин)
+        let time = 15 * 60; 
+        const minsEl = document.getElementById('mins');
+        const secsEl = document.getElementById('secs');
+
+        setInterval(() => {
+            let m = Math.floor(time / 60);
+            let s = time % 60;
+            minsEl.innerHTML = m < 10 ? '0' + m : m;
+            secsEl.innerHTML = s < 10 ? '0' + s : s;
+            if(time > 0) time--;
+        }, 1000);
+
+        // 2. Обробка форми та редирект
+        document.getElementById('leadForm').addEventListener('submit', function(e) {
+            e.preventDefault(); // Зупиняємо стандартну відправку
+
+            const name = document.getElementById('name').value;
+            const phone = document.getElementById('phone').value;
+
+            // ЗМІНІТЬ ЦЕ ПОСИЛАННЯ НА ВАШ GOOGLE APP SCRIPT URL (якщо підключаєте таблиці)
+            const googleScriptURL = 'ВСТАВТЕ_ТУТ_ПОСИЛАННЯ_НА_GOOGLE_SCRIPT'; 
+            
+            // ЗМІНІТЬ ЦЕ ПОСИЛАННЯ НА ВАШУ СТОРІНКУ ОПЛАТИ (WayForPay, Fondy, SendPulse тощо)
+            const paymentURL = 'https://secure.wayforpay.com/button/ваша_кнопка';
+
+            // Якщо Google Таблиці підключені:
+            if(googleScriptURL !== 'ВСТАВТЕ_ТУТ_ПОСИЛАННЯ_НА_GOOGLE_SCRIPT') {
+                const formData = new FormData();
+                formData.append('name', name);
+                formData.append('phone', phone);
+
+                // Відправляємо дані у фоні
+                fetch(googleScriptURL, { method: 'POST', body: formData })
+                    .then(response => { console.log('Дані відправлено'); })
+                    .catch(error => { console.error('Помилка', error); });
+            }
+
+            // Трекінг пікселя (Подія "Початок оформлення замовлення")
+            if(typeof fbq !== 'undefined') {
+                fbq('track', 'InitiateCheckout', { value: 590.00, currency: 'UAH' });
+            }
+
+            // Перенаправлення на оплату (робимо це одразу, не чекаючи відповіді від Google, щоб клієнт не чекав)
+            window.location.href = paymentURL;
+        });
+    </script>
+</body>
+</html>
