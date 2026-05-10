@@ -6,6 +6,10 @@
     <title>Персональна консультація | Владислава</title>
     <!-- Підключення шрифтів -->
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;800&display=swap" rel="stylesheet">
+    
+    <!-- Підключення Swiper.js CSS для каруселі -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    
     <!-- Підключення Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -29,6 +33,28 @@
         .red-shadow { box-shadow: 0 4px 30px rgba(211, 47, 47, 0.4); }
         .glass-card { background: rgba(26, 26, 26, 0.8); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.1); }
         html { scroll-behavior: smooth; }
+        .text-glow-red { text-shadow: 0 0 20px rgba(211,47,47,0.9), 0 0 10px rgba(211,47,47,1); }
+        
+        .shadow-card:hover .after-block { background-color: rgba(211, 47, 47, 0.1); border-color: rgba(211, 47, 47, 0.4); }
+        .after-block { transition: all 0.3s ease; }
+
+        /* Стилі для стрілок Swiper */
+        .swiper-button-next, .swiper-button-prev {
+            color: #d32f2f !important;
+            background: rgba(26, 26, 26, 0.8);
+            width: 40px !important;
+            height: 40px !important;
+            border-radius: 50%;
+            border: 1px solid #333;
+        }
+        .swiper-button-next:after, .swiper-button-prev:after {
+            font-size: 18px !important;
+            font-weight: bold;
+        }
+        /* Ховаємо стрілки на мобільних (там є свайп) */
+        @media (max-width: 768px) {
+            .swiper-button-next, .swiper-button-prev { display: none !important; }
+        }
     </style>
 
     <!-- КОД FACEBOOK PIXEL -->
@@ -37,69 +63,55 @@
     </script>
 </head>
 <body class="font-sans antialiased selection:bg-redAccent selection:text-white pb-20 md:pb-0"> 
-    <!-- pb-20 додано для того, щоб фіксована кнопка на мобільному не перекривала самий низ сайту (футер) -->
 
-    <!-- ФІКСОВАНА КНОПКА ДЛЯ МОБІЛЬНИХ (З'являється тільки на телефонах) -->
+    <!-- ФІКСОВАНА КНОПКА ДЛЯ МОБІЛЬНИХ -->
     <div class="fixed bottom-0 left-0 w-full z-50 p-3 bg-black/80 backdrop-blur-md border-t border-redAccent/30 md:hidden">
         <a href="#order-form" class="block w-full bg-redAccent hover:bg-red-700 text-white font-extrabold text-sm py-3 text-center rounded-xl uppercase tracking-wider shadow-[0_0_15px_rgba(211,47,47,0.5)]">
             ХОЧУ НА КОНСУЛЬТАЦІЮ
         </a>
     </div>
 
-    <!-- БЛОК 1: Оновлений Героїчний екран -->
+    <!-- БЛОК 1: Героїчний екран -->
     <header class="relative min-h-[95vh] flex flex-col justify-between pt-6 pb-8 px-4" 
-            style="background-image: url('main.JPEG'); background-size: cover; background-position: center top;">
+            style="background-image: url('vlada.jpg'); background-size: cover; background-position: center top;">
         
-        <!-- Градієнтне затемнення -->
         <div class="absolute inset-0 bg-gradient-to-b from-black/10 via-black/80 to-[#0f0f0f] z-0"></div>
 
-        <!-- Верхня частина: Плашка (Змінено слово) -->
         <div class="relative z-10 w-full flex justify-center">
             <div class="bg-redAccent/90 backdrop-blur-sm text-white border border-red-500 px-5 py-1.5 rounded-full text-xs font-bold tracking-widest uppercase shadow-lg shadow-redAccent/30">
                 Персональна консультація
             </div>
         </div>
 
-        <!-- Нижня частина: Текст (Піднято вище через pt-10 замість pt-24) -->
         <div class="relative z-10 w-full max-w-5xl mx-auto text-center mt-auto pt-10 md:pt-20">
-            
-            <!-- ЗАГОЛОВОК ЗІ ЗМЕНШЕНИМ ЧЕРВОНИМ ТЕКСТОМ ТА ПРИБРАНИМ ПРОБІЛОМ -->
-            <h1 class="text-2xl md:text-4xl lg:text-5xl font-extrabold leading-tight mb-4 uppercase drop-shadow-xl">
-                Отримай рішення, як вийти з циклу <span class="text-redAccent">хронічної незадоволеності</span> і повторюваності болючих подій життя 
-                <span class="block mt-2"> <!-- Змінено mt-5 mb-2 на mt-2 -->
-                    <span class="normal-case text-sm md:text-xl font-bold bg-redAccent text-white px-3 py-1 leading-snug box-decoration-clone shadow-sm"> <!-- Зменшено текст -->
+            <h1 class="text-2xl md:text-4xl lg:text-5xl font-extrabold leading-tight mb-3 uppercase drop-shadow-xl">
+                ОТРИМАЙ ЧІТКИЙ ВЕКТОР РУХУ: ВИЙДИ З ЦИКЛУ <span class="text-redAccent">ХРОНІЧНОЇ НЕЗАДОВОЛЕНОСТІ</span> і повторюваності болючих подій життя
+                <span class="block mt-1"> 
+                    <span class="normal-case text-xs md:text-base font-semibold text-white leading-tight tracking-wide text-glow-red">
                         та повернути спокій і цілісність без «відлітання» від реальності
                     </span>
                 </span>
             </h1>
             
-            <!-- Опис під заголовком -->
-            <p class="text-sm md:text-base text-gray-200 mb-6 font-light drop-shadow-md max-w-3xl mx-auto leading-relaxed">
-                Отримай персональну діагностику енергополя, на якій я детально розберу причини твого застою, виявлю деструктивні родові програми та дам чіткий вектор руху до твого справжнього призначення.
+            <p class="text-sm md:text-base text-gray-200 mb-6 font-light drop-shadow-md max-w-3xl mx-auto leading-relaxed mt-2">
+                Персональна діагностика енергополя та розбір твоєї Тіньової сторони. Я не обіцяю магічну таблетку, я даю Ясність: де твій корінь застою, які родові програми тебе гальмують та як змусити твої Тіні працювати на твій результат, а не на твоє руйнування.
             </p>
             
-            <!-- ЗМЕНШЕНИЙ БЛОК З ЦІНОЮ ТА ТАЙМЕРОМ -->
             <div class="bg-black/70 backdrop-blur-md p-5 rounded-2xl border border-white/10 max-w-xs md:max-w-sm mx-auto shadow-2xl flex flex-col items-center">
-                
                 <div class="text-redAccent text-4xl md:text-5xl font-extrabold drop-shadow-[0_0_15px_rgba(211,47,47,0.6)] leading-none">
-                    590 ₴
+                    20 €
                 </div>
-                
                 <div class="text-gray-500 text-lg md:text-xl font-medium mt-1 mb-4">
-                    <strike>2500 ₴</strike>
+                    <strike>100 €</strike>
                 </div>
-
                 <div class="text-[10px] md:text-xs text-gray-300 uppercase tracking-widest mb-2 font-semibold">
                     до збільшення ціни:
                 </div>
-
                 <div class="flex justify-center gap-3 text-2xl font-bold mb-4 text-white" id="timer">
                     <div class="flex flex-col items-center"><span id="mins">15</span><span class="text-[9px] text-gray-400 font-normal uppercase tracking-widest mt-1">Хв</span></div>
                     <div class="pb-1">:</div>
                     <div class="flex flex-col items-center"><span id="secs">00</span><span class="text-[9px] text-gray-400 font-normal uppercase tracking-widest mt-1">Сек</span></div>
                 </div>
-
-                <!-- Зменшена кнопка всередині блоку (на ПК вона єдина, на моб дублюється фіксованою знизу) -->
                 <a href="#order-form" class="block w-full bg-redAccent hover:bg-red-700 text-white font-bold text-sm md:text-base py-3 px-4 rounded-xl uppercase tracking-wider transition transform hover:scale-105 shadow-[0_0_15px_rgba(211,47,47,0.5)]">
                     ХОЧУ НА КОНСУЛЬТАЦІЮ
                 </a>
@@ -107,96 +119,240 @@
         </div>
     </header>
 
-    <!-- БЛОК 2: Результати (Змінено заголовок) -->
+    <!-- БЛОК 2: РОБОТА З ТІННЮ -->
     <section class="py-20 bg-[#0f0f0f] px-4 border-t border-gray-900">
-        <div class="max-w-4xl mx-auto">
-            <!-- ЗМІНЕНО СЛОВА ТУТ -->
-            <h2 class="text-2xl md:text-4xl font-bold text-center mb-12 uppercase">Ось що відбувається <span class="text-redAccent text-nowrap">після консультації</span></h2>
+        <div class="max-w-5xl mx-auto">
+            <div class="text-center mb-12">
+                <h2 class="text-2xl md:text-4xl font-extrabold mb-4 uppercase leading-snug">
+                    Твоя Тінь — це твій <span class="text-redAccent">прихований капітал</span>
+                </h2>
+                <p class="text-gray-400 text-base md:text-lg max-w-2xl mx-auto">
+                    Поки ти її пригнічуєш — вона тебе руйнує. <br class="hidden md:block">
+                    Коли ти її приймаєш — вона стає твоєю силою.
+                </p>
+            </div>
+            <!-- ... Картки тіней ... (залишено без змін) -->
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div class="glass-card p-6 rounded-xl relative overflow-hidden group">
-                    <div class="absolute top-0 right-0 w-32 h-32 bg-redAccent/5 rounded-full -mr-10 -mt-10 transition-transform group-hover:scale-150 blur-2xl"></div>
-                    <div class="text-redAccent text-3xl mb-4">⛓️</div>
-                    <h3 class="text-xl font-bold mb-2">Звільнення від боротьби</h3>
-                    <p class="text-gray-400">Обставини перестають тебе «бити», бо ти бачиш їхній істинний зміст.</p>
+                <!-- Картка 1 -->
+                <div class="glass-card shadow-card p-6 rounded-2xl border border-gray-800 transition duration-300 hover:-translate-y-1">
+                    <div class="flex items-center gap-4 mb-5 border-b border-gray-800 pb-4">
+                        <div class="p-3 bg-redAccent/10 rounded-xl">
+                            <svg class="w-6 h-6 text-redAccent" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M15.362 5.214A8.252 8.252 0 0 1 12 21 8.25 8.25 0 0 1 6.038 7.047 8.287 8.287 0 0 0 9 9.601a8.983 8.983 0 0 1 3.361-6.866 8.21 8.21 0 0 0 3 2.48Z" /></svg>
+                        </div>
+                        <h3 class="text-xl font-bold uppercase tracking-wider">Агресія</h3>
+                    </div>
+                    <div class="mb-5">
+                        <span class="text-[10px] text-gray-500 uppercase tracking-widest block mb-1">Що відчуваєш зараз:</span>
+                        <p class="text-gray-400 text-sm">«Скляна стеля» в доходах, невміння сказати «ні», постійна фонова втома та злив кордонів.</p>
+                    </div>
+                    <div class="after-block bg-[#151515] border border-gray-800 p-4 rounded-xl">
+                        <span class="text-[10px] text-redAccent uppercase tracking-widest block mb-1 font-bold">Твій актив після прийняття:</span>
+                        <p class="text-white font-bold mb-1">ТВОЇ ГРОШІ</p>
+                        <p class="text-gray-300 text-xs font-light leading-relaxed">Це чиста енергія масштабу. Здатність забирати своє, проявляти твердість і робити фінансові прориви.</p>
+                    </div>
                 </div>
-                <div class="glass-card p-6 rounded-xl relative overflow-hidden group">
-                    <div class="absolute top-0 right-0 w-32 h-32 bg-redAccent/5 rounded-full -mr-10 -mt-10 transition-transform group-hover:scale-150 blur-2xl"></div>
-                    <div class="text-redAccent text-3xl mb-4">🌑</div>
-                    <h3 class="text-xl font-bold mb-2">Інтеграція Тіні</h3>
-                    <p class="text-gray-400">Те, що тебе руйнувало (гнів, тривога, контроль), стає паливом для твоєї реалізації.</p>
+
+                <!-- Картка 2 -->
+                <div class="glass-card shadow-card p-6 rounded-2xl border border-gray-800 transition duration-300 hover:-translate-y-1">
+                    <div class="flex items-center gap-4 mb-5 border-b border-gray-800 pb-4">
+                        <div class="p-3 bg-redAccent/10 rounded-xl">
+                            <svg class="w-6 h-6 text-redAccent" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z" /></svg>
+                        </div>
+                        <h3 class="text-xl font-bold uppercase tracking-wider">Сором</h3>
+                    </div>
+                    <div class="mb-5">
+                        <span class="text-[10px] text-gray-500 uppercase tracking-widest block mb-1">Що відчуваєш зараз:</span>
+                        <p class="text-gray-400 text-sm">Страх заявити про себе, відчуття «зі мною щось не так», залежність від оцінок, низький чек.</p>
+                    </div>
+                    <div class="after-block bg-[#151515] border border-gray-800 p-4 rounded-xl">
+                        <span class="text-[10px] text-redAccent uppercase tracking-widest block mb-1 font-bold">Твій актив після прийняття:</span>
+                        <p class="text-white font-bold mb-1">ТВОЯ ПРОЯВЛЕНІСТЬ</p>
+                        <p class="text-gray-300 text-xs font-light leading-relaxed">Магнетизм, на який приходять великі можливості. Ти стаєш помітною для світу і отримуєш за це гідну оплату.</p>
+                    </div>
                 </div>
-                <div class="glass-card p-6 rounded-xl relative overflow-hidden group">
-                    <div class="absolute top-0 right-0 w-32 h-32 bg-redAccent/5 rounded-full -mr-10 -mt-10 transition-transform group-hover:scale-150 blur-2xl"></div>
-                    <div class="text-redAccent text-3xl mb-4">🧭</div>
-                    <h3 class="text-xl font-bold mb-2">Відчуття «свого місця»</h3>
-                    <p class="text-gray-400">Ти більше не шукаєш відповіді зовні — ти дієш із внутрішньої стабільності.</p>
+
+                <!-- Картка 3 -->
+                <div class="glass-card shadow-card p-6 rounded-2xl border border-gray-800 transition duration-300 hover:-translate-y-1">
+                    <div class="flex items-center gap-4 mb-5 border-b border-gray-800 pb-4">
+                        <div class="p-3 bg-redAccent/10 rounded-xl">
+                            <svg class="w-6 h-6 text-redAccent" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 5.25a3 3 0 0 1 3 3m3 0a6 6 0 0 1-7.029 5.912c-.563-.097-1.159.026-1.563.43L10.5 17.25H8.25v2.25H6v2.25H2.25v-2.818c0-.597.237-1.17.659-1.591l6.499-6.499c.404-.404.527-1 .43-1.563A6 6 0 1 1 21.75 8.25Z" /></svg>
+                        </div>
+                        <h3 class="text-xl font-bold uppercase tracking-wider">Вина</h3>
+                    </div>
+                    <div class="mb-5">
+                        <span class="text-[10px] text-gray-500 uppercase tracking-widest block mb-1">Що відчуваєш зараз:</span>
+                        <p class="text-gray-400 text-sm">Самосаботаж, синдром рятівника, життя заради інших і постійне вибачення за власні бажання.</p>
+                    </div>
+                    <div class="after-block bg-[#151515] border border-gray-800 p-4 rounded-xl">
+                        <span class="text-[10px] text-redAccent uppercase tracking-widest block mb-1 font-bold">Твій актив після прийняття:</span>
+                        <p class="text-white font-bold mb-1">ТВОЯ СВОБОДА</p>
+                        <p class="text-gray-300 text-xs font-light leading-relaxed">Вихід із чужих сценаріїв та контрактів. Ти нарешті перестаєш бути зручною і починаєш бути собою.</p>
+                    </div>
                 </div>
-                <div class="glass-card p-6 rounded-xl relative overflow-hidden group">
-                    <div class="absolute top-0 right-0 w-32 h-32 bg-redAccent/5 rounded-full -mr-10 -mt-10 transition-transform group-hover:scale-150 blur-2xl"></div>
-                    <div class="text-redAccent text-3xl mb-4">🚀</div>
-                    <h3 class="text-xl font-bold mb-2">Вихід із «застою»</h3>
-                    <p class="text-gray-400">Енергія розблоковується і трансформується у гроші, здорові стосунки та спокій.</p>
+
+                <!-- Картка 4 -->
+                <div class="glass-card shadow-card p-6 rounded-2xl border border-gray-800 transition duration-300 hover:-translate-y-1">
+                    <div class="flex items-center gap-4 mb-5 border-b border-gray-800 pb-4">
+                        <div class="p-3 bg-redAccent/10 rounded-xl">
+                            <svg class="w-6 h-6 text-redAccent" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z" /></svg>
+                        </div>
+                        <h3 class="text-xl font-bold uppercase tracking-wider">Хороша дівчинка</h3>
+                    </div>
+                    <div class="mb-5">
+                        <span class="text-[10px] text-gray-500 uppercase tracking-widest block mb-1">Що відчуваєш зараз:</span>
+                        <p class="text-gray-400 text-sm">Сухість у житті, відсутність радості, «правильність», яка вбиває сексуальність та справжні прагнення.</p>
+                    </div>
+                    <div class="after-block bg-[#151515] border border-gray-800 p-4 rounded-xl">
+                        <span class="text-[10px] text-redAccent uppercase tracking-widest block mb-1 font-bold">Твій актив після прийняття:</span>
+                        <p class="text-white font-bold mb-1">ТВОЯ ЖИВІСТЬ</p>
+                        <p class="text-gray-300 text-xs font-light leading-relaxed">Глибока насолода, розслабленість та магнетизм. Енергія, на яку ресурси приходять легко, без боротьби.</p>
+                    </div>
+                </div>
+
+                <!-- Картка 5 -->
+                <div class="md:col-span-2 max-w-2xl mx-auto w-full glass-card shadow-card p-6 rounded-2xl border border-gray-800 transition duration-300 hover:-translate-y-1 mt-2">
+                    <div class="flex items-center gap-4 mb-5 border-b border-gray-800 pb-4">
+                        <div class="p-3 bg-redAccent/10 rounded-xl">
+                            <svg class="w-6 h-6 text-redAccent" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M15.042 21.672 13.684 16.6m0 0-2.51 2.225.569-9.47 5.227 7.917-3.286-.672Zm-7.518-.267A8.25 8.25 0 1 1 20.25 10.5M8.288 14.212A5.25 5.25 0 1 1 17.25 10.5" /></svg>
+                        </div>
+                        <h3 class="text-xl font-bold uppercase tracking-wider">Заздрість</h3>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
+                        <div>
+                            <span class="text-[10px] text-gray-500 uppercase tracking-widest block mb-1">Що відчуваєш зараз:</span>
+                            <p class="text-gray-400 text-sm">Порівняння себе з іншими, безсилля від чужих успіхів, відчуття, що «мені так не можна».</p>
+                        </div>
+                        <div class="after-block bg-[#151515] border border-gray-800 p-4 rounded-xl">
+                            <span class="text-[10px] text-redAccent uppercase tracking-widest block mb-1 font-bold">Твій актив після прийняття:</span>
+                            <p class="text-white font-bold mb-1">ТВІЙ ВЕКТОР РОСТУ</p>
+                            <p class="text-gray-300 text-xs font-light leading-relaxed">Це навігатор твоїх істинних дефіцитів. Найкоротший шлях до того, чого ти насправді хочеш.</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- БЛОК 3: Помилки -->
-    <section class="py-20 px-4 max-w-5xl mx-auto">
-        <h2 class="text-2xl md:text-4xl font-bold text-center mb-4 uppercase">Чому ти тупцюєш на місці <br><span class="text-redAccent">та втрачаєш себе?</span></h2>
-        <p class="text-center text-gray-400 mb-12 text-lg">90% людей роблять одні й ті самі системні помилки:</p>
+    <!-- БЛОК 3: Пастки -->
+    <section class="py-20 px-4 max-w-5xl mx-auto border-t border-gray-900">
+        <h2 class="text-2xl md:text-4xl font-bold text-center mb-4 uppercase">Чому ти досі там, <br><span class="text-redAccent">де ти є?</span></h2>
+        <p class="text-center text-gray-400 mb-12 text-lg">90% людей роками живуть в цих пастках:</p>
         
         <div class="space-y-6">
             <div class="flex flex-col md:flex-row bg-darkCard border-l-4 border-redAccent p-6 md:p-8 rounded-r-xl items-center md:items-start gap-6 hover:bg-[#222] transition">
                 <div class="text-5xl font-extrabold text-[#333] md:mt-1">01</div>
                 <div>
-                    <h3 class="text-xl font-bold mb-2">Боротьба з верхівкою айсберга</h3>
-                    <p class="text-gray-400">Ти намагаєшся змінити роботу чи партнера, не бачачи, що причина — у родовому сценарії, який ти підсвідомо копіюєш.</p>
+                    <h3 class="text-xl font-bold mb-2">Ілюзія «духовності»</h3>
+                    <p class="text-gray-400 font-light">Ти ходиш по колах терапії та марафонів, але в реальному житті нічого не змінюється. Ти замінила реальні дії нескінченним «копанням» у собі, яке не дає результату в матерії.</p>
                 </div>
             </div>
             <div class="flex flex-col md:flex-row bg-darkCard border-l-4 border-redAccent p-6 md:p-8 rounded-r-xl items-center md:items-start gap-6 hover:bg-[#222] transition">
                 <div class="text-5xl font-extrabold text-[#333] md:mt-1">02</div>
                 <div>
-                    <h3 class="text-xl font-bold mb-2">Контроль як ілюзія безпеки</h3>
-                    <p class="text-gray-400">Твоє намагання все передбачити лише блокує потік сили. Замість керування життям, ти стаєш заручником тривоги.</p>
+                    <h3 class="text-xl font-bold mb-2">Боротьба з симптомами</h3>
+                    <p class="text-gray-400 font-light">Зміна роботи, партнера чи міста не допоможе, поки в твоєму полі активована програма на руйнування - сценарій буде повторюватись.</p>
                 </div>
             </div>
             <div class="flex flex-col md:flex-row bg-darkCard border-l-4 border-redAccent p-6 md:p-8 rounded-r-xl items-center md:items-start gap-6 hover:bg-[#222] transition">
                 <div class="text-5xl font-extrabold text-[#333] md:mt-1">03</div>
                 <div>
-                    <h3 class="text-xl font-bold mb-2">Ігнорування Тіні</h3>
-                    <p class="text-gray-400">Ти намагаєшся бути «хорошою», придушуючи свою справжню силу. Це призводить до внутрішнього вибуху та хаосу навколо.</p>
+                    <h3 class="text-xl font-bold mb-2">Пастка «відлітання»</h3>
+                    <p class="text-gray-400 font-light">Ти шукаєш відповіді від всесвіту, поки твоє матеріальне життя розвалюється. Це не втеча в практики, а здатність змусити свою Тінь працювати на твій капітал, здоров’я та спокій.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- БЛОК 4: Унікальність -->
-    <section class="py-20 bg-darkCard px-4 text-center border-y border-gray-900">
+    <!-- БЛОК 4: ЩО ВХОДИТЬ У КОНСУЛЬТАЦІЮ -->
+    <section class="py-20 bg-darkCard px-4 border-y border-gray-900">
         <div class="max-w-4xl mx-auto">
-            <h2 class="text-2xl md:text-4xl font-bold mb-6 uppercase">Я не даю порад — я показую <br><span class="text-redAccent">твою істинну структуру</span></h2>
-            <p class="text-gray-300 mb-10 text-lg font-light">Я глибоко аналізую твій запит і стан, записуючи детальні розбори, які стають твоєю дорожньою картою.</p>
             
-            <div class="flex flex-col md:flex-row justify-center gap-6 mb-12">
-                <div class="w-full md:w-1/2 p-8 border border-gray-800 bg-[#111] rounded-2xl relative overflow-hidden">
-                    <div class="absolute top-0 right-0 w-16 h-16 bg-redAccent/10 rounded-full -mr-4 -mt-4 blur-xl"></div>
-                    <h4 class="text-white font-bold text-xl mb-3 border-b border-gray-800 pb-3">Рентген підсвідомості</h4>
-                    <p class="text-gray-400">Я поясню, де ти зрадила себе і чому твоє призначення зараз заблоковане.</p>
-                </div>
-                <div class="w-full md:w-1/2 p-8 border border-gray-800 bg-[#111] rounded-2xl relative overflow-hidden">
-                    <div class="absolute top-0 right-0 w-16 h-16 bg-redAccent/10 rounded-full -mr-4 -mt-4 blur-xl"></div>
-                    <h4 class="text-white font-bold text-xl mb-3 border-b border-gray-800 pb-3">Розблокування сили</h4>
-                    <p class="text-gray-400">Ти отримаєш план: як перестати боротися з обставинами та почати використовувати їх.</p>
+            <div class="text-center mb-10">
+                <h2 class="text-2xl md:text-4xl font-extrabold mb-6 uppercase">Я не даю порад — я показую <br><span class="text-redAccent">твою істинну структуру</span></h2>
+                <div class="inline-block px-8 py-2 border border-redAccent/30 bg-redAccent/10 rounded-full shadow-[0_0_15px_rgba(211,47,47,0.2)]">
+                    <h3 class="text-lg md:text-xl font-bold text-white tracking-widest uppercase">Що входить у консультацію?</h3>
                 </div>
             </div>
             
-            <div class="bg-gradient-to-r from-redAccent/20 via-transparent to-redAccent/20 p-[1px] rounded-xl max-w-2xl mx-auto">
-                <div class="bg-darkCard px-6 py-8 rounded-xl">
-                    <p class="text-xl md:text-2xl font-bold mb-6">ЦІННІСТЬ — ЕКОНОМІЯ РОКІВ ЖИТТЯ В ІЛЮЗІЯХ ТА БОЛЮ</p>
-                    <a href="#order-form" class="inline-block w-full md:w-auto bg-redAccent hover:bg-red-700 text-white font-bold py-4 px-10 rounded-lg uppercase tracking-wide transition transform hover:scale-105 shadow-lg shadow-red-500/30">
-                        ХОЧУ НА КОНСУЛЬТАЦІЮ
-                    </a>
+            <!-- ... Картки що входить ... (залишено без змін) -->
+            <div class="flex flex-col gap-5 text-left mb-16 max-w-3xl mx-auto">
+                <div class="bg-[#111] border border-gray-800 p-6 md:p-8 rounded-2xl flex flex-col md:flex-row gap-5 items-center md:items-start hover:border-redAccent/50 transition duration-300 relative overflow-hidden group shadow-lg">
+                    <div class="absolute top-0 right-0 w-24 h-24 bg-redAccent/5 rounded-full -mr-8 -mt-8 transition-transform group-hover:scale-150 blur-xl"></div>
+                    <div class="shrink-0 relative">
+                        <div class="absolute inset-0 bg-redAccent/20 rounded-full blur-md group-hover:bg-redAccent/50 transition duration-300"></div>
+                        <div class="relative flex items-center justify-center w-16 h-16 md:w-20 md:h-20 rounded-full border border-gray-700 bg-[#151515] group-hover:border-redAccent transition duration-300 z-10">
+                            <span class="text-[9px] md:text-[11px] font-extrabold text-redAccent uppercase tracking-widest group-hover:text-white transition duration-300 drop-shadow-[0_0_8px_rgba(211,47,47,0.8)]">Тінь</span>
+                        </div>
+                    </div>
+                    <div class="text-center md:text-left mt-2 md:mt-0">
+                        <h4 class="text-white font-bold text-lg mb-2 uppercase tracking-wide">Тіньовий аудит</h4>
+                        <p class="text-gray-400 font-light text-sm md:text-base leading-relaxed">Визначення твоєї провідної Тіні (Агресія, Сором, Вина тощо), яка зараз блокує твій дохід та життєву енергію.</p>
+                    </div>
                 </div>
+
+                <div class="bg-[#111] border border-gray-800 p-6 md:p-8 rounded-2xl flex flex-col md:flex-row gap-5 items-center md:items-start hover:border-redAccent/50 transition duration-300 relative overflow-hidden group shadow-lg">
+                    <div class="absolute top-0 right-0 w-24 h-24 bg-redAccent/5 rounded-full -mr-8 -mt-8 transition-transform group-hover:scale-150 blur-xl"></div>
+                    <div class="shrink-0 relative">
+                        <div class="absolute inset-0 bg-redAccent/20 rounded-full blur-md group-hover:bg-redAccent/50 transition duration-300"></div>
+                        <div class="relative flex items-center justify-center w-16 h-16 md:w-20 md:h-20 rounded-full border border-gray-700 bg-[#151515] group-hover:border-redAccent transition duration-300 z-10">
+                            <span class="text-[8px] md:text-[10px] font-extrabold text-redAccent uppercase tracking-widest group-hover:text-white transition duration-300 drop-shadow-[0_0_8px_rgba(211,47,47,0.8)]">Енергія</span>
+                        </div>
+                    </div>
+                    <div class="text-center md:text-left mt-2 md:mt-0">
+                        <h4 class="text-white font-bold text-lg mb-2 uppercase tracking-wide">Енергетичний рентген</h4>
+                        <p class="text-gray-400 font-light text-sm md:text-base leading-relaxed">Аналіз чакр та енергополя для виявлення затисків, що вже б'ють по твоєму здоров'ю та імунітету.</p>
+                    </div>
+                </div>
+
+                <div class="bg-[#111] border border-gray-800 p-6 md:p-8 rounded-2xl flex flex-col md:flex-row gap-5 items-center md:items-start hover:border-redAccent/50 transition duration-300 relative overflow-hidden group shadow-lg">
+                    <div class="absolute top-0 right-0 w-24 h-24 bg-redAccent/5 rounded-full -mr-8 -mt-8 transition-transform group-hover:scale-150 blur-xl"></div>
+                    <div class="shrink-0 relative">
+                        <div class="absolute inset-0 bg-redAccent/20 rounded-full blur-md group-hover:bg-redAccent/50 transition duration-300"></div>
+                        <div class="relative flex items-center justify-center w-16 h-16 md:w-20 md:h-20 rounded-full border border-gray-700 bg-[#151515] group-hover:border-redAccent transition duration-300 z-10">
+                            <span class="text-[9px] md:text-[11px] font-extrabold text-redAccent uppercase tracking-widest group-hover:text-white transition duration-300 drop-shadow-[0_0_8px_rgba(211,47,47,0.8)]">Карма</span>
+                        </div>
+                    </div>
+                    <div class="text-center md:text-left mt-2 md:mt-0">
+                        <h4 class="text-white font-bold text-lg mb-2 uppercase tracking-wide">Розбір кармічних вузлів</h4>
+                        <p class="text-gray-400 font-light text-sm md:text-base leading-relaxed">Чому ти наступаєш на одні й ті самі граблі та як розірвати цикл повторюваних невдач.</p>
+                    </div>
+                </div>
+
+                <div class="bg-[#111] border border-gray-800 p-6 md:p-8 rounded-2xl flex flex-col md:flex-row gap-5 items-center md:items-start hover:border-redAccent/50 transition duration-300 relative overflow-hidden group shadow-lg">
+                    <div class="absolute top-0 right-0 w-24 h-24 bg-redAccent/5 rounded-full -mr-8 -mt-8 transition-transform group-hover:scale-150 blur-xl"></div>
+                    <div class="shrink-0 relative">
+                        <div class="absolute inset-0 bg-redAccent/20 rounded-full blur-md group-hover:bg-redAccent/50 transition duration-300"></div>
+                        <div class="relative flex items-center justify-center w-16 h-16 md:w-20 md:h-20 rounded-full border border-gray-700 bg-[#151515] group-hover:border-redAccent transition duration-300 z-10">
+                            <span class="text-[10px] md:text-xs font-extrabold text-redAccent uppercase tracking-widest group-hover:text-white transition duration-300 drop-shadow-[0_0_8px_rgba(211,47,47,0.8)]">Рід</span>
+                        </div>
+                    </div>
+                    <div class="text-center md:text-left mt-2 md:mt-0">
+                        <h4 class="text-white font-bold text-lg mb-2 uppercase tracking-wide">Родова ревізія</h4>
+                        <p class="text-gray-400 font-light text-sm md:text-base leading-relaxed">Виявлення деструктивних паттернів батьків, які змушують тебе жити чуже життя.</p>
+                    </div>
+                </div>
+
+                <div class="bg-[#111] border border-gray-800 p-6 md:p-8 rounded-2xl flex flex-col md:flex-row gap-5 items-center md:items-start hover:border-redAccent/50 transition duration-300 relative overflow-hidden group shadow-lg">
+                    <div class="absolute top-0 right-0 w-24 h-24 bg-redAccent/5 rounded-full -mr-8 -mt-8 transition-transform group-hover:scale-150 blur-xl"></div>
+                    <div class="shrink-0 relative">
+                        <div class="absolute inset-0 bg-redAccent/20 rounded-full blur-md group-hover:bg-redAccent/50 transition duration-300"></div>
+                        <div class="relative flex items-center justify-center w-16 h-16 md:w-20 md:h-20 rounded-full border border-gray-700 bg-[#151515] group-hover:border-redAccent transition duration-300 z-10">
+                            <span class="text-[9px] md:text-[11px] font-extrabold text-redAccent uppercase tracking-widest group-hover:text-white transition duration-300 drop-shadow-[0_0_8px_rgba(211,47,47,0.8)]">Вектор</span>
+                        </div>
+                    </div>
+                    <div class="text-center md:text-left mt-2 md:mt-0">
+                        <h4 class="text-white font-bold text-lg mb-2 uppercase tracking-wide">Чіткий вектор руху</h4>
+                        <p class="text-gray-400 font-light text-sm md:text-base leading-relaxed">Твій персональний покроковий план, як припинити боротьбу з обставинами та повернути собі цілісність.</p>
+                    </div>
+                </div>
+
+            </div>
+            
+            <div class="text-center">
+                <p class="text-xl md:text-2xl font-bold mb-6 uppercase">ЦІННІСТЬ — ЕКОНОМІЯ РОКІВ ЖИТТЯ <br class="hidden md:block"> В ІЛЮЗІЯХ ТА БОЛЮ</p>
+                <a href="#order-form" class="inline-block w-full md:w-auto bg-redAccent hover:bg-red-700 text-white font-bold py-4 px-10 rounded-lg uppercase tracking-wide transition transform hover:scale-105 shadow-[0_0_20px_rgba(211,47,47,0.4)]">
+                    ХОЧУ НА КОНСУЛЬТАЦІЮ
+                </a>
             </div>
         </div>
     </section>
@@ -208,59 +364,88 @@
         </div>
         <div class="w-full md:w-[55%]">
             <div class="inline-block text-redAccent border border-redAccent/30 px-3 py-1 rounded-full text-xs font-bold uppercase mb-4">Хто я?</div>
-            <h2 class="text-3xl md:text-4xl font-bold mb-8 uppercase">Я бачу не хаос, <span class="text-redAccent">а причину</span></h2>
             
-            <div class="space-y-5 text-gray-300 font-light text-lg">
-                <p>
-                    <strong class="text-white">Привіт, я Владислава</strong> — провідник до твоєї істинної суті та сили.
-                </p>
-                <p>
-                    Я пропрацювала з сотнями заплутаних життєвих сценаріїв. Мій підхід базується на глибокому баченні системних процесів: від родової ієрархії до кармічних циклів. Я не вірю в «просто невдачу», я вірю, що хаос — це лише невпорядкована сила.
-                </p>
-                <p>
-                    Багато дівчат приходять до мене в стані повної втрати орієнтирів. Моє завдання — не просто втішити, а дати тобі інструмент, щоб ти сама стала архітектором свого життя.
-                </p>
+            <div class="space-y-6 text-gray-300 font-light text-base md:text-lg leading-relaxed mt-4">
+                <p class="text-white font-bold text-xl mb-6 uppercase">Мій шлях — це не про «світлу духовність», а про реальну силу:</p>
+                
+                <div>
+                    <strong class="text-redAccent font-bold">Майстриня за договором:</strong> Я працюю в контексті Традиції, маючи пряму підтримку Роду та доступ до знань, які неможливо отримати з книг. Я пройшла шлях зняття власних «печатей», тому знаю, як вивести з тупіку тебе.
+                </div>
+                
+                <div>
+                    <strong class="text-redAccent font-bold">Провідник Шляху Абсолюту:</strong> Я не ділю світ на добро і зло. Для мене твоя Агресія чи Сором — це не помилки, а нерозпакована енергія. Я вчу не придушувати їх, а керувати ними.
+                </div>
+                
+                <div>
+                    <strong class="text-redAccent font-bold">Системний архітектор:</strong> Я бачу твоє життя як єдину структуру. Там, де ти бачиш хаос, я бачу конкретний кармічний вузол або енергетичний блок, який легко розв'язати, якщо знати, куди дивитися.
+                </div>
             </div>
             
             <div class="mt-8 bg-redAccent/10 border-l-4 border-redAccent p-6 rounded-r-xl">
                 <p class="text-lg font-bold text-white">
-                    На діагностиці я розберу саме ТВОЮ ситуацію, щоб ти вийшла з тупіку та нарешті відчула: «Я там, де маю бути».
+                    Я тут для того, щоб ти припинила «відлітати» від проблем і почала створювати свою реальність у матерії — через гроші, здоров’я та істинну свободу бути собою.
                 </p>
             </div>
         </div>
     </section>
 
-    <!-- БЛОК 6: Відгуки -->
-    <section class="py-20 bg-darkCard px-4 overflow-hidden border-t border-gray-900">
-        <h2 class="text-2xl md:text-4xl font-bold text-center mb-12 uppercase">Результати <span class="text-redAccent">після розборів</span></h2>
-        
-        <div class="flex overflow-x-auto gap-6 pb-8 snap-x snap-mandatory hide-scroll max-w-6xl mx-auto px-4">
-            <div class="min-w-[85vw] md:min-w-[320px] bg-[#111] p-8 rounded-2xl border border-gray-800 snap-center shrink-0 flex flex-col justify-between">
-                <div>
-                    <div class="flex text-redAccent mb-4 text-xl">★★★★★</div>
-                    <p class="text-gray-300 text-base italic mb-6">"Я роками боролася з фінансовим потолком. Після діагностики Влади зрозуміла, чию родову програму я тягнула. Енергія з'явилася миттєво..."</p>
+    <!-- БЛОК 6: ВІДГУКИ (SWIPER КАРУСЕЛЬ + LIGHTBOX) -->
+    <section class="py-20 bg-darkCard px-4 overflow-hidden border-t border-gray-900 relative">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-2xl md:text-4xl font-bold text-center mb-12 uppercase">Результати <span class="text-redAccent">моїх клієнтів</span></h2>
+            
+            <!-- Контейнер Swiper -->
+            <div class="relative px-2 md:px-12"> <!-- Відступи для стрілок -->
+                <div class="swiper reviewsSwiper">
+                    <div class="swiper-wrapper">
+                        
+                        <!-- ВІДГУК 1 -->
+                        <div class="swiper-slide flex justify-center">
+                            <!-- Фіксований контейнер (Слот). Background нейтральний (#111) -->
+                            <div class="w-[280px] h-[400px] md:w-[320px] md:h-[450px] bg-[#111] border border-gray-800 rounded-2xl flex items-center justify-center p-2 shadow-lg transition-transform hover:scale-[1.02]">
+                                <!-- Вставте сюди своє фото замість https://via.placeholder... -->
+                                <img src="https://via.placeholder.com/400x800/222222/d32f2f?text=Скріншот+високий" alt="Відгук 1" class="max-w-full max-h-full object-contain cursor-pointer review-img rounded-xl">
+                            </div>
+                        </div>
+
+                        <!-- ВІДГУК 2 -->
+                        <div class="swiper-slide flex justify-center">
+                            <div class="w-[280px] h-[400px] md:w-[320px] md:h-[450px] bg-[#111] border border-gray-800 rounded-2xl flex items-center justify-center p-2 shadow-lg transition-transform hover:scale-[1.02]">
+                                <!-- Вставте сюди своє фото -->
+                                <img src="https://via.placeholder.com/600x400/222222/d32f2f?text=Скріншот+широкий" alt="Відгук 2" class="max-w-full max-h-full object-contain cursor-pointer review-img rounded-xl">
+                            </div>
+                        </div>
+
+                        <!-- ВІДГУК 3 -->
+                        <div class="swiper-slide flex justify-center">
+                            <div class="w-[280px] h-[400px] md:w-[320px] md:h-[450px] bg-[#111] border border-gray-800 rounded-2xl flex items-center justify-center p-2 shadow-lg transition-transform hover:scale-[1.02]">
+                                <!-- Вставте сюди своє фото -->
+                                <img src="https://via.placeholder.com/500x500/222222/d32f2f?text=Скріншот+квадрат" alt="Відгук 3" class="max-w-full max-h-full object-contain cursor-pointer review-img rounded-xl">
+                            </div>
+                        </div>
+
+                        <!-- ВІДГУК 4 -->
+                        <div class="swiper-slide flex justify-center">
+                            <div class="w-[280px] h-[400px] md:w-[320px] md:h-[450px] bg-[#111] border border-gray-800 rounded-2xl flex items-center justify-center p-2 shadow-lg transition-transform hover:scale-[1.02]">
+                                <!-- Вставте сюди своє фото -->
+                                <img src="https://via.placeholder.com/400x700/222222/d32f2f?text=Відгук+4" alt="Відгук 4" class="max-w-full max-h-full object-contain cursor-pointer review-img rounded-xl">
+                            </div>
+                        </div>
+                        
+                        <!-- ВІДГУК 5 (Додайте скільки потрібно карток) -->
+                        <div class="swiper-slide flex justify-center">
+                            <div class="w-[280px] h-[400px] md:w-[320px] md:h-[450px] bg-[#111] border border-gray-800 rounded-2xl flex items-center justify-center p-2 shadow-lg transition-transform hover:scale-[1.02]">
+                                <img src="https://via.placeholder.com/450x650/222222/d32f2f?text=Відгук+5" alt="Відгук 5" class="max-w-full max-h-full object-contain cursor-pointer review-img rounded-xl">
+                            </div>
+                        </div>
+
+                    </div>
                 </div>
-                <p class="font-bold border-t border-gray-800 pt-4">- Олена, 29 років</p>
-            </div>
-            <div class="min-w-[85vw] md:min-w-[320px] bg-[#111] p-8 rounded-2xl border border-gray-800 snap-center shrink-0 flex flex-col justify-between">
-                <div>
-                    <div class="flex text-redAccent mb-4 text-xl">★★★★★</div>
-                    <p class="text-gray-300 text-base italic mb-6">"Знайшла корінь своєї тривожності. Виявилося, це моя невизнана тіньова сила. Влада розклала все по поличках. Я нарешті дихаю вільно."</p>
-                </div>
-                <p class="font-bold border-t border-gray-800 pt-4">- Марія, 34 роки</p>
-            </div>
-            <div class="min-w-[85vw] md:min-w-[320px] bg-[#111] p-8 rounded-2xl border border-gray-800 snap-center shrink-0 flex flex-col justify-between">
-                <div>
-                    <div class="flex text-redAccent mb-4 text-xl">★★★★★</div>
-                    <p class="text-gray-300 text-base italic mb-6">"Чітко, глибоко, без води. Це не просто психологія, це рентген душі. Зрозуміла своє істинне призначення."</p>
-                </div>
-                <p class="font-bold border-t border-gray-800 pt-4">- Катерина, 31 рік</p>
+                <!-- Кнопки навігації (тільки для ПК) -->
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
             </div>
         </div>
-        <style>
-            .hide-scroll::-webkit-scrollbar { display: none; }
-            .hide-scroll { -ms-overflow-style: none; scrollbar-width: none; }
-        </style>
     </section>
 
     <!-- БЛОК ФОРМИ ТА ОПЛАТИ -->
@@ -282,7 +467,7 @@
                 
                 <div class="pt-4">
                     <button type="submit" class="w-full bg-redAccent hover:bg-red-700 text-white font-bold py-5 rounded-lg uppercase tracking-wider transition transform hover:scale-[1.02] shadow-[0_0_15px_rgba(211,47,47,0.4)]">
-                        Сплатити 590 ₴
+                        Сплатити 20 €
                     </button>
                 </div>
                 <p class="text-[11px] text-center text-gray-600 mt-4 leading-tight">Ваші дані надійно захищені. Натискаючи кнопку, ви погоджуєтесь з політикою конфіденційності.</p>
@@ -294,9 +479,21 @@
         <p>Всі права захищено © 2024 | ВЛАДИСЛАВА</p>
     </footer>
 
-    <!-- СКРИПТИ -->
+    <!-- LIGHTBOX (Модальне вікно для фотографій) -->
+    <div id="lightbox" class="fixed inset-0 z-[100] bg-black/95 hidden opacity-0 transition-opacity duration-300">
+        <button id="close-lightbox" class="absolute top-4 right-6 text-gray-400 hover:text-redAccent text-5xl font-light z-[110]">&times;</button>
+        <div class="w-full h-full flex items-center justify-center p-4 overflow-auto">
+            <img id="lightbox-img" src="" class="max-w-[95vw] max-h-[90vh] object-contain cursor-zoom-out" alt="Збільшений відгук">
+        </div>
+    </div>
+
+
+    <!-- Підключення Swiper.js Script -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+    <!-- СКРИПТИ САЙТУ -->
     <script>
-        // Таймер
+        // --- 1. ТАЙМЕР ---
         let time = 15 * 60; 
         const minsEl = document.getElementById('mins');
         const secsEl = document.getElementById('secs');
@@ -309,13 +506,74 @@
             if(time > 0) time--;
         }, 1000);
 
-        // Обробка форми
+
+        // --- 2. ІНІЦІАЛІЗАЦІЯ SWIPER (Карусель) ---
+        const swiper = new Swiper(".reviewsSwiper", {
+            loop: true,               // Безкінечна прокрутка
+            grabCursor: true,         // Курсор-рука для свайпу
+            spaceBetween: 20,         // Відстань між слотами
+            centeredSlides: true,     // Центрування активного слайду
+            navigation: {
+                nextEl: ".swiper-button-next",
+                prevEl: ".swiper-button-prev",
+            },
+            breakpoints: {
+                320: { slidesPerView: 1.2 }, // На мобільному видно 1 цілу і шматочки сусідніх
+                640: { slidesPerView: 2 },
+                1024: { slidesPerView: 3 },
+            }
+        });
+
+
+        // --- 3. LIGHTBOX (Збільшення фото) ---
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightbox-img');
+        const closeBtn = document.getElementById('close-lightbox');
+        const reviewImages = document.querySelectorAll('.review-img');
+
+        // Відкрити
+        reviewImages.forEach(img => {
+            img.addEventListener('click', () => {
+                lightboxImg.src = img.src;
+                lightbox.classList.remove('hidden');
+                // Невелика затримка для плавного CSS переходу (fade-in)
+                setTimeout(() => { lightbox.classList.remove('opacity-0'); }, 10);
+                document.body.style.overflow = 'hidden'; // Блокуємо скрол сайту
+            });
+        });
+
+        // Закрити (функція)
+        const closeLightbox = () => {
+            lightbox.classList.add('opacity-0'); // Спочатку fade-out
+            setTimeout(() => {
+                lightbox.classList.add('hidden'); // Потім ховаємо
+                lightboxImg.src = '';
+                document.body.style.overflow = ''; // Повертаємо скрол
+            }, 300);
+        };
+
+        // Клік на хрестик
+        closeBtn.addEventListener('click', closeLightbox);
+        
+        // Клік повз фото (на чорний фон)
+        lightbox.addEventListener('click', (e) => {
+            if (e.target === lightbox || e.target.tagName === 'DIV') closeLightbox();
+        });
+        
+        // Закриття по клавіші Escape
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && !lightbox.classList.contains('hidden')) closeLightbox();
+        });
+
+
+        // --- 4. ОБРОБКА ФОРМИ ТА РЕДИРЕКТ НА ОПЛАТУ ---
         document.getElementById('leadForm').addEventListener('submit', function(e) {
             e.preventDefault();
 
             const name = document.getElementById('name').value;
             const phone = document.getElementById('phone').value;
 
+            // СЮДИ ВСТАВЛЯТИ ПОСИЛАННЯ ВІД ТАРГЕТОЛОГА / ПРОГРАМІСТА
             const googleScriptURL = 'ВСТАВТЕ_ТУТ_ПОСИЛАННЯ_НА_GOOGLE_SCRIPT'; 
             const paymentURL = 'https://secure.wayforpay.com/button/ваша_кнопка';
 
@@ -323,12 +581,11 @@
                 const formData = new FormData();
                 formData.append('name', name);
                 formData.append('phone', phone);
-
                 fetch(googleScriptURL, { method: 'POST', body: formData }).catch(e => console.log(e));
             }
 
             if(typeof fbq !== 'undefined') {
-                fbq('track', 'InitiateCheckout', { value: 590.00, currency: 'UAH' });
+                fbq('track', 'InitiateCheckout', { value: 20.00, currency: 'EUR' });
             }
 
             window.location.href = paymentURL;
