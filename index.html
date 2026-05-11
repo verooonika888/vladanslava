@@ -72,7 +72,6 @@
 <body class="font-sans antialiased selection:bg-redAccent selection:text-white pb-20 md:pb-0 relative"> 
 
     <!-- ФІКСОВАНИЙ МАГІЧНИЙ ФОН НА ВЕСЬ САЙТ -->
-    <!-- Замініть bg-mystic.jpg на назву вашого нового фону з порталом -->
     <img src="bg-mystic.jpg" alt="Фон" class="fixed inset-0 w-full h-full object-cover z-[-2] pointer-events-none opacity-80">
     <!-- Затемнення поверх фону, щоб текст гарно читався -->
     <div class="fixed inset-0 w-full h-full bg-black/75 z-[-1] pointer-events-none"></div>
@@ -84,7 +83,7 @@
         </a>
     </div>
 
-    <!-- БЛОК 1: Героїчний екран (Фото Влади) -->
+    <!-- БЛОК 1: Героїчний екран -->
     <header class="relative min-h-[95vh] flex flex-col justify-between pt-6 pb-6 px-4 z-10" 
             style="background-image: url('vlada.jpg'); background-size: cover; background-position: center top;">
         
@@ -98,8 +97,9 @@
         </div>
 
         <div class="relative z-10 w-full max-w-5xl mx-auto text-center mt-auto pt-8 md:pt-16">
+            <!-- ОНОВЛЕНИЙ ЗАГОЛОВОК З МАЛЕНЬКИМИ ЛІТЕРАМИ В КІНЦІ -->
             <h1 class="text-2xl md:text-4xl lg:text-5xl font-extrabold leading-tight mb-2 uppercase drop-shadow-xl">
-                ОТРИМАЙ ЧІТКИЙ ВЕКТОР РУХУ: ВИЙДИ З ЦИКЛУ <span class="text-redAccent">ХРОНІЧНОЇ НЕЗАДОВОЛЕНОСТІ</span> і повторюваності болючих подій життя
+                ОТРИМАЙ ЧІТКИЙ ВЕКТОР РУХУ: ВИЙДИ З ЦИКЛУ <span class="text-redAccent">ХРОНІЧНОЇ НЕЗАДОВОЛЕНОСТІ</span> <span class="lowercase text-[0.9em]">і повторюваності болючих подій життя</span>
             </h1>
             
             <p class="text-xs md:text-base text-gray-200 mb-4 font-light drop-shadow-md max-w-3xl mx-auto leading-relaxed mt-2">
@@ -242,38 +242,8 @@
         </div>
     </section>
 
-    <!-- БЛОК 3: Пастки -->
-    <section class="py-20 px-4 max-w-5xl mx-auto border-t border-white/10 relative z-10">
-        <h2 class="text-2xl md:text-4xl font-bold text-center mb-4 uppercase">Чому ти досі там, <br><span class="text-redAccent">де ти є?</span></h2>
-        <p class="text-center text-gray-300 mb-12 text-lg">90% людей роками живуть в цих пастках:</p>
-        
-        <div class="space-y-6">
-            <div class="flex flex-col md:flex-row glass-card border-l-4 border-redAccent p-6 md:p-8 rounded-r-2xl items-center md:items-start gap-6 hover:bg-black/40 transition">
-                <div class="text-5xl font-extrabold text-white/20 md:mt-1 drop-shadow-md">01</div>
-                <div>
-                    <h3 class="text-xl font-bold mb-2">Ілюзія «духовності»</h3>
-                    <p class="text-gray-300 font-light">Ти ходиш по колах терапії та марафонів, але в реальному житті нічого не змінюється. Ти замінила реальні дії нескінченним «копанням» у собі, яке не дає результату в матерії.</p>
-                </div>
-            </div>
-            <div class="flex flex-col md:flex-row glass-card border-l-4 border-redAccent p-6 md:p-8 rounded-r-2xl items-center md:items-start gap-6 hover:bg-black/40 transition">
-                <div class="text-5xl font-extrabold text-white/20 md:mt-1 drop-shadow-md">02</div>
-                <div>
-                    <h3 class="text-xl font-bold mb-2">Боротьба з симптомами</h3>
-                    <p class="text-gray-300 font-light">Зміна роботи, партнера чи міста не допоможе, поки в твоєму полі активована програма на руйнування - сценарій буде повторюватись.</p>
-                </div>
-            </div>
-            <div class="flex flex-col md:flex-row glass-card border-l-4 border-redAccent p-6 md:p-8 rounded-r-2xl items-center md:items-start gap-6 hover:bg-black/40 transition">
-                <div class="text-5xl font-extrabold text-white/20 md:mt-1 drop-shadow-md">03</div>
-                <div>
-                    <h3 class="text-xl font-bold mb-2">Пастка «відлітання»</h3>
-                    <p class="text-gray-300 font-light">Ти шукаєш відповіді від всесвіту, поки твоє матеріальне життя розвалюється. Це не втеча в практики, а здатність змусити свою Тінь працювати на твій капітал, здоров’я та спокій.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- БЛОК 4: ЩО ВХОДИТЬ У КОНСУЛЬТАЦІЮ -->
-    <section class="py-20 px-4 border-y border-white/10 relative z-10 bg-black/30">
+    <!-- БЛОК 3: ЩО ВХОДИТЬ У КОНСУЛЬТАЦІЮ (ПЕРЕМІЩЕНО СЮДИ) -->
+    <section class="py-20 px-4 border-t border-white/10 relative z-10 bg-black/30">
         <div class="max-w-4xl mx-auto">
             
             <div class="text-center mb-10">
@@ -365,8 +335,38 @@
         </div>
     </section>
 
+    <!-- БЛОК 4: ПАСТКИ (ПЕРЕМІЩЕНО СЮДИ) -->
+    <section class="py-20 px-4 max-w-5xl mx-auto border-t border-white/10 relative z-10">
+        <h2 class="text-2xl md:text-4xl font-bold text-center mb-4 uppercase">Чому ти досі там, <br><span class="text-redAccent">де ти є?</span></h2>
+        <p class="text-center text-gray-300 mb-12 text-lg">90% людей роками живуть в цих пастках:</p>
+        
+        <div class="space-y-6">
+            <div class="flex flex-col md:flex-row glass-card border-l-4 border-redAccent p-6 md:p-8 rounded-r-2xl items-center md:items-start gap-6 hover:bg-black/40 transition">
+                <div class="text-5xl font-extrabold text-white/20 md:mt-1 drop-shadow-md">01</div>
+                <div>
+                    <h3 class="text-xl font-bold mb-2">Ілюзія «духовності»</h3>
+                    <p class="text-gray-300 font-light">Ти ходиш по колах терапії та марафонів, але в реальному житті нічого не змінюється. Ти замінила реальні дії нескінченним «копанням» у собі, яке не дає результату в матерії.</p>
+                </div>
+            </div>
+            <div class="flex flex-col md:flex-row glass-card border-l-4 border-redAccent p-6 md:p-8 rounded-r-2xl items-center md:items-start gap-6 hover:bg-black/40 transition">
+                <div class="text-5xl font-extrabold text-white/20 md:mt-1 drop-shadow-md">02</div>
+                <div>
+                    <h3 class="text-xl font-bold mb-2">Боротьба з симптомами</h3>
+                    <p class="text-gray-300 font-light">Зміна роботи, партнера чи міста не допоможе, поки в твоєму полі активована програма на руйнування - сценарій буде повторюватись.</p>
+                </div>
+            </div>
+            <div class="flex flex-col md:flex-row glass-card border-l-4 border-redAccent p-6 md:p-8 rounded-r-2xl items-center md:items-start gap-6 hover:bg-black/40 transition">
+                <div class="text-5xl font-extrabold text-white/20 md:mt-1 drop-shadow-md">03</div>
+                <div>
+                    <h3 class="text-xl font-bold mb-2">Пастка «відлітання»</h3>
+                    <p class="text-gray-300 font-light">Ти шукаєш відповіді від всесвіту, поки твоє матеріальне життя розвалюється. Це не втеча в практики, а здатність змусити свою Тінь працювати на твій капітал, здоров’я та спокій.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- БЛОК 5: Про експерта -->
-    <section class="py-24 px-4 max-w-6xl mx-auto flex flex-col md:flex-row items-center gap-16 relative z-10">
+    <section class="py-24 px-4 max-w-6xl mx-auto flex flex-col md:flex-row items-center gap-16 relative z-10 border-t border-white/10">
         <div class="w-full md:w-[45%]">
             <img src="vlada.jpg" alt="Владислава" class="w-full rounded-2xl border border-gray-700 shadow-2xl">
         </div>
