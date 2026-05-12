@@ -603,7 +603,6 @@
             const nameInput = document.getElementById('pop-name');
             const phoneInput = document.getElementById('pop-phone');
             const tgInput = document.getElementById('pop-telegram');
-            const submitBtn = popupForm.querySelector('button[type="submit"]');
 
             const showError = (input) => {
                 input.classList.add('input-error');
@@ -615,26 +614,29 @@
                 input.classList.add('focus:border-redAccent');
             };
 
-            // Перевірка Імені
-            if (nameInput.value.trim().length < 3) showError(nameInput); else clearError(nameInput);
-            
-            // Перевірка Телеграму
-            if (tgInput.value.trim().length < 3) showError(tgInput); else clearError(tgInput);
-            
+            // Перевірка Імені (мін 3)
+            if (nameInput.value.trim().length < 3) {
+                showError(nameInput);
+            } else { clearError(nameInput); }
+
+            // Перевірка Телеграму (мін 3)
+            if (tgInput.value.trim().length < 3) {
+                showError(tgInput);
+            } else { clearError(tgInput); }
+
             // Перевірка Телефону
             const phoneRegex = /^\+?[0-9\s\-()]{9,15}$/;
             const phoneVal = phoneInput.value.trim().replace(/\s+/g, ''); 
-            if (!phoneRegex.test(phoneVal)) showError(phoneInput); else clearError(phoneInput);
+            if (!phoneRegex.test(phoneVal)) {
+                showError(phoneInput);
+            } else { clearError(phoneInput); }
 
+            // Відправка
             if (isValid) {
-                // Змінюємо текст кнопки
-                const originalBtnText = submitBtn.innerText;
-                submitBtn.innerText = 'ОБРОБКА...';
-                submitBtn.disabled = true;
-
                 const googleScriptURL = 'https://script.google.com/macros/s/AKfycbwwvrn6nNWql1vaAF6qx6kUNl5GcCGMU5z8vBaqtWgQ3ZQCXL7p6b_AP0GqC4Po_E2X8g/exec'; 
-                const paymentURL = 'https://secure.wayforpay.com/button/ваша_кнопка';
+                const paymentURL = 'https://secure.wayforpay.com/button/bce3402b76e97';
 
+                // Відправка в Гугл Таблицю
                 const formData = new FormData();
                 formData.append('name', nameInput.value.trim());
                 formData.append('phone', phoneInput.value.trim());
@@ -645,7 +647,6 @@
                 formData.append('utm_medium', utms.utm_medium);
                 formData.append('utm_campaign', utms.utm_campaign);
 
-                // Відправляємо в Гугл, чекаємо і перекидаємо на оплату
                 fetch(googleScriptURL, { 
                     method: 'POST', 
                     body: formData,
