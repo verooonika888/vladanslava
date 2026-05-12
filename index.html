@@ -89,7 +89,7 @@
 
     <!-- БЛОК 1: Героїчний екран -->
     <header class="relative min-h-[95vh] flex flex-col justify-between pt-6 pb-6 px-4 z-10" 
-            style="background-image: url('main.JPEG'); background-size: cover; background-position: center top;">
+            style="background-image: url('vlada.jpg'); background-size: cover; background-position: center top;">
         
         <div class="absolute inset-0 bg-gradient-to-b from-black/10 via-black/70 to-[#050505] z-0"></div>
 
@@ -123,7 +123,6 @@
                     <div class="pb-1">:</div>
                     <div class="flex flex-col items-center"><span id="secs">00</span><span class="text-[8px] text-gray-400 font-normal uppercase tracking-widest mt-1">Сек</span></div>
                 </div>
-                <!-- Кнопка відкриття модалки -->
                 <button class="open-modal-btn block w-full bg-redAccent hover:bg-red-700 text-white font-bold text-xs md:text-sm py-2.5 px-4 rounded-xl uppercase tracking-wider transition transform hover:scale-105 shadow-[0_0_15px_rgba(211,47,47,0.5)]">
                     ХОЧУ НА КОНСУЛЬТАЦІЮ
                 </button>
@@ -144,7 +143,7 @@
                 </p>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <!-- Картка 1 -->
+                <!-- Картки Тіні -->
                 <div class="glass-card shadow-card p-6 rounded-2xl transition duration-300 hover:-translate-y-1">
                     <div class="flex items-center gap-4 mb-5 border-b border-gray-700/50 pb-4">
                         <div class="p-3 bg-redAccent/20 rounded-xl border border-redAccent/30">
@@ -163,7 +162,6 @@
                     </div>
                 </div>
 
-                <!-- Картка 2 -->
                 <div class="glass-card shadow-card p-6 rounded-2xl transition duration-300 hover:-translate-y-1">
                     <div class="flex items-center gap-4 mb-5 border-b border-gray-700/50 pb-4">
                         <div class="p-3 bg-redAccent/20 rounded-xl border border-redAccent/30">
@@ -182,7 +180,6 @@
                     </div>
                 </div>
 
-                <!-- Картка 3 -->
                 <div class="glass-card shadow-card p-6 rounded-2xl transition duration-300 hover:-translate-y-1">
                     <div class="flex items-center gap-4 mb-5 border-b border-gray-700/50 pb-4">
                         <div class="p-3 bg-redAccent/20 rounded-xl border border-redAccent/30">
@@ -201,7 +198,6 @@
                     </div>
                 </div>
 
-                <!-- Картка 4 -->
                 <div class="glass-card shadow-card p-6 rounded-2xl transition duration-300 hover:-translate-y-1">
                     <div class="flex items-center gap-4 mb-5 border-b border-gray-700/50 pb-4">
                         <div class="p-3 bg-redAccent/20 rounded-xl border border-redAccent/30">
@@ -220,7 +216,6 @@
                     </div>
                 </div>
 
-                <!-- Картка 5 -->
                 <div class="md:col-span-2 max-w-2xl mx-auto w-full glass-card shadow-card p-6 rounded-2xl transition duration-300 hover:-translate-y-1 mt-2">
                     <div class="flex items-center gap-4 mb-5 border-b border-gray-700/50 pb-4">
                         <div class="p-3 bg-redAccent/20 rounded-xl border border-redAccent/30">
@@ -244,7 +239,7 @@
     </section>
 
     <!-- БЛОК 3: ЩО ВХОДИТЬ У КОНСУЛЬТАЦІЮ -->
-    <section class="py-20 px-4 border-y border-white/10 relative z-10 bg-black/30">
+    <section class="py-20 px-4 border-t border-white/10 relative z-10 bg-black/30">
         <div class="max-w-4xl mx-auto">
             
             <div class="text-center mb-10">
@@ -451,35 +446,42 @@
             <!-- Кнопка закриття -->
             <button id="close-modal" class="absolute top-4 right-5 text-gray-400 hover:text-redAccent text-3xl font-light focus:outline-none">&times;</button>
             
-            <h3 class="text-2xl md:text-3xl font-bold text-center mb-2 uppercase text-white drop-shadow-md">Бронювання місця</h3>
-            <p class="text-center text-gray-300 text-sm mb-8 font-light">Введіть свої дані, щоб отримати доступ до оплати</p>
+            <h3 class="text-2xl md:text-3xl font-bold text-center mb-2 uppercase text-white drop-shadow-md">ЗАБРОНЮВАТИ МІСЦЕ</h3>
+            <p class="text-center text-gray-300 text-sm mb-8 font-light">Введіть дані для зв'язку та отримання консультації.</p>
             
-            <form id="popupForm" class="space-y-5" novalidate>
-                <!-- Поле: Ім'я -->
+            <form id="popupForm" class="space-y-4" novalidate>
                 <div>
                     <label class="block text-xs text-gray-400 uppercase tracking-wider mb-2">Ваше ім'я</label>
                     <input type="text" id="pop-name" placeholder="Наприклад: Анна" class="w-full bg-black/50 border border-gray-600 rounded-lg px-4 py-4 text-white focus:outline-none transition backdrop-blur-sm">
                     <span class="error-message" id="error-name">Мінімум 3 символи</span>
                 </div>
                 
-                <!-- Поле: Телефон -->
                 <div>
                     <label class="block text-xs text-gray-400 uppercase tracking-wider mb-2">Номер телефону</label>
                     <input type="tel" id="pop-phone" placeholder="+380..." class="w-full bg-black/50 border border-gray-600 rounded-lg px-4 py-4 text-white focus:outline-none transition backdrop-blur-sm">
                     <span class="error-message" id="error-phone">Введіть коректний номер телефону</span>
                 </div>
 
-                <!-- Поле: Telegram -->
                 <div>
                     <label class="block text-xs text-gray-400 uppercase tracking-wider mb-2">Ваш Telegram (нік або номер)</label>
                     <input type="text" id="pop-telegram" placeholder="@username або номер" class="w-full bg-black/50 border border-gray-600 rounded-lg px-4 py-4 text-white focus:outline-none transition backdrop-blur-sm">
                     <span class="error-message" id="error-telegram">Мінімум 3 символи</span>
                 </div>
                 
-                <div class="pt-4">
-                    <!-- ОНОВЛЕНА КНОПКА -->
+                <!-- Блок з ціною ДО СПЛАТИ -->
+                <div class="pt-2">
+                    <div class="flex justify-between items-center bg-black/40 border border-gray-700/50 rounded-lg p-4 mb-4">
+                        <span class="text-gray-400 uppercase tracking-widest text-xs font-bold">До сплати:</span>
+                        <div class="flex items-baseline gap-3">
+                            <span class="text-gray-500 line-through text-sm">100 €</span>
+                            <span class="text-redAccent font-extrabold text-2xl leading-none">20 €</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="pt-1">
                     <button type="submit" class="w-full bg-redAccent hover:bg-red-700 text-white font-bold py-5 rounded-lg uppercase tracking-wider transition transform active:scale-95 shadow-[0_0_15px_rgba(211,47,47,0.4)]">
-                        Сплатити і забронювати місце
+                        ПЕРЕЙТИ ДО ОПЛАТИ
                     </button>
                 </div>
                 <p class="text-[11px] text-center text-gray-500 mt-4 leading-tight">Ваші дані надійно захищені. Натискаючи кнопку, ви погоджуєтесь з політикою конфіденційності.</p>
@@ -494,6 +496,7 @@
             <img id="lightbox-img" src="" class="max-w-[95vw] max-h-[90vh] object-contain cursor-zoom-out" alt="Збільшений відгук">
         </div>
     </div>
+
 
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
