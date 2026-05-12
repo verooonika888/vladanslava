@@ -328,7 +328,6 @@
             
             <div class="text-center">
                 <p class="text-xl md:text-2xl font-bold mb-6 uppercase">ЦІННІСТЬ — ЕКОНОМІЯ РОКІВ ЖИТТЯ <br class="hidden md:block"> В ІЛЮЗІЯХ ТА БОЛЮ</p>
-                <!-- Кнопка відкриття модалки -->
                 <button class="open-modal-btn inline-block w-full md:w-auto bg-redAccent hover:bg-red-700 text-white font-bold py-4 px-10 rounded-lg uppercase tracking-wide transition transform hover:scale-105 shadow-[0_0_20px_rgba(211,47,47,0.4)]">
                     ХОЧУ НА КОНСУЛЬТАЦІЮ
                 </button>
@@ -447,7 +446,6 @@
     <!-- POP-UP МОДАЛЬНЕ ВІКНО З ФОРМОЮ ОПЛАТИ -->
     <div id="order-modal" class="fixed inset-0 z-[200] bg-black/90 hidden opacity-0 transition-opacity duration-300 flex items-center justify-center p-4 backdrop-blur-sm">
         <div class="relative glass-card p-6 md:p-8 rounded-2xl w-full max-w-[480px] border border-redAccent/50 red-shadow transform transition-all">
-            <!-- Кнопка закриття -->
             <button id="close-modal" class="absolute top-4 right-5 text-gray-400 hover:text-redAccent text-3xl font-light focus:outline-none">&times;</button>
             
             <h3 class="text-xl md:text-3xl font-bold text-center mb-1 uppercase text-white drop-shadow-md">ЗАБРОНЮВАТИ МІСЦЕ</h3>
@@ -515,7 +513,6 @@
             if(time > 0) time--;
         }, 1000);
 
-
         // --- 2. SWIPER (Відгуки) ---
         const swiper = new Swiper(".reviewsSwiper", {
             loop: true,               
@@ -532,7 +529,6 @@
                 1024: { slidesPerView: 3 },
             }
         });
-
 
         // --- 3. LIGHTBOX (Фото) ---
         const lightbox = document.getElementById('lightbox');
@@ -561,7 +557,6 @@
         closeLightboxBtn.addEventListener('click', closeLightboxModal);
         lightbox.addEventListener('click', (e) => { if (e.target === lightbox || e.target.tagName === 'DIV') closeLightboxModal(); });
         document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && !lightbox.classList.contains('hidden')) closeLightboxModal(); });
-
 
         // --- 4. POP-UP ФОРМА ТА ВАЛІДАЦІЯ ---
         const orderModal = document.getElementById('order-modal');
@@ -608,6 +603,7 @@
             const nameInput = document.getElementById('pop-name');
             const phoneInput = document.getElementById('pop-phone');
             const tgInput = document.getElementById('pop-telegram');
+            const submitBtn = popupForm.querySelector('button[type="submit"]');
 
             const showError = (input) => {
                 input.classList.add('input-error');
@@ -619,44 +615,55 @@
                 input.classList.add('focus:border-redAccent');
             };
 
+            // Перевірка Імені
             if (nameInput.value.trim().length < 3) showError(nameInput); else clearError(nameInput);
+            
+            // Перевірка Телеграму
             if (tgInput.value.trim().length < 3) showError(tgInput); else clearError(tgInput);
             
+            // Перевірка Телефону
             const phoneRegex = /^\+?[0-9\s\-()]{9,15}$/;
             const phoneVal = phoneInput.value.trim().replace(/\s+/g, ''); 
             if (!phoneRegex.test(phoneVal)) showError(phoneInput); else clearError(phoneInput);
 
             if (isValid) {
+                // Змінюємо текст кнопки
+                const originalBtnText = submitBtn.innerText;
+                submitBtn.innerText = 'ОБРОБКА...';
+                submitBtn.disabled = true;
+
                 const googleScriptURL = 'https://script.google.com/macros/s/AKfycbwwvrn6nNWql1vaAF6qx6kUNl5GcCGMU5z8vBaqtWgQ3ZQCXL7p6b_AP0GqC4Po_E2X8g/exec'; 
                 const paymentURL = 'https://secure.wayforpay.com/button/ваша_кнопка';
 
-                if(googleScriptURL !== 'ВСТАВТЕ_ПОСИЛАННЯ_НА_GOOGLE_SCRIPT') {
-                    const formData = new FormData();
-                    formData.append('name', nameInput.value.trim());
-                    formData.append('phone', phoneInput.value.trim());
-                    formData.append('telegram', tgInput.value.trim()); 
-                    
-                    const utms = getUTMs();
-                    formData.append('utm_source', utms.utm_source);
-                    formData.append('utm_medium', utms.utm_medium);
-                    formData.append('utm_campaign', utms.utm_campaign);
+                const formData = new FormData();
+                formData.append('name', nameInput.value.trim());
+                formData.append('phone', phoneInput.value.trim());
+                formData.append('telegram', tgInput.value.trim()); 
+                
+                const utms = getUTMs();
+                formData.append('utm_source', utms.utm_source);
+                formData.append('utm_medium', utms.utm_medium);
+                formData.append('utm_campaign', utms.utm_campaign);
 
-                    fetch(googleScriptURL, { 
-                        method: 'POST', 
-                        body: formData,
-                        mode: 'no-cors' 
-                    }).catch(e => console.log(e));
-                }
+                // Відправляємо в Гугл, чекаємо і перекидаємо на оплату
+                fetch(googleScriptURL, { 
+                    method: 'POST', 
+                    body: formData,
+                    mode: 'no-cors' 
+                }).then(() => {
+                    window.location.href = paymentURL;
+                }).catch(e => {
+                    console.log(e);
+                    window.location.href = paymentURL;
+                });
 
                 if(typeof fbq !== 'undefined') {
                     fbq('track', 'InitiateCheckout', { value: 20.00, currency: 'EUR' });
                 }
-
-                window.location.href = paymentURL;
             }
         });
 
-        // Очищення помилок при введенні
+        // Очищення помилки
         const inputs = [document.getElementById('pop-name'), document.getElementById('pop-phone'), document.getElementById('pop-telegram')];
         inputs.forEach(input => {
             input.addEventListener('input', () => {
