@@ -5,68 +5,53 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Оплата успішна | Владислава</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: { redAccent: '#d32f2f', darkBg: '#0f0f0f', darkCard: '#1a1a1a' },
+                    fontFamily: { sans: ['Montserrat', 'sans-serif'] }
+                }
+            }
+        }
+    </script>
     <style>
-        * { box-sizing: border-box; margin: 0; padding: 0; }
-        body {
-            font-family: 'Montserrat', sans-serif; background-color: #050505; color: #ffffff;
-            display: flex; align-items: center; justify-content: center;
-            min-height: 100vh; min-height: -webkit-fill-available; padding: 20px; position: relative;
-        }
-        .bg-image {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            object-fit: cover; z-index: -2; opacity: 0.8;
-        }
-        .bg-overlay {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background-color: rgba(0, 0, 0, 0.8); z-index: -1;
-        }
-        .card {
-            position: relative; z-index: 10; background: rgba(20, 20, 20, 0.7);
-            backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px);
-            border: 1px solid rgba(255, 255, 255, 0.1); border-top: 1px solid #22c55e;
-            padding: 40px 30px; border-radius: 24px; width: 100%; max-width: 400px;
-            text-align: center; box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
-        }
-        .icon-wrapper {
-            display: inline-flex; align-items: center; justify-content: center;
-            width: 80px; height: 80px; border-radius: 50%; margin-bottom: 24px;
-            background: rgba(34, 197, 94, 0.1); border: 1px solid rgba(34, 197, 94, 0.3);
-            filter: drop-shadow(0 0 15px rgba(34, 197, 94, 0.5)); color: #22c55e;
-        }
-        .icon-wrapper svg { width: 40px; height: 40px; }
-        h1 { font-size: 24px; font-weight: 800; text-transform: uppercase; margin-bottom: 16px; letter-spacing: 1px; }
-        p { font-size: 14px; color: #d1d5db; line-height: 1.6; margin-bottom: 32px; font-weight: 300; }
-        strong { color: #ffffff; font-weight: 600; }
-        .btn {
-            display: block; width: 100%; padding: 18px; border-radius: 12px;
-            text-decoration: none; font-weight: 700; text-transform: uppercase;
-            letter-spacing: 1px; transition: all 0.2s ease; font-size: 14px;
-            background-color: rgba(255, 255, 255, 0.1); color: #ffffff;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-        }
-        .btn:active { transform: scale(0.95); background-color: rgba(255, 255, 255, 0.2); }
+        body { color: #ffffff; background-color: #050505; }
+        .glass-card { background: rgba(20, 20, 20, 0.7); backdrop-filter: blur(15px); border: 1px solid rgba(255, 255, 255, 0.1); }
+        .success-glow { filter: drop-shadow(0 0 15px rgba(34, 197, 94, 0.5)); }
     </style>
 </head>
-<body>
+<body class="font-sans antialiased relative min-h-[100dvh] flex flex-col items-center justify-center p-4"> 
 
-    <img src="bg-mystic.jpg" alt="Фон" class="bg-image">
-    <div class="bg-overlay"></div>
+    <!-- ФОН (Зафіксований позаду) -->
+    <div class="fixed inset-0 z-0">
+        <img src="bg-mystic.jpg" alt="Фон" class="w-full h-full object-cover opacity-80">
+        <div class="absolute inset-0 bg-black/80"></div>
+    </div>
 
-    <div class="card">
-        <div class="icon-wrapper">
-            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+    <!-- КАРТКА УСПІХУ (Виведена на передній план z-10) -->
+    <div class="relative z-10 glass-card p-8 md:p-10 rounded-3xl w-full max-w-[400px] text-center shadow-2xl border-t border-green-500/30">
+        
+        <!-- Іконка галочки -->
+        <div class="mx-auto flex items-center justify-center w-20 h-20 bg-green-500/10 rounded-full border border-green-500/30 mb-6 success-glow">
+            <svg class="w-10 h-10 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
             </svg>
         </div>
 
-        <h1>Оплата успішна!</h1>
+        <h1 class="text-2xl font-extrabold mb-4 uppercase tracking-wide">Оплата успішна!</h1>
         
-        <p>
+        <p class="text-gray-300 text-sm leading-relaxed mb-8 font-light">
             Дякую за довіру. Ваше місце заброньовано. <br><br>
-            <strong>Я зв'яжусь з вами у Telegram найближчим часом</strong>, щоб узгодити дату та час нашої діагностики.
+            <strong class="text-white font-semibold">Я зв'яжусь з вами у Telegram найближчим часом</strong>, щоб узгодити дату та час нашої діагностики.<br><br>
+            А поки ви очікуєте, переходьте в мій Telegram-канал. Там багато цікавого!
         </p>
 
-        <a href="index.html" class="btn">Повернутися на сайт</a>
+        <!-- Кнопка переходу в ТГ канал -->
+        <a href="https://t.me/+_zEUS197GKRkYzQy" target="_blank" class="block w-full bg-white/10 hover:bg-white/20 border border-white/20 text-white font-bold py-4 rounded-xl uppercase tracking-wider transition transform active:scale-95">
+            Перейти в TG канал
+        </a>
     </div>
 
 </body>
