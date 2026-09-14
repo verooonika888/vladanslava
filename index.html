@@ -1,411 +1,718 @@
 <!DOCTYPE html>
 <html lang="uk">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Алхімія Тіні | Авторська програма</title>
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
-<style>
-:root {--bg-main: #050505; --bg-secondary: #0d0606; --dark-red: #3a0000; --accent-red: #8b0000; --bright-red: #cc0000; --gold: #C5A059; --gold-light: #E8D399; --gold-dark: #8c7340; --text-main: #e0e0e0; --text-muted: #999999; --glass-bg: rgba(20, 20, 20, 0.6); --glass-border: rgba(197, 160, 89, 0.25);}
-* {margin: 0; padding: 0; box-sizing: border-box;}
-html, body {background-color: #000; width: 100%; overflow-x: hidden; scroll-behavior: smooth;}
-.app-wrapper {max-width: 430px; margin: 0 auto; background-color: var(--bg-main); color: var(--text-main); font-family: 'Montserrat', sans-serif; line-height: 1.6; position: relative; min-height: 100vh; overflow-x: hidden; box-shadow: 0 0 30px rgba(0,0,0,0.8);}
-h1, h2, h3, h4, .serif {font-family: 'Playfair Display', serif; font-weight: normal;}
-.container {width: 100%; padding: 0 20px;}
-.btn {display: block; width: 100%; background: linear-gradient(135deg, var(--accent-red) 0%, var(--bright-red) 100%); color: white; padding: 20px 0; text-align: center; text-decoration: none; font-family: 'Montserrat', sans-serif; font-weight: 600; font-size: 15px; text-transform: uppercase; letter-spacing: 1.5px; border-radius: 4px; border: 1px solid var(--gold); box-shadow: 0 0 20px rgba(139, 0, 0, 0.6); transition: all .3s ease;}
-.btn-transparent {display: block; width: 100%; background: rgba(255, 255, 255, 0.08); color: var(--text-main); padding: 20px 0; text-align: center; text-decoration: none; font-family: 'Montserrat', sans-serif; font-weight: 600; font-size: 15px; text-transform: uppercase; letter-spacing: 1.5px; border-radius: 4px; border: 1px solid rgba(255, 255, 255, 0.2); backdrop-filter: blur(8px); transition: all .3s ease; margin-top: 15px;}
-.btn-transparent:hover {background: rgba(255, 255, 255, 0.15); border-color: var(--gold); color: var(--gold-light);}
-.btn-outline {background: transparent; border: 1px solid var(--gold); box-shadow: none; color: var(--gold-light);}
-.glow-bg {position: absolute; width: 600px; height: 600px; background: radial-gradient(circle, var(--dark-red) 0%, transparent 70%); z-index: -1; opacity: 0.5; border-radius: 50%; filter: blur(40px); pointer-events: none;}
-.hero {position: relative; min-height: 100vh; display: flex; align-items: center; justify-content: center; text-align: center; padding: 240px 0 60px 0; background-image: linear-gradient(180deg, rgba(5,5,5,0.2) 0%, rgba(5,5,5,0.9) 100%), url('blok1.jpg'); background-size: cover; background-position: center top;}
-.hero-subtitle {color: var(--gold); font-size: 12px; letter-spacing: 3px; text-transform: uppercase; font-weight: 500; position: absolute; top: 50px; left: 50%; transform: translateX(-50%); width: 100%; padding: 0 20px; text-align: center; z-index: 20;}
-.hero h1 {font-size: 3.2rem; color: var(--gold-light); text-shadow: 0 4px 15px rgba(0, 0, 0, 0.8), 0 0 30px rgba(197, 160, 89, 0.3); margin-bottom: 20px; text-transform: uppercase; line-height: 1.1;}
-.hero h2 {font-size: 1.1rem; margin: 0 auto 30px; color: var(--text-main); font-weight: 300; text-shadow: 0 2px 10px rgba(0,0,0,0.8);}
-section {padding: 70px 0; position: relative;}
-section:nth-child(even) {background-color: var(--bg-secondary);}
-#for-whom {background-image: linear-gradient(180deg, rgba(5,5,5,0.92) 0%, rgba(5,5,5,0.98) 100%), url('blok2.jpg'); background-size: cover; background-position: center top;}
-.section-title {text-align: center; font-size: 2.2rem; color: var(--gold-light); margin-bottom: 15px; line-height: 1.2;}
-.section-subtitle {text-align: center; color: var(--text-muted); margin-bottom: 40px; font-size: 1rem;}
-.smoke-card {background-color: #080303; background-image: linear-gradient(to bottom, rgba(10, 0, 0, 0.5) 0%, rgba(5, 5, 5, 0.9) 100%), url('blok2.jpg'); background-size: cover; background-position: center; border: 1px solid rgba(139, 0, 0, 0.6); padding: 30px 20px; border-radius: 6px; margin-bottom: 20px; position: relative; overflow: hidden; box-shadow: inset 0 0 50px rgba(139, 0, 0, 0.8), 0 5px 15px rgba(0,0,0,0.8);}
-.smoke-card::before {content: ''; position: absolute; top: -20%; left: -20%; right: -20%; bottom: -20%; background: radial-gradient(circle at center, rgba(204, 0, 0, 0.5) 0%, rgba(139, 0, 0, 0.15) 50%, transparent 70%); z-index: 1; pointer-events: none; filter: blur(20px); mix-blend-mode: screen; animation: smoke-breathe 5s infinite alternate ease-in-out;}
-@keyframes smoke-breathe {0% {transform: scale(1); opacity: 0.6;} 100% {transform: scale(1.1); opacity: 1;}}
-.smoke-card-content {position: relative; z-index: 2;}
-.smoke-card h3 {color: var(--gold-light); font-size: 1.25rem; margin-bottom: 12px; line-height: 1.3; letter-spacing: 1px; text-transform: uppercase; text-shadow: 0 2px 5px rgba(0,0,0,1);}
-.smoke-card p {color: #f0f0f0; font-size: 0.95rem; text-shadow: 0 2px 6px rgba(0,0,0,1);}
-.glass-card {background: var(--glass-bg); backdrop-filter: blur(10px); border: 1px solid var(--glass-border); padding: 30px 20px; border-radius: 4px; margin-bottom: 20px; position: relative;}
-.glass-card h3 {color: var(--gold-light); font-size: 1.3rem; margin-bottom: 15px; line-height: 1.3;}
-.tools-list {list-style: none;}
-.tools-list li {position: relative; padding-left: 35px; margin-bottom: 20px; font-size: 1rem;}
-.tools-list li::before {content: "✦"; position: absolute; left: 0; top: 2px; color: var(--gold); font-size: 1.2rem;}
-.timeline {position: relative; padding-left: 10px;}
-.timeline::before {content: ''; position: absolute; top: 0; bottom: 0; left: 16px; width: 1px; background: linear-gradient(to bottom, var(--gold) 0%, transparent 100%);}
-.phase-title {color: var(--accent-red); font-size: 1.6rem; margin: 40px 0 20px 0; text-align: center; position: relative; z-index: 2; background: var(--bg-main); padding: 10px 0;}
-.module {position: relative; margin-bottom: 35px; padding-left: 45px;}
-.module::before {content: ''; position: absolute; left: 2px; top: 6px; width: 10px; height: 10px; border-radius: 50%; background: var(--bg-main); border: 2px solid var(--gold); box-shadow: 0 0 8px var(--gold);}
-.module h4 {color: var(--gold-light); font-size: 1.2rem; margin-bottom: 8px;}
-.module span {color: var(--gold-dark); font-size: 0.85rem; letter-spacing: 1px;}
-.module p {font-size: 0.95rem;}
-.learning-step {position: relative; margin-bottom: 45px; padding-left: 25px;}
-.learning-step::before {content: ''; position: absolute; left: 0; top: 6px; height: 100%; width: 2px; background: var(--accent-red); box-shadow: 0 0 10px var(--accent-red);}
-.learning-step::after {content: ''; position: absolute; left: -4px; top: 6px; width: 10px; height: 10px; background: var(--gold); border-radius: 50%; box-shadow: 0 0 10px var(--gold);}
-.learning-number {position: absolute; left: 20px; top: -25px; font-family: 'Playfair Display', serif; font-size: 4.5rem; color: var(--gold); opacity: 0.15; z-index: 0; line-height: 1; font-weight: bold; user-select: none;}
-.learning-content {position: relative; z-index: 1;}
-.learning-content h3 {color: var(--gold-light); font-size: 1.25rem; margin-bottom: 10px; text-transform: uppercase; letter-spacing: 1px; text-shadow: 0 2px 5px rgba(0,0,0,0.8);}
-.learning-content p {color: var(--text-main); font-size: 0.95rem; line-height: 1.6;}
-.highlight-badge {display: inline-block; background: rgba(139, 0, 0, 0.2); border: 1px solid var(--accent-red); color: var(--gold-light); font-size: 0.7rem; padding: 4px 12px; border-radius: 20px; margin-bottom: 12px; text-transform: uppercase; letter-spacing: 1px;}
-.expert-card {text-align: center; margin-bottom: 40px;}
-.expert-photo {width: 120px; height: 160px; margin: 0 auto 15px; border-radius: 60px 60px 0 0; border: 1px solid var(--gold); background: #1a1a1a; box-shadow: 0 10px 25px rgba(0,0,0,0.5); background-image: url('vladaphoto.JPG'); background-size: cover; background-position: center top;}
-.expert-card h3 {font-size: 1.8rem; color: var(--gold-light); margin-bottom: 5px; text-transform: uppercase;}
-.expert-card p {font-size: 0.95rem; color: var(--text-muted); padding: 0 20px;}
-.slider-wrapper {position: relative; display: flex; align-items: center; margin: 0 -10px;}
-.slider-container {display: flex; overflow-x: auto; scroll-snap-type: x mandatory; gap: 15px; scrollbar-width: none; scroll-behavior: smooth; padding: 10px; flex-grow: 1;}
-.slider-container::-webkit-scrollbar {display: none;}
-.slider-card {flex: 0 0 75%; scroll-snap-align: center; border-radius: 8px; overflow: hidden; border: 1px solid var(--glass-border); box-shadow: 0 5px 15px rgba(0,0,0,0.5); cursor: pointer; background: #111; transition: transform 0.3s; height: 350px;}
-.slider-card:hover {border-color: var(--gold); transform: translateY(-3px);}
-.slider-card img {width: 100%; height: 100%; object-fit: cover; display: block;}
-.slider-arrow {background: rgba(10, 10, 10, 0.85); border: 1px solid var(--gold); color: var(--gold-light); font-size: 20px; width: 36px; height: 36px; display: flex; justify-content: center; align-items: center; cursor: pointer; position: absolute; z-index: 10; border-radius: 50%; box-shadow: 0 0 10px rgba(0,0,0,0.8);}
-.arrow-left {left: 0px;} .arrow-right {right: 0px;}
-.lightbox-overlay {display: none; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(0,0,0,0.95); z-index: 99999; justify-content: center; align-items: center; flex-direction: column;}
-.lightbox-overlay.active {display: flex;}
-.lightbox-img {max-width: 95%; max-height: 85vh; border: 1px solid var(--gold); border-radius: 8px; box-shadow: 0 0 30px rgba(0,0,0,0.8); object-fit: contain;}
-.lightbox-close {position: absolute; top: 20px; right: 25px; font-size: 40px; color: var(--gold); cursor: pointer; line-height: 1;}
-.tariff {background: var(--glass-bg); border: 1px solid var(--glass-border); padding: 40px 25px; border-radius: 4px; margin-bottom: 30px; position: relative;}
-.tariff.pro {border: 2px solid var(--gold); background: linear-gradient(180deg, rgba(30,0,0,0.8) 0%, rgba(10,10,10,0.9) 100%); box-shadow: 0 0 30px rgba(139, 0, 0, 0.3);}
-.tariff.vip {border: 2px solid var(--gold); background: linear-gradient(180deg, rgba(197, 160, 89, 0.4) 0%, rgba(10, 10, 10, 0.95) 100%); box-shadow: 0 0 35px rgba(197, 160, 89, 0.3);}
-.hit-label {position: absolute; top: -14px; left: 50%; transform: translateX(-50%); background: var(--gold); color: #000; padding: 5px 15px; font-weight: bold; font-size: 11px; letter-spacing: 1px; text-transform: uppercase; border-radius: 20px; white-space: nowrap;}
-.hit-label-grey {position: absolute; top: -14px; left: 50%; transform: translateX(-50%); background: #222; color: #aaa; padding: 5px 15px; font-weight: 500; font-size: 11px; letter-spacing: 1px; text-transform: uppercase; border-radius: 20px; white-space: nowrap; border: 1px solid #444;}
-.tariff h3 {font-size: 1.4rem; text-align: center; margin-bottom: 20px; letter-spacing: 1px; text-transform: uppercase;}
-.tariff ul {list-style: none; margin-bottom: 10px;} 
-.tariff ul li {margin-bottom: 15px; font-size: 0.9rem; padding-left: 25px; position: relative;}
-.tariff ul li::before {content: '✓'; color: var(--gold); position: absolute; left: 0; font-weight: bold;}
-.tariff ul li.disabled {color: #555;}
-.tariff ul li.disabled::before {content: '✕'; color: #555; font-weight: normal;}
-.t-price {text-align: center; font-size: 2.2rem; font-family: 'Playfair Display', serif; color: var(--gold-light); margin-bottom: 25px;}
-.old-price {text-decoration: line-through; color: #666; font-size: 1.1rem;}
-.special-offer-box {background: linear-gradient(135deg, #2a0000 0%, #050505 100%); border: 1px solid var(--gold); padding: 40px 20px; text-align: center; border-radius: 4px;}
-.special-offer-box h2 {font-size: 1.8rem; color: var(--gold-light); margin-bottom: 15px; line-height: 1.3;}
-.special-offer-box p {font-size: 1rem; margin-bottom: 25px;}
-details {background: rgba(255,255,255,0.02); border: 1px solid var(--glass-border); margin-bottom: 10px; border-radius: 4px;}
-details[open] {border-color: var(--gold);}
-summary {padding: 20px; font-weight: 500; color: var(--gold-light); font-size: 1rem; list-style: none; position: relative; padding-right: 40px;}
-summary::-webkit-details-marker {display: none;}
-summary::after {content: '+'; position: absolute; right: 20px; top: 18px; color: var(--gold); font-size: 1.5rem; line-height: 1;}
-details[open] summary::after {content: '−';}
-.faq-content {padding: 0 20px 20px; color: var(--text-muted); font-size: 0.95rem;}
-footer {border-top: 1px solid #222; padding: 30px 20px; text-align: center; color: #666; font-size: 12px;}
-footer a {color: var(--gold-dark); text-decoration: none;}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Персональна консультація | Владислава</title>
+    <!-- Підключення шрифтів -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;800&display=swap" rel="stylesheet">
+    
+    <!-- Підключення Swiper.js CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    
+    <!-- Підключення Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        redAccent: '#d32f2f',
+                        darkBg: '#0f0f0f',
+                        darkCard: '#1a1a1a'
+                    },
+                    fontFamily: {
+                        sans: ['Montserrat', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Базові налаштування */
+        body { color: #ffffff; background-color: #050505; }
+        html { scroll-behavior: smooth; }
+        
+        /* Світіння */
+        .text-glow-red { text-shadow: 0 0 20px rgba(211,47,47,0.9), 0 0 10px rgba(211,47,47,1); }
+        .red-shadow { box-shadow: 0 4px 30px rgba(211, 47, 47, 0.4); }
+        
+        /* Скляні картки */
+        .glass-card { 
+            background: rgba(20, 20, 20, 0.65); 
+            backdrop-filter: blur(12px); 
+            border: 1px solid rgba(255, 255, 255, 0.08); 
+        }
+        
+        .shadow-card:hover .after-block { background-color: rgba(211, 47, 47, 0.15); border-color: rgba(211, 47, 47, 0.4); }
+        .after-block { transition: all 0.3s ease; }
+
+        /* Стилі для стрілок Swiper */
+        .swiper-button-next, .swiper-button-prev {
+            color: #d32f2f !important;
+            background: rgba(26, 26, 26, 0.8);
+            width: 40px !important;
+            height: 40px !important;
+            border-radius: 50%;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        .swiper-button-next:after, .swiper-button-prev:after { font-size: 18px !important; font-weight: bold; }
+        @media (max-width: 768px) { .swiper-button-next, .swiper-button-prev { display: none !important; } }
+        
+        /* Скролбар */
+        .hide-scroll::-webkit-scrollbar { display: none; }
+        .hide-scroll { -ms-overflow-style: none; scrollbar-width: none; }
+
+        /* Стилі для валідації полів (помилки) */
+        .input-error { border-color: #ef4444 !important; background-color: rgba(239, 68, 68, 0.05) !important; }
+        .error-message { display: none; color: #ef4444; font-size: 0.7rem; margin-top: 4px; text-transform: uppercase; letter-spacing: 0.05em; }
+        .input-error + .error-message { display: block; }
+    </style>
+
+    <!-- КОД FACEBOOK PIXEL -->
+    <!-- Meta Pixel Code -->
+    <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '2118340622444832');
+    fbq('track', 'PageView');
+    </script>
+    <noscript><img height="1" width="1" style="display:none"
+    src="https://www.facebook.com/tr?id=2118340622444832&ev=PageView&noscript=1"
+    /></noscript>
+    <!-- End Meta Pixel Code -->
+
 </head>
-<body>
+<body class="font-sans antialiased selection:bg-redAccent selection:text-white pb-20 md:pb-0 relative"> 
 
-<div class="app-wrapper">
+    <!-- ФІКСОВАНИЙ МАГІЧНИЙ ФОН НА ВЕСЬ САЙТ -->
+    <img src="bg-mystic.jpg" alt="Фон" class="fixed inset-0 w-full h-full object-cover z-[-2] pointer-events-none opacity-80">
+    <div class="fixed inset-0 w-full h-full bg-black/75 z-[-1] pointer-events-none"></div>
 
-    <!-- HERO SECTION -->
-    <header class="hero">
-        <div class="hero-subtitle">Авторська програма глибокого переходу</div>
-        <div class="container" style="z-index: 10;">
-            <h1>Алхімія Тіні</h1>
-            <h2>Прояв душі в матеріальному світі через інтеграцію Тіні, зміну сприйняття та вихід із внутрішніх конфліктів у реалізацію.</h2>
-            <a href="#tariffs" class="btn">Придбати курс</a>
-            <a href="#program" class="btn-transparent">Програма курсу</a>
+    <!-- ФІКСОВАНА КНОПКА ДЛЯ МОБІЛЬНИХ -->
+    <div class="fixed bottom-0 left-0 w-full z-50 p-3 bg-black/80 backdrop-blur-md border-t border-redAccent/30 md:hidden">
+        <button class="open-modal-btn block w-full bg-redAccent hover:bg-red-700 text-white font-extrabold text-sm py-3 text-center rounded-xl uppercase tracking-wider shadow-[0_0_15px_rgba(211,47,47,0.5)] transition transform active:scale-95">
+            ХОЧУ НА КОНСУЛЬТАЦІЮ
+        </button>
+    </div>
+
+    <!-- БЛОК 1: Героїчний екран -->
+    <header class="relative min-h-[95vh] flex flex-col justify-between pt-6 pb-6 px-4 z-10" 
+            style="background-image: url('main.JPEG'); background-size: cover; background-position: center top;">
+        
+        <div class="absolute inset-0 bg-gradient-to-b from-black/10 via-black/70 to-[#050505] z-0"></div>
+
+        <div class="relative z-10 w-full flex justify-center">
+            <div class="bg-redAccent/90 backdrop-blur-sm text-white border border-red-500 px-5 py-1.5 rounded-full text-xs font-bold tracking-widest uppercase shadow-lg shadow-redAccent/30">
+                Персональна консультація
+            </div>
+        </div>
+
+        <div class="relative z-10 w-full max-w-5xl mx-auto text-center mt-auto mb-16 md:mb-0 pt-4 md:pt-16">
+            
+            <h1 class="text-3xl md:text-4xl lg:text-5xl font-extrabold leading-tight mb-4 uppercase drop-shadow-xl">
+               ЗНАЙТИ ПРИЧИНУ<br>
+               <span class="text-redAccent">ПОБАЧИТИ РІШЕННЯ</span><br>
+               ЗМІНИТИ СЦЕНАРІЙ
+            </h1>
+            
+            <p class="text-xs md:text-base text-white mb-2 font-light text-glow-red max-w-3xl mx-auto leading-relaxed mt-2">
+                Глибокий індивідуальний розбір твого запиту, його причин, внутрішніх конфліктів і повторюваних сценаріїв.
+            </p>
+            
+            <p class="text-xs md:text-base text-gray-200 mb-6 font-light drop-shadow-md max-w-3xl mx-auto leading-relaxed">
+                Допомагаю побачити те, що складно помітити, перебуваючи всередині власної ситуації, та сформувати конкретний напрям подальшої роботи.
+            </p>
+            
+            <div class="glass-card p-4 rounded-2xl max-w-[280px] md:max-w-sm mx-auto shadow-2xl flex flex-col items-center">
+                <div class="text-redAccent text-3xl md:text-4xl font-extrabold drop-shadow-[0_0_15px_rgba(211,47,47,0.6)] leading-none">
+                    29 €
+                </div>
+                <div class="text-gray-400 text-base md:text-lg font-medium mt-1 mb-2">
+                    <strike>100 €</strike>
+                </div>
+                <div class="text-[9px] md:text-[10px] text-gray-300 uppercase tracking-widest mb-1 font-semibold">
+                    до збільшення ціни:
+                </div>
+                <div class="flex justify-center gap-2 text-xl md:text-2xl font-bold mb-3 text-white" id="timer">
+                    <div class="flex flex-col items-center"><span id="mins">15</span><span class="text-[8px] text-gray-400 font-normal uppercase tracking-widest mt-1">Хв</span></div>
+                    <div class="pb-1">:</div>
+                    <div class="flex flex-col items-center"><span id="secs">00</span><span class="text-[8px] text-gray-400 font-normal uppercase tracking-widest mt-1">Сек</span></div>
+                </div>
+                <button class="open-modal-btn block w-full bg-redAccent hover:bg-red-700 text-white font-bold text-xs md:text-sm py-2.5 px-4 rounded-xl uppercase tracking-wider transition transform hover:scale-105 shadow-[0_0_15px_rgba(211,47,47,0.5)]">
+                    ХОЧУ НА КОНСУЛЬТАЦІЮ
+                </button>
+            </div>
         </div>
     </header>
 
-    <div class="glow-bg" style="top: 100vh; left: -100px;"></div>
-    <div class="glow-bg" style="top: 40%; right: -150px; background: radial-gradient(circle, var(--gold-dark) 0%, transparent 60%); opacity: 0.2;"></div>
-
-    <!-- ДЛЯ КОГО -->
-    <section id="for-whom">
-        <div class="container">
-            <h2 class="section-title">ДЛЯ КОГО ЦЕЙ ДОСВІД?</h2>
-            <p class="section-subtitle">Цей курс для тебе, якщо твій запит:</p>
+    <!-- БЛОК 2: З ЯКИМИ ЗАПИТАМИ Я ПРАЦЮЮ -->
+    <section class="py-20 px-4 border-y border-white/10 relative z-10 bg-black/30">
+        <div class="max-w-4xl mx-auto">
             
-            <div class="smoke-card">
-                <div class="smoke-card-content">
-                    <h3>Незалежність та автономність</h3>
-                    <p>Твій фокус - на створенні власних опор. Ти хочеш вийти з будь-яких співзалежностей (емоційних чи фінансових) і стати тотально автономною особистістю.</p>
+           
+                <div class="inline-block px-8 py-2 border border-redAccent/30 bg-redAccent/10 rounded-full shadow-[0_0_15px_rgba(211,47,47,0.2)]">
+                    <h3 class="text-lg md:text-xl font-bold text-white tracking-widest uppercase">З якими запитами я працюю</h3>
                 </div>
             </div>
-
-            <div class="smoke-card">
-                <div class="smoke-card-content">
-                    <h3>Масштаб та авторитет</h3>
-                    <p>Ти відчуваєш свій величезний потенціал, але впираєшся в «невидиму стелю». Тобі потрібна сміливість заявити про себе, стати авторитетом у своїй справі та витримувати велику увагу.</p>
-                </div>
-            </div>
-
-            <div class="smoke-card">
-                <div class="smoke-card-content">
-                    <h3>Фінансова реалізація</h3>
-                    <p>Ти розумієш, що твої фінанси напряму залежать від твоєї енергетичної ємності, і ти готова розблокувати тіньову агресію та силу, щоб пробити фінансовий блок.</p>
-                </div>
-            </div>
-
-            <div class="smoke-card">
-                <div class="smoke-card-content">
-                    <h3>Сексуальність та проявленість</h3>
-                    <p>Ти хочеш розбудити свою природну магнетичність, дозволити собі бути справжньою, вільною, творчою і сексуальною без почуття провини чи сорому.</p>
-                </div>
-            </div>
-
-            <div class="smoke-card">
-                <div class="smoke-card-content">
-                    <h3>Рівноправні стосунки</h3>
-                    <p>Ти втомилася бути «мамочкою» чи «маленькою дівчинкою» для партнерів. Ти прагнеш будувати адекватні, зрілі та гармонійні стосунки двох дорослих людей.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ІНСТРУМЕНТИ -->
-    <section style="padding-bottom: 0;">
-        <div class="container">
-            <h2 class="section-title" style="font-size: 1.8rem;">Практичні інструменти трансформації всередині програми:</h2>
-        </div>
-        <img src="blok3.jpg" alt="Інструменти занурення" style="width: 100%; height: auto; display: block; margin-top: 30px;">
-    </section>
-
-    <!-- РЕЗУЛЬТАТИ -->
-    <section id="results">
-        <div class="container">
-            <h2 class="section-title">Результати, з якими ти вийдеш:</h2>
             
-            <div class="glass-card">
-                <h3>Глибока інтеграція Тіні</h3>
-                <p>Ти припиниш відкидати свої «незручні» чи «темні» сторони і нарешті приймеш себе повністю цілісною, вивільнивши колосальний об'єм енергії, який раніше йшов на внутрішню боротьбу.</p>
-            </div>
-            <div class="glass-card">
-                <h3>Вихід із внутрішніх конфліктів</h3>
-                <p>Ти перестанеш ділити себе і світ на «чорне» і «біле», «правильне» і «неправильне». Ти отримаєш свободу створювати власні правила гри, спираючись виключно на свою внутрішню правду, а не на нав'язані рамки чи чужі очікування.</p>
-            </div>
-            <div class="glass-card">
-                <h3>Розблокування Сили (Відьма, Блудниця)</h3>
-                <p>Ти розбудиш свою сексуальність, грошовий канал, інтуїцію та повернеш собі абсолютне авторство свого життя.</p>
-            </div>
-            <div class="glass-card">
-                <h3>Баланс Чоловічого та Жіночого</h3>
-                <p>Навчишся тримати структуру, фінанси й особисті кордони (чоловіче), залишаючись розслабленою та в довірі (жіноче).</p>
-            </div>
-            <div class="glass-card">
-                <h3>Зцілення Внутрішньої Дитини</h3>
-                <p>Ми знімемо базову тривожність і повернемо тобі стан внутрішньої безпеки — фундамент для справжнього масштабу.</p>
-            </div>
-            <div class="glass-card">
-                <h3>Побудова зрілих стосунків</h3>
-                <p>Ти вийдеш із травматичних сценаріїв і зможеш створювати партнерство двох дорослих людей на рівних.</p>
-            </div>
-            <div class="glass-card">
-                <h3>Проявленість та монетизація</h3>
-                <p>Ти перестанеш ховатися. Почнеш вільно транслювати свою енергію у світ і легко монетизувати свій новий стан.</p>
-            </div>
-            <a href="#tariffs" class="btn" style="margin-top: 40px;">Придбати курс</a>
-        </div>
-    </section>
-
-    <!-- ПРОГРАМА -->
-    <section id="program" style="padding-bottom: 0;">
-        <div class="container">
-            <h2 class="section-title">Твій план занурення</h2>
-            <p class="section-subtitle">10 кроків до відновлення зв'язку з собою і здатності щасливо жити в новому часі.</p>
-        </div>
-        <img src="block5.jpg" alt="План занурення" style="width: 100%; height: auto; display: block; margin-top: 30px;">
-    </section>
-
-    <!-- ЯК ПРОХОДИТИМЕ НАВЧАННЯ -->
-    <section id="how-it-works">
-        <div class="container">
-            <h2 class="section-title">Як проходитиме навчання</h2>
-            <p class="section-subtitle" style="margin-bottom: 40px;">Це не черговий курс заради красивого сертифіката, який припадатиме пилом на полиці. Це глибока трансформаційна програма, яка змінює твої базові внутрішні налаштування.</p>
-            
-            <div class="learning-step">
-                <div class="learning-content">
-                    <h3 style="display: flex; align-items: center;"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 10px; color: var(--gold); flex-shrink: 0;"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg> Комфортний ритм</h3>
-                    <p>Раз на тиждень відкривається новий модуль. На тебе чекають ефіри (тривалістю від 1 до 2 годин) та потужні трансформаційні медитації та практичні домашні завдання.</p>
-                </div>
-            </div>
-            <div class="learning-step">
-                <div class="learning-content">
-                    <h3 style="display: flex; align-items: center;"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 10px; color: var(--gold); flex-shrink: 0;"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg> Школа реального життя</h3>
-                    <div class="highlight-badge">Ніякої сухої теорії</div>
-                    <p>Тобі не доведеться виконувати домашку для «галочки». Усі завдання інтегруються безпосередньо в твою реальність. Сталася криза на роботі чи конфлікт із партнером? Ти одразу береш інструмент із курсу і вирішуєш проблему в моменті.</p>
-                </div>
-            </div>
-            <div class="learning-step">
-                <div class="learning-content">
-                    <h3 style="display: flex; align-items: center;"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 10px; color: var(--gold); flex-shrink: 0;"><path d="M21 2l-2 2m-7.61 7.61a5.5 5.5 0 1 1-7.778 7.778 5.5 5.5 0 0 1 7.777-7.777zm0 0L15.5 7.5m0 0l3 3L22 7l-3-3m-3.5 3.5L19 4"></path></svg> Універсальні інструменти</h3>
-                    <p>Переходи на нові рівні та кризи — це не одноразова акція, це частина росту. Ти отримаєш навички, які залишаться з тобою на все життя, щоб ти могла самостійно переписувати сценарії та витримувати будь-які життєві шторми.</p>
-                </div>
-            </div>
-            <div class="learning-step">
-                <div class="learning-content">
-                    <h3 style="display: flex; align-items: center;"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 10px; color: var(--gold); flex-shrink: 0;"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg> Підтримка та ком'юніті</h3>
-                    <p>Ти не залишишся сам на сам із процесами. У нас буде загальний закритий чат для взаємодії з іншими учасниками. Потужне оточення своїх для підтримки, обміну досвідом та моїх періодичних відповідей — навіть після завершення навчання.</p>
-                </div>
-            </div>
-            <div style="color: var(--gold-light); font-size: 1.1rem; font-weight: 600; text-align: center; margin-top: 40px; margin-bottom: 40px;">
-                💡 Навички, які ти тут здобудеш — це твоя фундаментальна опора на роки вперед.
-            </div>
-            <a href="#tariffs" class="btn">Придбати курс</a>
-        </div>
-    </section>
-
-    <!-- ЕКСПЕРТИ -->
-    <section>
-        <div class="container">
-            <h2 class="section-title">Твій провідник</h2>
-            <div class="expert-card" style="max-width: 100%; margin-bottom: 0;">
-                <div class="expert-photo"></div>
-                <h3 style="font-size: 1.8rem; color: var(--gold-light); margin-bottom: 5px; text-transform: uppercase;">ВЛАДИСЛАВА</h3>
-                <p style="color: var(--gold); font-size: 0.95rem; margin-bottom: 30px; font-weight: 500; padding: 0;">Провідник до твоєї цілісності · Кармолог · Алхімік · Духовний тіньовий коуч</p>
-                <div style="text-align: left; font-size: 0.95rem; color: #e0e0e0; line-height: 1.6;">
-                    <ul style="list-style: none; margin-bottom: 30px; padding: 0;">
-                        <li style="margin-bottom: 12px; position: relative; padding-left: 30px;"><span style="position: absolute; left: 0; color: var(--gold);">✔️</span> Автор трансформаційної програми «Алхімія тіні»</li>
-                        <li style="margin-bottom: 12px; position: relative; padding-left: 30px;"><span style="position: absolute; left: 0; color: var(--gold);">✔️</span> Експерт із системної роботи з підсвідомістю та енергетичною ємністю</li>
-                        <li style="margin-bottom: 12px; position: relative; padding-left: 30px;"><span style="position: absolute; left: 0; color: var(--gold);">✔️</span> Авторська методика: поєднання кармічного аналізу, роботи з тіньовими архетипами та матеріалізації результатів</li>
-                        <li style="margin-bottom: 12px; position: relative; padding-left: 30px;"><span style="position: absolute; left: 0; color: var(--gold);">✔️</span> Спеціалізація: фінансовий масштаб, вихід з кармічних сценаріїв, автономність, побудова зрілих стосунків</li>
-                    </ul>
-                    <div style="background: rgba(197, 160, 89, 0.05); border-left: 3px solid var(--gold); padding: 20px; font-style: italic; font-family: 'Playfair Display', serif; font-size: 1.1rem; color: var(--gold-light); box-shadow: 0 5px 15px rgba(0,0,0,0.3); margin-bottom: 25px;">
-                        Я даю клієнтам головне — стан, у якому неможливо не рости. Це вібрації тотальної впевненості, свободи та чесності із собою і відсікання всього непотрібного, що несвідомо керує твоїм життям.
+            <div class="flex flex-col gap-5 text-left mb-16 max-w-3xl mx-auto">
+                
+                <div class="glass-card p-6 md:p-8 rounded-2xl flex flex-col md:flex-row gap-5 items-center md:items-start hover:border-redAccent/50 transition duration-300 relative overflow-hidden group shadow-lg">
+                    <div class="absolute top-0 right-0 w-24 h-24 bg-redAccent/5 rounded-full -mr-8 -mt-8 transition-transform group-hover:scale-150 blur-xl"></div>
+                    <div class="shrink-0 relative">
+                        <div class="absolute inset-0 bg-redAccent/30 rounded-full blur-md group-hover:bg-redAccent/60 transition duration-300"></div>
+                        <div class="relative flex items-center justify-center w-16 h-16 md:w-20 md:h-20 rounded-full border border-gray-600 bg-black/60 group-hover:border-redAccent transition duration-300 z-10 backdrop-blur-sm">
+                            <span class="text-[9px] md:text-[11px] font-extrabold text-redAccent uppercase tracking-widest group-hover:text-white transition duration-300 drop-shadow-[0_0_8px_rgba(211,47,47,0.8)]">Зв'язок</span>
+                        </div>
                     </div>
-                    <p style="color: var(--gold); font-size: 0.95rem; font-weight: 500; padding: 0; margin-bottom: 0;">Ті зміни, які відбуваються з моїми клієнтами — це не абстрактна езотерика, це завжди тверді результати: збільшення доходу, розблокована сексуальність, створення взаємних здорових стосунків і вихід у свій істинний масштаб.</p>
+                    <div class="text-center md:text-left mt-2 md:mt-0">
+                        <h4 class="text-white font-bold text-lg mb-2 uppercase tracking-wide">СТОСУНКИ</h4>
+                        <p class="text-gray-300 font-light text-sm md:text-base leading-relaxed">Повторення токсичних сценаріїв, страх самотності, залежність від партнера, складність завершити стосунки, занижені стандарти, втрата себе у близькості, труднощі з побудовою здорових стосунків.</p>
+                    </div>
+                </div>
+
+                <div class="glass-card p-6 md:p-8 rounded-2xl flex flex-col md:flex-row gap-5 items-center md:items-start hover:border-redAccent/50 transition duration-300 relative overflow-hidden group shadow-lg">
+                    <div class="absolute top-0 right-0 w-24 h-24 bg-redAccent/5 rounded-full -mr-8 -mt-8 transition-transform group-hover:scale-150 blur-xl"></div>
+                    <div class="shrink-0 relative">
+                        <div class="absolute inset-0 bg-redAccent/30 rounded-full blur-md group-hover:bg-redAccent/60 transition duration-300"></div>
+                        <div class="relative flex items-center justify-center w-16 h-16 md:w-20 md:h-20 rounded-full border border-gray-600 bg-black/60 group-hover:border-redAccent transition duration-300 z-10 backdrop-blur-sm">
+                            <span class="text-[9px] md:text-[11px] font-extrabold text-redAccent uppercase tracking-widest group-hover:text-white transition duration-300 drop-shadow-[0_0_8px_rgba(211,47,47,0.8)]">Гроші</span>
+                        </div>
+                    </div>
+                    <div class="text-center md:text-left mt-2 md:mt-0">
+                        <h4 class="text-white font-bold text-lg mb-2 uppercase tracking-wide">ГРОШІ ТА РЕАЛІЗАЦІЯ</h4>
+                        <p class="text-gray-300 font-light text-sm md:text-base leading-relaxed">Фінансові блоки, страх проявлятися та продавати, складність брати гроші за свою роботу, відсутність розуміння власного шляху, прокрастинація, самосаботаж, страх успіху та великих грошей.</p>
+                    </div>
+                </div>
+
+                <div class="glass-card p-6 md:p-8 rounded-2xl flex flex-col md:flex-row gap-5 items-center md:items-start hover:border-redAccent/50 transition duration-300 relative overflow-hidden group shadow-lg">
+                    <div class="absolute top-0 right-0 w-24 h-24 bg-redAccent/5 rounded-full -mr-8 -mt-8 transition-transform group-hover:scale-150 blur-xl"></div>
+                    <div class="shrink-0 relative">
+                        <div class="absolute inset-0 bg-redAccent/30 rounded-full blur-md group-hover:bg-redAccent/60 transition duration-300"></div>
+                        <div class="relative flex items-center justify-center w-16 h-16 md:w-20 md:h-20 rounded-full border border-gray-600 bg-black/60 group-hover:border-redAccent transition duration-300 z-10 backdrop-blur-sm">
+                            <span class="text-[9px] md:text-[11px] font-extrabold text-redAccent uppercase tracking-widest group-hover:text-white transition duration-300 drop-shadow-[0_0_8px_rgba(211,47,47,0.8)]">Опора</span>
+                        </div>
+                    </div>
+                    <div class="text-center md:text-left mt-2 md:mt-0">
+                        <h4 class="text-white font-bold text-lg mb-2 uppercase tracking-wide">САМООЦІНКА ТА ВНУТРІШНЯ ОПОРА</h4>
+                        <p class="text-gray-300 font-light text-sm md:text-base leading-relaxed">Невпевненість у собі, залежність від чужої думки, страх осуду, сором, почуття провини, складність відстоювати себе та власні кордони.</p>
+                    </div>
+                </div>
+
+                <div class="glass-card p-6 md:p-8 rounded-2xl flex flex-col md:flex-row gap-5 items-center md:items-start hover:border-redAccent/50 transition duration-300 relative overflow-hidden group shadow-lg">
+                    <div class="absolute top-0 right-0 w-24 h-24 bg-redAccent/5 rounded-full -mr-8 -mt-8 transition-transform group-hover:scale-150 blur-xl"></div>
+                    <div class="shrink-0 relative">
+                        <div class="absolute inset-0 bg-redAccent/30 rounded-full blur-md group-hover:bg-redAccent/60 transition duration-300"></div>
+                        <div class="relative flex items-center justify-center w-16 h-16 md:w-20 md:h-20 rounded-full border border-gray-600 bg-black/60 group-hover:border-redAccent transition duration-300 z-10 backdrop-blur-sm">
+                            <span class="text-[9px] md:text-[11px] font-extrabold text-redAccent uppercase tracking-widest group-hover:text-white transition duration-300 drop-shadow-[0_0_8px_rgba(211,47,47,0.8)]">Цикл</span>
+                        </div>
+                    </div>
+                    <div class="text-center md:text-left mt-2 md:mt-0">
+                        <h4 class="text-white font-bold text-lg mb-2 uppercase tracking-wide">ПОВТОРЮВАНІ ЖИТТЄВІ СЦЕНАРІЇ</h4>
+                        <p class="text-gray-300 font-light text-sm md:text-base leading-relaxed">Ситуації, які змінюють форму, але приводять до одного результату. Повторення однакових моделей у стосунках, фінансах, роботі та взаємодії з людьми.</p>
+                    </div>
+                </div>
+
+                <div class="glass-card p-6 md:p-8 rounded-2xl flex flex-col md:flex-row gap-5 items-center md:items-start hover:border-redAccent/50 transition duration-300 relative overflow-hidden group shadow-lg">
+                    <div class="absolute top-0 right-0 w-24 h-24 bg-redAccent/5 rounded-full -mr-8 -mt-8 transition-transform group-hover:scale-150 blur-xl"></div>
+                    <div class="shrink-0 relative">
+                        <div class="absolute inset-0 bg-redAccent/30 rounded-full blur-md group-hover:bg-redAccent/60 transition duration-300"></div>
+                        <div class="relative flex items-center justify-center w-16 h-16 md:w-20 md:h-20 rounded-full border border-gray-600 bg-black/60 group-hover:border-redAccent transition duration-300 z-10 backdrop-blur-sm">
+                            <span class="text-[9px] md:text-[11px] font-extrabold text-redAccent uppercase tracking-widest group-hover:text-white transition duration-300 drop-shadow-[0_0_8px_rgba(211,47,47,0.8)]">Тінь</span>
+                        </div>
+                    </div>
+                    <div class="text-center md:text-left mt-2 md:mt-0">
+                        <h4 class="text-white font-bold text-lg mb-2 uppercase tracking-wide">ТІНЬ ТА ВНУТРІШНІ КОНФЛІКТИ</h4>
+                        <p class="text-gray-300 font-light text-sm md:text-base leading-relaxed">Витіснені якостi, сильні тригери, проєкції, внутрішні заборони, конфлікт між бажаннями та тим, що людина собі дозволяє. Робота із золотою тінню — здібностями, силою та потенціалом, які ще не привласнені.</p>
+                    </div>
+                </div>
+
+                <div class="glass-card p-6 md:p-8 rounded-2xl flex flex-col md:flex-row gap-5 items-center md:items-start hover:border-redAccent/50 transition duration-300 relative overflow-hidden group shadow-lg">
+                    <div class="absolute top-0 right-0 w-24 h-24 bg-redAccent/5 rounded-full -mr-8 -mt-8 transition-transform group-hover:scale-150 blur-xl"></div>
+                    <div class="shrink-0 relative">
+                        <div class="absolute inset-0 bg-redAccent/30 rounded-full blur-md group-hover:bg-redAccent/60 transition duration-300"></div>
+                        <div class="relative flex items-center justify-center w-16 h-16 md:w-20 md:h-20 rounded-full border border-gray-600 bg-black/60 group-hover:border-redAccent transition duration-300 z-10 backdrop-blur-sm">
+                            <span class="text-[9px] md:text-[11px] font-extrabold text-redAccent uppercase tracking-widest group-hover:text-white transition duration-300 drop-shadow-[0_0_8px_rgba(211,47,47,0.8)]">Рід</span>
+                        </div>
+                    </div>
+                    <div class="text-center md:text-left mt-2 md:mt-0">
+                        <h4 class="text-white font-bold text-lg mb-2 uppercase tracking-wide">РОДОВІ ТА СІМЕЙНІ СЦЕНАРІЇ</h4>
+                        <p class="text-gray-300 font-light text-sm md:text-base leading-relaxed">Повторення моделей батьків, сімейні установки щодо грошей, стосунків і реалізації, несвідоме відтворення знайомих ролей та способів взаємодії.</p>
+                    </div>
+                </div>
+
+                <div class="glass-card p-6 md:p-8 rounded-2xl flex flex-col md:flex-row gap-5 items-center md:items-start hover:border-redAccent/50 transition duration-300 relative overflow-hidden group shadow-lg">
+                    <div class="absolute top-0 right-0 w-24 h-24 bg-redAccent/5 rounded-full -mr-8 -mt-8 transition-transform group-hover:scale-150 blur-xl"></div>
+                    <div class="shrink-0 relative">
+                        <div class="absolute inset-0 bg-redAccent/30 rounded-full blur-md group-hover:bg-redAccent/60 transition duration-300"></div>
+                        <div class="relative flex items-center justify-center w-16 h-16 md:w-20 md:h-20 rounded-full border border-gray-600 bg-black/60 group-hover:border-redAccent transition duration-300 z-10 backdrop-blur-sm">
+                            <span class="text-[9px] md:text-[11px] font-extrabold text-redAccent uppercase tracking-widest group-hover:text-white transition duration-300 drop-shadow-[0_0_8px_rgba(211,47,47,0.8)]">Криза</span>
+                        </div>
+                    </div>
+                    <div class="text-center md:text-left mt-2 md:mt-0">
+                        <h4 class="text-white font-bold text-lg mb-2 uppercase tracking-wide">КРИЗА ТА ПЕРЕХІДНИЙ ПЕРІОД</h4>
+                        <p class="text-gray-300 font-light text-sm md:text-base leading-relaxed">Коли старе життя більше не працює, а нового напрямку ще немає. Втрата орієнтирів, завершення важливого етапу, потреба зрозуміти, куди рухатися далі.</p>
+                    </div>
+                </div>
+
+                <div class="glass-card p-6 md:p-8 rounded-2xl flex flex-col md:flex-row gap-5 items-center md:items-start hover:border-redAccent/50 transition duration-300 relative overflow-hidden group shadow-lg">
+                    <div class="absolute top-0 right-0 w-24 h-24 bg-redAccent/5 rounded-full -mr-8 -mt-8 transition-transform group-hover:scale-150 blur-xl"></div>
+                    <div class="shrink-0 relative">
+                        <div class="absolute inset-0 bg-redAccent/30 rounded-full blur-md group-hover:bg-redAccent/60 transition duration-300"></div>
+                        <div class="relative flex items-center justify-center w-16 h-16 md:w-20 md:h-20 rounded-full border border-gray-600 bg-black/60 group-hover:border-redAccent transition duration-300 z-10 backdrop-blur-sm">
+                            <span class="text-[9px] md:text-[11px] font-extrabold text-redAccent uppercase tracking-widest group-hover:text-white transition duration-300 drop-shadow-[0_0_8px_rgba(211,47,47,0.8)]">Пошук</span>
+                        </div>
+                    </div>
+                    <div class="text-center md:text-left mt-2 md:mt-0">
+                        <h4 class="text-white font-bold text-lg mb-2 uppercase tracking-wide">ПОШУК СЕБЕ</h4>
+                        <p class="text-gray-300 font-light text-sm md:text-base leading-relaxed">«Я не знаю, чого хочу», «не розумію, куди рухатися», «ніби живу не своє життя». Пошук власних бажань, цінностей, напрямку реалізації та контакту із собою.</p>
+                    </div>
+                </div>
+
+                <div class="glass-card p-6 md:p-8 rounded-2xl flex flex-col md:flex-row gap-5 items-center md:items-start hover:border-redAccent/50 transition duration-300 relative overflow-hidden group shadow-lg">
+                    <div class="absolute top-0 right-0 w-24 h-24 bg-redAccent/5 rounded-full -mr-8 -mt-8 transition-transform group-hover:scale-150 blur-xl"></div>
+                    <div class="shrink-0 relative">
+                        <div class="absolute inset-0 bg-redAccent/30 rounded-full blur-md group-hover:bg-redAccent/60 transition duration-300"></div>
+                        <div class="relative flex items-center justify-center w-16 h-16 md:w-20 md:h-20 rounded-full border border-gray-600 bg-black/60 group-hover:border-redAccent transition duration-300 z-10 backdrop-blur-sm">
+                            <span class="text-[9px] md:text-[11px] font-extrabold text-redAccent uppercase tracking-widest group-hover:text-white transition duration-300 drop-shadow-[0_0_8px_rgba(211,47,47,0.8)]">Талант</span>
+                        </div>
+                    </div>
+                    <div class="text-center md:text-left mt-2 md:mt-0">
+                        <h4 class="text-white font-bold text-lg mb-2 uppercase tracking-wide">ТАЛАНТИ ТА ЗДІБНОСТІ</h4>
+                        <p class="text-gray-300 font-light text-sm md:text-base leading-relaxed">Пошук і розкриття природних талантів, сильних сторін та потенціалу. Робота із золотою тінню — якостями й здібностями, які людина бачить в інших, але ще не визнає у собі. Розуміння, у чому моя сила, що я можу реалізувати та як дати цьому проявитися.</p>
+                    </div>
+                </div>
+
+            </div>
+            
+            <div class="text-center">
+                <p class="text-xl md:text-2xl font-bold mb-6 uppercase">ЦІННІСТЬ — ЕКОНОМІЯ РОКІВ ЖИТТЯ <br class="hidden md:block"> В ІЛЮЗІЯХ ТА БОЛЮ</p>
+                <!-- Кнопка відкриття модалки -->
+                <button class="open-modal-btn inline-block w-full md:w-auto bg-redAccent hover:bg-red-700 text-white font-bold py-4 px-10 rounded-lg uppercase tracking-wide transition transform hover:scale-105 shadow-[0_0_20px_rgba(211,47,47,0.4)]">
+                    ХОЧУ НА КОНСУЛЬТАЦІЮ
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- БЛОК 3: ЯК ПРОХОДИТЬ КОНСУЛЬТАЦІЯ -->
+    <section class="py-20 px-4 max-w-4xl mx-auto border-t border-white/10 relative z-10">
+        <h2 class="text-2xl md:text-4xl font-bold text-center mb-10 uppercase leading-snug">
+            ЯК ПРОХОДИТЬ <br class="md:hidden"><span class="text-redAccent text-glow-red">КОНСУЛЬТАЦІЯ</span>
+        </h2>
+        
+        <div class="glass-card p-6 md:p-10 rounded-3xl">
+            <p class="text-xl md:text-2xl font-bold text-white mb-8 border-l-4 border-redAccent pl-4 md:pl-6">
+                Ми беремо один головний запит і розбираємо його в причинно-наслідковому зв’язку:
+            </p>
+            
+            <div class="bg-redAccent/10 border border-redAccent/30 p-6 md:p-8 rounded-2xl shadow-[0_0_15px_rgba(211,47,47,0.15)] mb-8">
+                <p class="text-white font-bold text-base md:text-lg leading-relaxed text-center">
+                    Що відбувається зараз <span class="text-redAccent">→</span> який сценарій повторюється <span class="text-redAccent">→</span> що його запускає <span class="text-redAccent">→</span> яка внутрішня причина його підтримує <span class="text-redAccent">→</span> що необхідно змінити <span class="text-redAccent">→</span> які конкретні дії зробити після консультації.
+                </p>
+            </div>
+            
+            <p class="text-gray-300 font-light text-base md:text-lg mb-8 leading-relaxed">
+                Моя задача — не дати тобі універсальну пораду, а допомогти побачити структуру саме твоєї ситуації.
+            </p>
+            
+            <div class="flex items-start gap-4 bg-black/40 p-5 rounded-xl border border-gray-700">
+                <div class="text-redAccent mt-1 shrink-0">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
+                </div>
+                <p class="text-white font-bold text-base md:text-lg leading-relaxed">
+                    Після консультації ти виходиш із розумінням: що зі мною відбувається, чому це відбувається і що я можу зробити далі.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- БЛОК 5: Про експерта -->
+    <section class="py-20 px-4 max-w-5xl mx-auto flex flex-col md:flex-row items-center gap-8 md:gap-10 relative z-10 border-t border-white/10">
+        
+        <div class="w-full md:w-[45%]">
+            <img src="vladamain.jpg" alt="Владислава" class="w-full aspect-square object-cover rounded-3xl border border-gray-700 shadow-2xl">
+        </div>
+        
+        <div class="w-full md:w-[55%] glass-card p-6 md:p-8 rounded-3xl">
+            <div class="inline-block text-redAccent border border-redAccent/30 px-3 py-1 rounded-full text-xs font-bold uppercase mb-4">Хто я?</div>
+            
+            <div class="space-y-6 text-gray-300 font-light text-base md:text-lg leading-relaxed mt-2">
+                <p class="text-white font-bold text-xl mb-6 uppercase text-glow-red">Мій шлях — це не про «світлу духовність», а про реальну силу:</p>
+                
+                <div>
+                    <strong class="text-redAccent font-bold">Кармолог та цілитель:</strong> Я аналізую твій шлях системно. Моя задача — знайти ту саму точку, де почався збій, і допомогти тобі розірвати кармічний цикл повторюваних невдач та болючих сценаріїв.
+                </div>
+                
+                <div>
+                    <strong class="text-redAccent font-bold">Провідник до Твоєї Цілісності:</strong> Я не вчу тебе бути «зручною та правильною». Я показую, як вийти в absolute цілісність через прийняття своєї Тіні. Ти перестанеш пригнічувати себе і почнеш генерувати на цьому енергію.
+                </div>
+                
+                <div>
+                    <strong class="text-redAccent font-bold">Системний архітектор:</strong> Там, де ти бачиш хаос, я бачу чітку систему причин і наслідків. Ти зрозумієш, що карма — це механізм управління життям, і навчишся самостійно керувати своєю реальністю.
                 </div>
             </div>
+            
+            <div class="mt-8 bg-redAccent/20 border-l-4 border-redAccent p-6 rounded-r-xl shadow-lg">
+                <p class="text-lg font-bold text-white drop-shadow-md">
+                    Я тут для того, щоб ти припинила «відлітати» від проблем і почала створювати свою реальність у матерії — через гроші, здоров’я та істинну свободу бути собою.
+                </p>
+            </div>
         </div>
     </section>
 
-    <!-- ЩО КАЖУТЬ УЧАСНИЦІ -->
-    <section id="reviews-slider">
-        <div class="container">
-            <h2 class="section-title">Що кажуть учасниці</h2>
-            <p class="section-subtitle">Реальні відгуки людей, які вже пройшли курс</p>
-            <div class="slider-wrapper">
-                <button class="slider-arrow arrow-left" onclick="scrollReviewSlider(-1)">&#10094;</button>
-                <div class="slider-container" id="review-carousel">
-                    <div class="slider-card" onclick="openLightbox('review1.jpg')"><img src="review1.jpg" alt="Відгук 1" onerror="this.style.backgroundColor='#222';"></div>
-                    <div class="slider-card" onclick="openLightbox('review2.jpg')"><img src="review2.jpg" alt="Відгук 2" onerror="this.style.backgroundColor='#222';"></div>
-                    <div class="slider-card" onclick="openLightbox('review3.jpg')"><img src="review3.jpg" alt="Відгук 3" onerror="this.style.backgroundColor='#222';"></div>
-                    <div class="slider-card" onclick="openLightbox('review4.jpg')"><img src="review4.jpg" alt="Відгук 4" onerror="this.style.backgroundColor='#222';"></div>
-                    <div class="slider-card" onclick="openLightbox('review5.jpg')"><img src="review5.jpg" alt="Відгук 5" onerror="this.style.backgroundColor='#222';"></div>
-                    <div class="slider-card" onclick="openLightbox('review6.jpg')"><img src="review6.jpg" alt="Відгук 6" onerror="this.style.backgroundColor='#222';"></div>
-                    <div class="slider-card" onclick="openLightbox('review7.jpg')"><img src="review7.jpg" alt="Відгук 7" onerror="this.style.backgroundColor='#222';"></div>
-                    <div class="slider-card" onclick="openLightbox('review8.jpg')"><img src="review8.jpg" alt="Відгук 8" onerror="this.style.backgroundColor='#222';"></div>
-                    <div class="slider-card" onclick="openLightbox('review9.jpg')"><img src="review9.jpg" alt="Відгук 9" onerror="this.style.backgroundColor='#222';"></div>
-                    <div class="slider-card" onclick="openLightbox('review10.jpg')"><img src="review10.jpg" alt="Відгук 10" onerror="this.style.backgroundColor='#222';"></div>
+    <!-- БЛОК 6: ВІДГУКИ -->
+    <section class="py-20 px-4 overflow-hidden border-t border-white/10 relative z-10 bg-black/40">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-2xl md:text-4xl font-bold text-center mb-12 uppercase">Результати <span class="text-redAccent text-glow-red">моїх клієнтів</span></h2>
+            
+            <div class="relative px-2 md:px-12">
+                <div class="swiper reviewsSwiper">
+                    <div class="swiper-wrapper">
+                        
+                        <div class="swiper-slide flex justify-center">
+                            <div class="w-[280px] h-[400px] md:w-[320px] md:h-[450px] glass-card rounded-2xl flex items-center justify-center p-2 shadow-lg transition-transform hover:scale-[1.02]">
+                                <img src="v1.jpg" alt="Відгук 1" class="max-w-full max-h-full object-contain cursor-pointer review-img rounded-xl">
+                            </div>
+                        </div>
+
+                        <div class="swiper-slide flex justify-center">
+                            <div class="w-[280px] h-[400px] md:w-[320px] md:h-[450px] glass-card rounded-2xl flex items-center justify-center p-2 shadow-lg transition-transform hover:scale-[1.02]">
+                                <img src="v2.jpg" alt="Відгук 2" class="max-w-full max-h-full object-contain cursor-pointer review-img rounded-xl">
+                            </div>
+                        </div>
+
+                        <div class="swiper-slide flex justify-center">
+                            <div class="w-[280px] h-[400px] md:w-[320px] md:h-[450px] glass-card rounded-2xl flex items-center justify-center p-2 shadow-lg transition-transform hover:scale-[1.02]">
+                                <img src="v3.jpg" alt="Відгук 3" class="max-w-full max-h-full object-contain cursor-pointer review-img rounded-xl">
+                            </div>
+                        </div>
+
+                        <div class="swiper-slide flex justify-center">
+                            <div class="w-[280px] h-[400px] md:w-[320px] md:h-[450px] glass-card rounded-2xl flex items-center justify-center p-2 shadow-lg transition-transform hover:scale-[1.02]">
+                                <img src="v4.jpg" alt="Відгук 4" class="max-w-full max-h-full object-contain cursor-pointer review-img rounded-xl">
+                            </div>
+                        </div>
+
+                        <div class="swiper-slide flex justify-center">
+                            <div class="w-[280px] h-[400px] md:w-[320px] md:h-[450px] glass-card rounded-2xl flex items-center justify-center p-2 shadow-lg transition-transform hover:scale-[1.02]">
+                                <img src="v5.jpg" alt="Відгук 5" class="max-w-full max-h-full object-contain cursor-pointer review-img rounded-xl">
+                            </div>
+                        </div>
+
+                        <div class="swiper-slide flex justify-center">
+                            <div class="w-[280px] h-[400px] md:w-[320px] md:h-[450px] glass-card rounded-2xl flex items-center justify-center p-2 shadow-lg transition-transform hover:scale-[1.02]">
+                                <img src="v6.jpg" alt="Відгук 6" class="max-w-full max-h-full object-contain cursor-pointer review-img rounded-xl">
+                            </div>
+                        </div>
+
+                        <div class="swiper-slide flex justify-center">
+                            <div class="w-[280px] h-[400px] md:w-[320px] md:h-[450px] glass-card rounded-2xl flex items-center justify-center p-2 shadow-lg transition-transform hover:scale-[1.02]">
+                                <img src="v7.jpg" alt="Відгук 7" class="max-w-full max-h-full object-contain cursor-pointer review-img rounded-xl">
+                            </div>
+                        </div>
+
+                        <div class="swiper-slide flex justify-center">
+                            <div class="w-[280px] h-[400px] md:w-[320px] md:h-[450px] glass-card rounded-2xl flex items-center justify-center p-2 shadow-lg transition-transform hover:scale-[1.02]">
+                                <img src="v8.jpg" alt="Відгук 8" class="max-w-full max-h-full object-contain cursor-pointer review-img rounded-xl">
+                            </div>
+                        </div>
+
+                        <div class="swiper-slide flex justify-center">
+                            <div class="w-[280px] h-[400px] md:w-[320px] md:h-[450px] glass-card rounded-2xl flex items-center justify-center p-2 shadow-lg transition-transform hover:scale-[1.02]">
+                                <img src="v9.jpg" alt="Відгук 9" class="max-w-full max-h-full object-contain cursor-pointer review-img rounded-xl">
+                            </div>
+                        </div>
+
+                        <div class="swiper-slide flex justify-center">
+                            <div class="w-[280px] h-[400px] md:w-[320px] md:h-[450px] glass-card rounded-2xl flex items-center justify-center p-2 shadow-lg transition-transform hover:scale-[1.02]">
+                                <img src="v10.jpg" alt="Відгук 10" class="max-w-full max-h-full object-contain cursor-pointer review-img rounded-xl">
+                            </div>
+                        </div>
+
+                        <div class="swiper-slide flex justify-center">
+                            <div class="w-[280px] h-[400px] md:w-[320px] md:h-[450px] glass-card rounded-2xl flex items-center justify-center p-2 shadow-lg transition-transform hover:scale-[1.02]">
+                                <img src="v11.jpg" alt="Відгук 11" class="max-w-full max-h-full object-contain cursor-pointer review-img rounded-xl">
+                            </div>
+                        </div>
+
+                        <div class="swiper-slide flex justify-center">
+                            <div class="w-[280px] h-[400px] md:w-[320px] md:h-[450px] glass-card rounded-2xl flex items-center justify-center p-2 shadow-lg transition-transform hover:scale-[1.02]">
+                                <img src="v12.jpg" alt="Відгук 12" class="max-w-full max-h-full object-contain cursor-pointer review-img rounded-xl">
+                            </div>
+                        </div>
+
+                        <div class="swiper-slide flex justify-center">
+                            <div class="w-[280px] h-[400px] md:w-[320px] md:h-[450px] glass-card rounded-2xl flex items-center justify-center p-2 shadow-lg transition-transform hover:scale-[1.02]">
+                                <img src="v13.jpg" alt="Відгук 13" class="max-w-full max-h-full object-contain cursor-pointer review-img rounded-xl">
+                            </div>
+                        </div>
+
+                        <div class="swiper-slide flex justify-center">
+                            <div class="w-[280px] h-[400px] md:w-[320px] md:h-[450px] glass-card rounded-2xl flex items-center justify-center p-2 shadow-lg transition-transform hover:scale-[1.02]">
+                                <img src="v14.jpg" alt="Відгук 14" class="max-w-full max-h-full object-contain cursor-pointer review-img rounded-xl">
+                            </div>
+                        </div>
+
+                        <div class="swiper-slide flex justify-center">
+                            <div class="w-[280px] h-[400px] md:w-[320px] md:h-[450px] glass-card rounded-2xl flex items-center justify-center p-2 shadow-lg transition-transform hover:scale-[1.02]">
+                                <img src="v15.JPG" alt="Відгук 15" class="max-w-full max-h-full object-contain cursor-pointer review-img rounded-xl">
+                            </div>
+                        </div>
+
+                    </div>
                 </div>
-                <button class="slider-arrow arrow-right" onclick="scrollReviewSlider(1)">&#10095;</button>
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
             </div>
         </div>
     </section>
 
-    <!-- ТАРИФИ -->
-    <section id="tariffs">
-        <div class="container">
-            <h2 class="section-title" style="margin-bottom: 40px;">Тарифи Участі</h2>
-            <div class="tariff">
-                <div class="hit-label-grey">Самостійне проходження</div>
-                <h3>Самостійний</h3>
-                <ul>
-                    <li>Доступ до всіх 10 модулів курсу на 3 місяці</li>
-                    <li>Відео, аудіо та конспекти</li>
-                    <li>Глибинні медитації та практики</li>
-                    <li>Домашні завдання</li>
-                    <li>Чат спільноти</li>
-                    <li>Створення мною твоєї індивідуальної мапи життя</li>
-                    <li class="disabled">Аналіз твоєї індивідуальної мапи життя</li>
-                    <li class="disabled">Перевірка ДЗ і мій особистий фідбек по завданням</li>
-                    <li class="disabled">Закритий чат зі мною та розбір твоїх запитів і ситуацій</li>
-                    <li class="disabled">Журнали інтеграції (шаблони)</li>
-                </ul>
-                <div class="t-price"><span class="old-price">359€</span><br>199€</div>
-                <a href="https://secure.wayforpay.com/button/b7e912f29d760" class="btn btn-outline" target="_blank">Придбати тариф</a>
-            </div>
-            <div class="tariff pro">
-                <div class="hit-label">Повне занурення</div>
-                <h3 style="color: var(--gold);">Поглиблений PRO</h3>
-                <ul>
-                    <li>Доступ до всіх 10 модулів курсу на 4 місяці</li>
-                    <li>Відео, аудіо та конспекти</li>
-                    <li>Глибинні медитації та практики</li>
-                    <li>Домашні завдання</li>
-                    <li>Чат спільноти</li>
-                    <li>Створення мною твоєї індивідуальної мапи життя</li>
-                    <li style="color: var(--gold-light);">Аналіз твоєї індивідуальної мапи життя</li>
-                    <li style="color: var(--gold-light);"><b>Перевірка ДЗ і мій особистий фідбек по завданням</b></li>
-                    <li style="color: var(--gold-light);"><b>Закритий чат зі мною та розбір твоїх запитів і ситуацій</b></li>
-                    <li style="color: var(--gold-light);">Журнали інтеграції (шаблони)</li>
-                </ul>
-                <div class="t-price"><span class="old-price">888€</span><br>444€</div>
-                <a href="https://secure.wayforpay.com/button/b0e677fa5d9e3" class="btn" target="_blank">Придбати PRO</a>
-            </div>
-            <div class="tariff vip">
-                <h3 style="color: var(--gold-light);">VIP (Наставництво)</h3>
-                <ul>
-                    <li><b>Всі матеріали PRO</b></li>
-                    <li style="color: var(--gold);"><b>Доступ до курсу НАЗАВЖДИ</b></li>
-                    <li><b>Індивідуальні сесії 1:1</b> (4 консультації)</li>
-                    <li>Особистий чат: голосова підтримка</li>
-                    <li>Детальна робота над больовими точками</li>
-                    <li>Безкоштовний доступ до платного каналу на 2 місяці</li>
-                </ul>
-                <div class="t-price"><span class="old-price">1500€</span><br>1200€</div>
-                <a href="https://docs.google.com/forms/d/e/1FAIpQLSfJYNk3PcHeq5NeiFo0qAqJwUesJbaO03tiMonf4AKAkcZqLw/viewform" class="btn btn-outline" target="_blank">Анкета на VIP</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- СПЕЦПРОПОЗИЦІЯ -->
-    <section>
-        <div class="container">
-            <div class="special-offer-box">
-                <h2>СПЕЦПРОПОЗИЦІЯ ДЛЯ ТИХ, ХТО ПРИЙМАЄ РІШЕННЯ ШВИДКО ⏳</h2>
-                <p style="margin-bottom: 25px;">Зафіксуй своє місце зараз за <b>100€</b> - і отримаєш бонуси на суму понад 10 000 грн:</p>
-                <ul class="tools-list" style="text-align: left; margin-bottom: 30px;">
-                    <li><b>Фіксація ціни зі знижкою.</b> Обрати тариф та доплатити залишок можна протягом двох тижнів.</li>
-                    <li><b>Лекція «Фінансовий канал»</b> (ексклюзив із платного курсу).</li>
-                    <li><b>Гайд із чайної церемонії</b> (з практикою для глибокого релаксу та заспокоєння).</li>
-                    <li><b>Доступ до навчання Х2</b> (матеріали залишаться з тобою вдвічі довше).</li>
-                </ul>
-                <p style="font-size: 1rem; color: var(--gold-light); margin-bottom: 20px; font-weight: 500; font-style: italic;">Твоя трансформація починається з першого кроку</p>
-                <a href="https://secure.wayforpay.com/button/b85bf130aecdc" class="btn" target="_blank">Внести бронь</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- FAQ -->
-    <section>
-        <div class="container">
-            <h2 class="section-title">Часті запитання</h2>
-            <details><summary>Чи є оплата частинами?</summary><div class="faq-content">Так, банківська безвідсоткова розстрочка до 6 платежів, або скористатися спеціальною пропозицією: внести бронь 100€ зараз, зафіксувавши поточну знижку на сайті, а залишок сплатити зручним способом протягом двох тижнів.</div></details>
-            <details><summary>Скільки триває програма?</summary><div class="faq-content">Програма розрахована на 2 місяці глибокої роботи. Новий модуль відкривається раз на тиждень (ефір на 1–2 години + медитації і практики).</div></details>
-            <details><summary>Чи можна почати з самостійного тарифу, а згодом доплатити і перейти на «Поглиблений з підтримкою і фідбеком»?</summary><div class="faq-content">Так, ти можеш зробити апгрейд, але не пізніше, ніж через місяць після оплати.</div></details>
-            <details><summary>Що, якщо я випаду з графіка через справи?</summary><div class="faq-content">Нічого страшного. Усі записи уроків та медитацій і практик зберігаються в зручному особистому кабінеті й доступні для перегляду у твій вільний час. Ти рухаєшся у своєму індивідуальному комфортному темпі.</div></details>
-            <details><summary>Чи підійде мені програма, якщо в мене немає езотеричної підготовки чи досвіду в тіньових практиках?</summary><div class="faq-content">Абсолютно. Тобі не потрібні специфічні знання. Методологія побудована покроково - від чітких базових понять до глибоких шарів підсвідомості. Це практична система навичків, які залишаться з тобою на все життя, щоб ти могла самостійно переписувати сценарії та витримувати будь-які життєві шторми.</div></details>
-            <details><summary>Чи буде підтримка, якщо під час практик піднімуться важкі емоції або тригери?</summary><div class="faq-content">Ти не проходиш цей шлях наодинці. Усі учасниці отримують безлімітний доступ до закритого ком'юніті, де панує безпечне середовище. Крім того, я регулярно заходжу в чат, щоб особисто відповідати на запитання, розбирати незрозумілі моменти та спрямовувати тебе в процесі трансформації.</div></details>
-            <details><summary>Я вже маю непоганий дохід та кар'єру, але хочу ще рости. Чи підійде мені ця програма?</summary><div class="faq-content">Так, якщо ти відчуваєш «скляну стелю» або твій успіх тримається на вигоранні, надзусиллях і тотальному контролі. Ми підемо в ті тіньові аспекти, які блокують твій перехід у наступний масштаб. Ти навчишся генерувати великі гроші та результати з позиції розслабленої сили, а не постійної боротьби та чоловічих енергій.</div></details>
-            <details><summary>Робота з Тінню звучить трохи лякаюче. Що, якщо я не впораюся з тим?</summary><div class="faq-content">Йти в Тінь страшно тільки тоді, коли ти йдеш туди сама і наосліп. У цій програмі я даю тобі чітку, безпечну систему. Ми не будемо «колупатися в травмах» заради самого болю чи страждань. Ми йдемо туди як алхіміки - виключно для того, щоб забрати звідти твій заблокований ресурс, сексуальність та грошову енергію.</div></details>
-        </div>
-    </section>
-
-    <!-- FOOTER -->
-    <footer>
-        <div class="container">
-            <p>Авторська програма Владислави <br><a href="https://instagram.com/vlada_n_slava" target="_blank">@vlada_n_slava</a></p>
-            <p style="margin-top: 10px;">Алхімія Тіні © 2026. Всі права захищено.</p>
-        </div>
+    <!-- ФУТЕР -->
+    <footer class="py-8 text-center border-t border-white/10 text-gray-500 text-xs tracking-wider uppercase bg-black/80 backdrop-blur-md relative z-10">
+        <p>© 2026 | ВЛАДИСЛАВА</p>
     </footer>
 
-</div>
+    <!-- POP-UP МОДАЛЬНЕ ВІКНО З ФОРМОЮ ОПЛАТИ -->
+    <div id="order-modal" class="fixed inset-0 z-[200] bg-black/90 hidden opacity-0 transition-opacity duration-300 flex items-center justify-center p-4 backdrop-blur-sm">
+        <div class="relative glass-card p-6 md:p-8 rounded-2xl w-full max-w-[480px] border border-redAccent/50 red-shadow transform transition-all">
+            <button id="close-modal" class="absolute top-4 right-5 text-gray-400 hover:text-redAccent text-3xl font-light focus:outline-none">&times;</button>
+            
+            <h3 class="text-xl md:text-3xl font-bold text-center mb-1 uppercase text-white drop-shadow-md">ЗАБРОНЮВАТИ МІСЦЕ</h3>
+            <p class="text-center text-gray-300 text-xs md:text-sm mb-6 font-light">Введіть дані для зв'язку та отримання консультації.</p>
+            
+            <form id="popupForm" class="space-y-3" novalidate>
+                <div>
+                    <label class="block text-[10px] md:text-xs text-gray-400 uppercase tracking-wider mb-1.5 whitespace-nowrap">Ваше ім'я</label>
+                    <input type="text" id="pop-name" placeholder="Наприклад: Анна" class="w-full bg-black/50 border border-gray-600 rounded-lg px-4 py-3 text-white focus:outline-none transition backdrop-blur-sm">
+                    <span class="error-message" id="error-name">Мінімум 3 символи</span>
+                </div>
+                
+                <div>
+                    <label class="block text-[10px] md:text-xs text-gray-400 uppercase tracking-wider mb-1.5 whitespace-nowrap">Номер телефону</label>
+                    <input type="tel" id="pop-phone" placeholder="+380..." class="w-full bg-black/50 border border-gray-600 rounded-lg px-4 py-3 text-white focus:outline-none transition backdrop-blur-sm">
+                    <span class="error-message" id="error-phone">Введіть коректний номер телефону</span>
+                </div>
 
-<!-- МОДАЛЬНЕ ВІКНО -->
-<div class="lightbox-overlay" id="lightbox" onclick="closeLightbox(event)">
-    <span class="lightbox-close" onclick="closeLightbox(event)">&times;</span>
-    <img class="lightbox-img" id="lightbox-img" src="" alt="Відгук">
-</div>
+                <div>
+                    <label class="block text-[10px] md:text-xs text-gray-400 uppercase tracking-wider mb-1.5 whitespace-nowrap">Ваш Telegram (нік або номер)</label>
+                    <input type="text" id="pop-telegram" placeholder="@username або номер" class="w-full bg-black/50 border border-gray-600 rounded-lg px-4 py-3 text-white focus:outline-none transition backdrop-blur-sm">
+                    <span class="error-message" id="error-telegram">Мінімум 3 символи</span>
+                </div>
+                
+                <div class="pt-1">
+                    <div class="flex justify-between items-center bg-black/40 border border-gray-700/50 rounded-lg p-3 mb-3">
+                        <span class="text-gray-400 uppercase tracking-widest text-xs font-bold">До сплати:</span>
+                        <div class="flex items-baseline gap-3">
+                            <span class="text-gray-500 line-through text-sm">100 €</span>
+                            <span class="text-redAccent font-extrabold text-2xl leading-none">20 €</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="pt-0">
+                    <button type="submit" class="w-full bg-redAccent hover:bg-red-700 text-white font-bold py-4 rounded-lg uppercase tracking-wider transition transform active:scale-95 shadow-[0_0_15px_rgba(211,47,47,0.4)]">
+                        ПЕРЕЙТИ ДО ОПЛАТИ
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
 
-<script>
-    function scrollReviewSlider(direction) {const container = document.getElementById('review-carousel'); const scrollAmount = container.clientWidth * 0.75; container.scrollBy({ left: direction * scrollAmount, behavior: 'smooth' });}
-    function openLightbox(imgSrc) {const overlay = document.getElementById('lightbox'); const img = document.getElementById('lightbox-img'); img.src = imgSrc; overlay.classList.add('active');}
-    function closeLightbox(event) {if (event.target.id === 'lightbox' || event.target.className === 'lightbox-close') {document.getElementById('lightbox').classList.remove('active');}}
-</script>
+    <!-- LIGHTBOX ДЛЯ ФОТО ВІДГУКІВ -->
+    <div id="lightbox" class="fixed inset-0 z-[100] bg-black/95 hidden opacity-0 transition-opacity duration-300">
+        <button id="close-lightbox" class="absolute top-4 right-6 text-gray-400 hover:text-redAccent text-5xl font-light z-[110]">&times;</button>
+        <div class="w-full h-full flex items-center justify-center p-4 overflow-auto">
+            <img id="lightbox-img" src="" class="max-w-[95vw] max-h-[90vh] object-contain cursor-zoom-out" alt="Збільшений відгук">
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+    <script>
+        // --- 1. ТАЙМЕР ---
+        let time = 15 * 60; 
+        const minsEl = document.getElementById('mins');
+        const secsEl = document.getElementById('secs');
+
+        setInterval(() => {
+            let m = Math.floor(time / 60);
+            let s = time % 60;
+            minsEl.innerHTML = m < 10 ? '0' + m : m;
+            secsEl.innerHTML = s < 10 ? '0' + s : s;
+            if(time > 0) time--;
+        }, 1000);
+
+        // --- 2. SWIPER (Відгуки) ---
+        const swiper = new Swiper(".reviewsSwiper", {
+            loop: true,               
+            grabCursor: true,         
+            spaceBetween: 20,         
+            centeredSlides: true,     
+            navigation: {
+                nextEl: ".swiper-button-next",
+                prevEl: ".swiper-button-prev",
+            },
+            breakpoints: {
+                320: { slidesPerView: 1.2 }, 
+                640: { slidesPerView: 2 },
+                1024: { slidesPerView: 3 },
+            }
+        });
+
+        // --- 3. LIGHTBOX (Фото) ---
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightbox-img');
+        const closeLightboxBtn = document.getElementById('close-lightbox');
+        const reviewImages = document.querySelectorAll('.review-img');
+
+        reviewImages.forEach(img => {
+            img.addEventListener('click', () => {
+                lightboxImg.src = img.src;
+                lightbox.classList.remove('hidden');
+                setTimeout(() => { lightbox.classList.remove('opacity-0'); }, 10);
+                document.body.style.overflow = 'hidden'; 
+            });
+        });
+
+        const closeLightboxModal = () => {
+            lightbox.classList.add('opacity-0'); 
+            setTimeout(() => {
+                lightbox.classList.add('hidden'); 
+                lightboxImg.src = '';
+                document.body.style.overflow = ''; 
+            }, 300);
+        };
+
+        closeLightboxBtn.addEventListener('click', closeLightboxModal);
+        lightbox.addEventListener('click', (e) => { if (e.target === lightbox || e.target.tagName === 'DIV') closeLightboxModal(); });
+        document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && !lightbox.classList.contains('hidden')) closeLightboxModal(); });
+
+        // --- 4. POP-UP ФОРМА ТА ВАЛІДАЦІЯ ---
+        const orderModal = document.getElementById('order-modal');
+        const openModalBtns = document.querySelectorAll('.open-modal-btn');
+        const closeModalBtn = document.getElementById('close-modal');
+        const popupForm = document.getElementById('popupForm');
+
+        // Відкрити форму
+        openModalBtns.forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                e.preventDefault();
+                orderModal.classList.remove('hidden');
+                setTimeout(() => { orderModal.classList.remove('opacity-0'); }, 10);
+                document.body.style.overflow = 'hidden';
+            });
+        });
+
+        // Закрити форму
+        const closeOrderModal = () => {
+            orderModal.classList.add('opacity-0');
+            setTimeout(() => { 
+                orderModal.classList.add('hidden'); 
+                document.body.style.overflow = ''; 
+            }, 300);
+        };
+
+        closeModalBtn.addEventListener('click', closeOrderModal);
+        orderModal.addEventListener('click', (e) => { if (e.target === orderModal) closeOrderModal(); });
+
+        function getUTMs() {
+            const urlParams = new URLSearchParams(window.location.search);
+            return {
+                utm_source: urlParams.get('utm_source') || '',
+                utm_medium: urlParams.get('utm_medium') || '',
+                utm_campaign: urlParams.get('utm_campaign') || ''
+            };
+        }
+
+        // Валідація та Відправка
+        popupForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            let isValid = true;
+
+            const nameInput = document.getElementById('pop-name');
+            const phoneInput = document.getElementById('pop-phone');
+            const tgInput = document.getElementById('pop-telegram');
+            const submitBtn = popupForm.querySelector('button[type="submit"]');
+
+            const showError = (input) => {
+                input.classList.add('input-error');
+                input.classList.remove('focus:border-redAccent');
+                isValid = false;
+            };
+            const clearError = (input) => {
+                input.classList.remove('input-error');
+                input.classList.add('focus:border-redAccent');
+            };
+
+            // Перевірка Імені
+            if (nameInput.value.trim().length < 3) {
+                showError(nameInput);
+            } else { clearError(nameInput); }
+
+            // Перевірка Телеграму
+            if (tgInput.value.trim().length < 3) {
+                showError(tgInput);
+            } else { clearError(tgInput); }
+
+            // Перевірка Телефону
+            const phoneRegex = /^\+?[0-9\s\-()]{9,15}$/;
+            const phoneVal = phoneInput.value.trim().replace(/\s+/g, ''); 
+            if (!phoneRegex.test(phoneVal)) {
+                showError(phoneInput);
+            } else { clearError(phoneInput); }
+
+            // Відправка
+            if (isValid) {
+                const originalBtnText = submitBtn.innerText;
+                submitBtn.innerText = 'ОБРОБКА...';
+                submitBtn.disabled = true;
+
+                const googleScriptURL = 'https://script.google.com/macros/s/AKfycbwwvrn6nNWql1vaAF6qx6kUNl5GcCGMU5z8vBaqtWgQ3ZQCXL7p6b_AP0GqC4Po_E2X8g/exec'; 
+                const paymentURL = 'https://secure.wayforpay.com/button/bce3402b76e97';
+
+                const formData = new FormData();
+                formData.append('name', nameInput.value.trim());
+                formData.append('phone', phoneInput.value.trim());
+                formData.append('telegram', tgInput.value.trim()); 
+                
+                const utms = getUTMs();
+                formData.append('utm_source', utms.utm_source);
+                formData.append('utm_medium', utms.utm_medium);
+                formData.append('utm_campaign', utms.utm_campaign);
+
+                fetch(googleScriptURL, { 
+                    method: 'POST', 
+                    body: formData,
+                    mode: 'no-cors' 
+                }).then(() => {
+                    window.location.href = paymentURL;
+                }).catch(e => {
+                    console.log(e);
+                    window.location.href = paymentURL;
+                });
+
+                if(typeof fbq !== 'undefined') {
+                    fbq('track', 'InitiateCheckout', { value: 20.00, currency: 'EUR' });
+                }
+            }
+        });
+
+        // Очищення помилки
+        const inputs = [document.getElementById('pop-name'), document.getElementById('pop-phone'), document.getElementById('pop-telegram')];
+        inputs.forEach(input => {
+            input.addEventListener('input', () => {
+                input.classList.remove('input-error');
+                input.classList.add('focus:border-redAccent');
+            });
+        });
+    </script>
 </body>
 </html>
