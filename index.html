@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Персональна консультація | Владислава</title>
+    <title>Діагностика здібностей | Персональна робота</title>
     <!-- Підключення шрифтів -->
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;800&display=swap" rel="stylesheet">
     
@@ -37,16 +37,13 @@
         .text-glow-red { text-shadow: 0 0 20px rgba(211,47,47,0.9), 0 0 10px rgba(211,47,47,1); }
         .red-shadow { box-shadow: 0 4px 30px rgba(211, 47, 47, 0.4); }
         
-        /* Скляні картки */
+        /* Скляні картки для першого блоку */
         .glass-card { 
             background: rgba(20, 20, 20, 0.65); 
             backdrop-filter: blur(12px); 
             border: 1px solid rgba(255, 255, 255, 0.08); 
         }
         
-        .shadow-card:hover .after-block { background-color: rgba(211, 47, 47, 0.15); border-color: rgba(211, 47, 47, 0.4); }
-        .after-block { transition: all 0.3s ease; }
-
         /* Стилі для стрілок Swiper */
         .swiper-button-next, .swiper-button-prev {
             color: #d32f2f !important;
@@ -70,7 +67,6 @@
     </style>
 
     <!-- КОД FACEBOOK PIXEL -->
-    <!-- Meta Pixel Code -->
     <script>
     !function(f,b,e,v,n,t,s)
     {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
@@ -98,7 +94,7 @@
     <!-- ФІКСОВАНА КНОПКА ДЛЯ МОБІЛЬНИХ -->
     <div class="fixed bottom-0 left-0 w-full z-50 p-3 bg-black/80 backdrop-blur-md border-t border-redAccent/30 md:hidden">
         <button class="open-modal-btn block w-full bg-redAccent hover:bg-red-700 text-white font-extrabold text-sm py-3 text-center rounded-xl uppercase tracking-wider shadow-[0_0_15px_rgba(211,47,47,0.5)] transition transform active:scale-95">
-            ХОЧУ НА КОНСУЛЬТАЦІЮ
+            ЗАПИСАТИСЯ НА ДІАГНОСТИКУ
         </button>
     </div>
 
@@ -108,29 +104,17 @@
         
         <div class="absolute inset-0 bg-gradient-to-b from-black/10 via-black/70 to-[#050505] z-0"></div>
 
-        <div class="relative z-10 w-full flex justify-center">
-            <div class="bg-redAccent/90 backdrop-blur-sm text-white border border-red-500 px-5 py-1.5 rounded-full text-xs font-bold tracking-widest uppercase shadow-lg shadow-redAccent/30">
-                Персональна консультація
-            </div>
-        </div>
-
-        <div class="relative z-10 w-full max-w-5xl mx-auto text-center mt-auto mb-16 md:mb-0 pt-4 md:pt-16">
+        <div class="relative z-10 w-full max-w-5xl mx-auto text-center mt-auto mb-16 md:mb-0 pt-4 md:pt-16 flex flex-col items-center">
             
-            <h1 class="text-3xl md:text-4xl lg:text-5xl font-extrabold leading-tight mb-4 uppercase drop-shadow-xl">
-               ЗНАЙТИ ПРИЧИНУ<br>
-               <span class="text-redAccent">ПОБАЧИТИ РІШЕННЯ</span><br>
-               ЗМІНИТИ СЦЕНАРІЙ
+            <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight mb-6 uppercase text-glow-red tracking-wide">
+               ДІАГНОСТИКА ЗДІБНОСТЕЙ
             </h1>
             
-            <p class="text-xs md:text-base text-white mb-2 font-light text-glow-red max-w-3xl mx-auto leading-relaxed mt-2">
-                Глибокий індивідуальний розбір твого запиту, його причин, внутрішніх конфліктів і повторюваних сценаріїв.
+            <p class="text-sm md:text-lg text-gray-200 mb-8 font-light drop-shadow-md max-w-3xl mx-auto leading-relaxed">
+                Індивідуальне дослідження твоїх духовних схильностей, зв’язків і можливостей у практиці. Розгляну, що могло передатися тобі по роду та з минулих життів, з якими силами в тебе вже є сильний зв’язок і як розвивати свої здібності.
             </p>
             
-            <p class="text-xs md:text-base text-gray-200 mb-6 font-light drop-shadow-md max-w-3xl mx-auto leading-relaxed">
-                Допомагаю побачити те, що складно помітити, перебуваючи всередині власної ситуації, та сформувати конкретний напрям подальшої роботи.
-            </p>
-            
-            <div class="glass-card p-4 rounded-2xl max-w-[280px] md:max-w-sm mx-auto shadow-2xl flex flex-col items-center">
+            <div class="glass-card p-4 rounded-2xl max-w-[280px] md:max-w-sm w-full mx-auto shadow-2xl flex flex-col items-center">
                 <div class="text-redAccent text-3xl md:text-4xl font-extrabold drop-shadow-[0_0_15px_rgba(211,47,47,0.6)] leading-none">
                     29 €
                 </div>
@@ -146,20 +130,20 @@
                     <div class="flex flex-col items-center"><span id="secs">00</span><span class="text-[8px] text-gray-400 font-normal uppercase tracking-widest mt-1">Сек</span></div>
                 </div>
                 <button class="open-modal-btn block w-full bg-redAccent hover:bg-red-700 text-white font-bold text-xs md:text-sm py-2.5 px-4 rounded-xl uppercase tracking-wider transition transform hover:scale-105 shadow-[0_0_15px_rgba(211,47,47,0.5)]">
-                    ХОЧУ НА КОНСУЛЬТАЦІЮ
+                    ЗАБРОНЮВАТИ МІСЦЕ
                 </button>
             </div>
         </div>
     </header>
 
-    <!-- БЛОК 2: З ЯКИМИ ЗАПИТАМИ Я ПРАЦЮЮ -->
+    <!-- БЛОК 2: ЩО ВХОДИТЬ У ДІАГНОСТИКУ ЗДІБНОСТЕЙ -->
     <section class="py-20 px-4 border-y border-white/10 relative z-10 bg-black/30">
         <div class="max-w-4xl mx-auto">
             
-           
-                <div class="inline-block px-8 py-2 border border-redAccent/30 bg-redAccent/10 rounded-full shadow-[0_0_15px_rgba(211,47,47,0.2)]">
-                    <h3 class="text-lg md:text-xl font-bold text-white tracking-widest uppercase">З якими запитами я працюю</h3>
-                </div>
+            <div class="text-center mb-16">
+                <h2 class="text-2xl md:text-4xl font-bold text-white tracking-widest uppercase">
+                    Що ми розбираємо <br class="md:hidden"><span class="text-redAccent text-glow-red">на діагностиці</span>
+                </h2>
             </div>
             
             <div class="flex flex-col gap-5 text-left mb-16 max-w-3xl mx-auto">
@@ -169,12 +153,12 @@
                     <div class="shrink-0 relative">
                         <div class="absolute inset-0 bg-redAccent/30 rounded-full blur-md group-hover:bg-redAccent/60 transition duration-300"></div>
                         <div class="relative flex items-center justify-center w-16 h-16 md:w-20 md:h-20 rounded-full border border-gray-600 bg-black/60 group-hover:border-redAccent transition duration-300 z-10 backdrop-blur-sm">
-                            <span class="text-[9px] md:text-[11px] font-extrabold text-redAccent uppercase tracking-widest group-hover:text-white transition duration-300 drop-shadow-[0_0_8px_rgba(211,47,47,0.8)]">Зв'язок</span>
+                            <span class="text-[9px] md:text-[11px] font-extrabold text-redAccent uppercase tracking-widest group-hover:text-white transition duration-300 drop-shadow-[0_0_8px_rgba(211,47,47,0.8)]">Спадщина</span>
                         </div>
                     </div>
-                    <div class="text-center md:text-left mt-2 md:mt-0">
-                        <h4 class="text-white font-bold text-lg mb-2 uppercase tracking-wide">СТОСУНКИ</h4>
-                        <p class="text-gray-300 font-light text-sm md:text-base leading-relaxed">Повторення токсичних сценаріїв, страх самотності, залежність від партнера, складність завершити стосунки, занижені стандарти, втрата себе у близькості, труднощі з побудовою здорових стосунків.</p>
+                    <div class="text-center md:text-left mt-2 md:mt-0 z-10 relative">
+                        <h4 class="text-white font-bold text-lg mb-2 uppercase tracking-wide">Що передалося по роду</h4>
+                        <p class="text-gray-300 font-light text-sm md:text-base leading-relaxed">Дослідимо, які духовні знання, практики й здібності могли передаватися у твоїй родовій системі. Подивимося, чи були в роду люди, пов’язані з цілительством, віщуванням, травництвом, обрядами або роботою з силами, і як цей досвід може проявлятися в тобі сьогодні.</p>
                     </div>
                 </div>
 
@@ -183,12 +167,12 @@
                     <div class="shrink-0 relative">
                         <div class="absolute inset-0 bg-redAccent/30 rounded-full blur-md group-hover:bg-redAccent/60 transition duration-300"></div>
                         <div class="relative flex items-center justify-center w-16 h-16 md:w-20 md:h-20 rounded-full border border-gray-600 bg-black/60 group-hover:border-redAccent transition duration-300 z-10 backdrop-blur-sm">
-                            <span class="text-[9px] md:text-[11px] font-extrabold text-redAccent uppercase tracking-widest group-hover:text-white transition duration-300 drop-shadow-[0_0_8px_rgba(211,47,47,0.8)]">Гроші</span>
+                            <span class="text-[9px] md:text-[11px] font-extrabold text-redAccent uppercase tracking-widest group-hover:text-white transition duration-300 drop-shadow-[0_0_8px_rgba(211,47,47,0.8)]">Досвід</span>
                         </div>
                     </div>
-                    <div class="text-center md:text-left mt-2 md:mt-0">
-                        <h4 class="text-white font-bold text-lg mb-2 uppercase tracking-wide">ГРОШІ ТА РЕАЛІЗАЦІЯ</h4>
-                        <p class="text-gray-300 font-light text-sm md:text-base leading-relaxed">Фінансові блоки, страх проявлятися та продавати, складність брати гроші за свою роботу, відсутність розуміння власного шляху, прокрастинація, самосаботаж, страх успіху та великих грошей.</p>
+                    <div class="text-center md:text-left mt-2 md:mt-0 z-10 relative">
+                        <h4 class="text-white font-bold text-lg mb-2 uppercase tracking-wide">Здібності з минулих життів</h4>
+                        <p class="text-gray-300 font-light text-sm md:text-base leading-relaxed">Розглянемо, які навички та досвід минулих життів можуть впливати на твою теперішню практику. Це можуть бути сильні сторони, що проявляються інтуїтивно, знайомі теми або напрями, до яких тебе тягне без очевидної причини.</p>
                     </div>
                 </div>
 
@@ -197,12 +181,12 @@
                     <div class="shrink-0 relative">
                         <div class="absolute inset-0 bg-redAccent/30 rounded-full blur-md group-hover:bg-redAccent/60 transition duration-300"></div>
                         <div class="relative flex items-center justify-center w-16 h-16 md:w-20 md:h-20 rounded-full border border-gray-600 bg-black/60 group-hover:border-redAccent transition duration-300 z-10 backdrop-blur-sm">
-                            <span class="text-[9px] md:text-[11px] font-extrabold text-redAccent uppercase tracking-widest group-hover:text-white transition duration-300 drop-shadow-[0_0_8px_rgba(211,47,47,0.8)]">Опора</span>
+                            <span class="text-[9px] md:text-[11px] font-extrabold text-redAccent uppercase tracking-widest group-hover:text-white transition duration-300 drop-shadow-[0_0_8px_rgba(211,47,47,0.8)]">Сили</span>
                         </div>
                     </div>
-                    <div class="text-center md:text-left mt-2 md:mt-0">
-                        <h4 class="text-white font-bold text-lg mb-2 uppercase tracking-wide">САМООЦІНКА ТА ВНУТРІШНЯ ОПОРА</h4>
-                        <p class="text-gray-300 font-light text-sm md:text-base leading-relaxed">Невпевненість у собі, залежність від чужої думки, страх осуду, сором, почуття провини, складність відстоювати себе та власні кордони.</p>
+                    <div class="text-center md:text-left mt-2 md:mt-0 z-10 relative">
+                        <h4 class="text-white font-bold text-lg mb-2 uppercase tracking-wide">Канали зв’язку із силами</h4>
+                        <p class="text-gray-300 font-light text-sm md:text-base leading-relaxed">Визначимо, з якими силами в тебе вже є сильний або тривалий зв’язок: які божества, духи, демони чи інші сили найбільше проявлені у твоєму духовному досвіді. Розглянемо, з ким контакт уже відчувається найвиразніше, через які події, сни, знаки чи практики він міг формуватися та які теми або напрямки взаємодії з цими силами тобі відкриті.</p>
                     </div>
                 </div>
 
@@ -211,12 +195,12 @@
                     <div class="shrink-0 relative">
                         <div class="absolute inset-0 bg-redAccent/30 rounded-full blur-md group-hover:bg-redAccent/60 transition duration-300"></div>
                         <div class="relative flex items-center justify-center w-16 h-16 md:w-20 md:h-20 rounded-full border border-gray-600 bg-black/60 group-hover:border-redAccent transition duration-300 z-10 backdrop-blur-sm">
-                            <span class="text-[9px] md:text-[11px] font-extrabold text-redAccent uppercase tracking-widest group-hover:text-white transition duration-300 drop-shadow-[0_0_8px_rgba(211,47,47,0.8)]">Цикл</span>
+                            <span class="text-[9px] md:text-[11px] font-extrabold text-redAccent uppercase tracking-widest group-hover:text-white transition duration-300 drop-shadow-[0_0_8px_rgba(211,47,47,0.8)]">Захист</span>
                         </div>
                     </div>
-                    <div class="text-center md:text-left mt-2 md:mt-0">
-                        <h4 class="text-white font-bold text-lg mb-2 uppercase tracking-wide">ПОВТОРЮВАНІ ЖИТТЄВІ СЦЕНАРІЇ</h4>
-                        <p class="text-gray-300 font-light text-sm md:text-base leading-relaxed">Ситуації, які змінюють форму, але приводять до одного результату. Повторення однакових моделей у стосунках, фінансах, роботі та взаємодії з людьми.</p>
+                    <div class="text-center md:text-left mt-2 md:mt-0 z-10 relative">
+                        <h4 class="text-white font-bold text-lg mb-2 uppercase tracking-wide">Покровителі</h4>
+                        <p class="text-gray-300 font-light text-sm md:text-base leading-relaxed">Дослідимо, які сили або божества можуть бути пов’язані з твоїм шляхом і в чому може полягати їхня роль у твоєму духовному розвитку. Розглянемо, які теми вони підсвічують і як вибудовувати з ними взаємодію через практику, символи та особисту дисципліну.</p>
                     </div>
                 </div>
 
@@ -225,12 +209,12 @@
                     <div class="shrink-0 relative">
                         <div class="absolute inset-0 bg-redAccent/30 rounded-full blur-md group-hover:bg-redAccent/60 transition duration-300"></div>
                         <div class="relative flex items-center justify-center w-16 h-16 md:w-20 md:h-20 rounded-full border border-gray-600 bg-black/60 group-hover:border-redAccent transition duration-300 z-10 backdrop-blur-sm">
-                            <span class="text-[9px] md:text-[11px] font-extrabold text-redAccent uppercase tracking-widest group-hover:text-white transition duration-300 drop-shadow-[0_0_8px_rgba(211,47,47,0.8)]">Тінь</span>
+                            <span class="text-[9px] md:text-[11px] font-extrabold text-redAccent uppercase tracking-widest group-hover:text-white transition duration-300 drop-shadow-[0_0_8px_rgba(211,47,47,0.8)]">Поміч</span>
                         </div>
                     </div>
-                    <div class="text-center md:text-left mt-2 md:mt-0">
-                        <h4 class="text-white font-bold text-lg mb-2 uppercase tracking-wide">ТІНЬ ТА ВНУТРІШНІ КОНФЛІКТИ</h4>
-                        <p class="text-gray-300 font-light text-sm md:text-base leading-relaxed">Витіснені якостi, сильні тригери, проєкції, внутрішні заборони, конфлікт між бажаннями та тим, що людина собі дозволяє. Робота із золотою тінню — здібностями, силою та потенціалом, які ще не привласнені.</p>
+                    <div class="text-center md:text-left mt-2 md:mt-0 z-10 relative">
+                        <h4 class="text-white font-bold text-lg mb-2 uppercase tracking-wide">Духи-помічники</h4>
+                        <p class="text-gray-300 font-light text-sm md:text-base leading-relaxed">Подивимося, чи є у твоєму духовному досвіді духи-помічники, як може проявлятися їхня присутність і з якими завданнями пов’язана взаємодія. Розберемо, на що звертати увагу у знаках, снах і практиках, щоб краще розуміти цей контакт.</p>
                     </div>
                 </div>
 
@@ -239,12 +223,12 @@
                     <div class="shrink-0 relative">
                         <div class="absolute inset-0 bg-redAccent/30 rounded-full blur-md group-hover:bg-redAccent/60 transition duration-300"></div>
                         <div class="relative flex items-center justify-center w-16 h-16 md:w-20 md:h-20 rounded-full border border-gray-600 bg-black/60 group-hover:border-redAccent transition duration-300 z-10 backdrop-blur-sm">
-                            <span class="text-[9px] md:text-[11px] font-extrabold text-redAccent uppercase tracking-widest group-hover:text-white transition duration-300 drop-shadow-[0_0_8px_rgba(211,47,47,0.8)]">Рід</span>
+                            <span class="text-[9px] md:text-[11px] font-extrabold text-redAccent uppercase tracking-widest group-hover:text-white transition duration-300 drop-shadow-[0_0_8px_rgba(211,47,47,0.8)]">Вектор</span>
                         </div>
                     </div>
-                    <div class="text-center md:text-left mt-2 md:mt-0">
-                        <h4 class="text-white font-bold text-lg mb-2 uppercase tracking-wide">РОДОВІ ТА СІМЕЙНІ СЦЕНАРІЇ</h4>
-                        <p class="text-gray-300 font-light text-sm md:text-base leading-relaxed">Повторення моделей батьків, сімейні установки щодо грошей, стосунків і реалізації, несвідоме відтворення знайомих ролей та способів взаємодії.</p>
+                    <div class="text-center md:text-left mt-2 md:mt-0 z-10 relative">
+                        <h4 class="text-white font-bold text-lg mb-2 uppercase tracking-wide">Напрямки практики</h4>
+                        <p class="text-gray-300 font-light text-sm md:text-base leading-relaxed">Зіставимо твої здібності, інтереси та духовні зв’язки, щоб побачити, які напрями можуть бути для тебе найбільш природними. Це може бути мантика, ритуальна робота, теургія, робота з архетипами, медитації, енергетичні практики чи інші форми духовної взаємодії.</p>
                     </div>
                 </div>
 
@@ -253,88 +237,81 @@
                     <div class="shrink-0 relative">
                         <div class="absolute inset-0 bg-redAccent/30 rounded-full blur-md group-hover:bg-redAccent/60 transition duration-300"></div>
                         <div class="relative flex items-center justify-center w-16 h-16 md:w-20 md:h-20 rounded-full border border-gray-600 bg-black/60 group-hover:border-redAccent transition duration-300 z-10 backdrop-blur-sm">
-                            <span class="text-[9px] md:text-[11px] font-extrabold text-redAccent uppercase tracking-widest group-hover:text-white transition duration-300 drop-shadow-[0_0_8px_rgba(211,47,47,0.8)]">Криза</span>
+                            <span class="text-[9px] md:text-[11px] font-extrabold text-redAccent uppercase tracking-widest group-hover:text-white transition duration-300 drop-shadow-[0_0_8px_rgba(211,47,47,0.8)]">Розвиток</span>
                         </div>
                     </div>
-                    <div class="text-center md:text-left mt-2 md:mt-0">
-                        <h4 class="text-white font-bold text-lg mb-2 uppercase tracking-wide">КРИЗА ТА ПЕРЕХІДНИЙ ПЕРІОД</h4>
-                        <p class="text-gray-300 font-light text-sm md:text-base leading-relaxed">Коли старе життя більше не працює, а нового напрямку ще немає. Втрата орієнтирів, завершення важливого етапу, потреба зрозуміти, куди рухатися далі.</p>
-                    </div>
-                </div>
-
-                <div class="glass-card p-6 md:p-8 rounded-2xl flex flex-col md:flex-row gap-5 items-center md:items-start hover:border-redAccent/50 transition duration-300 relative overflow-hidden group shadow-lg">
-                    <div class="absolute top-0 right-0 w-24 h-24 bg-redAccent/5 rounded-full -mr-8 -mt-8 transition-transform group-hover:scale-150 blur-xl"></div>
-                    <div class="shrink-0 relative">
-                        <div class="absolute inset-0 bg-redAccent/30 rounded-full blur-md group-hover:bg-redAccent/60 transition duration-300"></div>
-                        <div class="relative flex items-center justify-center w-16 h-16 md:w-20 md:h-20 rounded-full border border-gray-600 bg-black/60 group-hover:border-redAccent transition duration-300 z-10 backdrop-blur-sm">
-                            <span class="text-[9px] md:text-[11px] font-extrabold text-redAccent uppercase tracking-widest group-hover:text-white transition duration-300 drop-shadow-[0_0_8px_rgba(211,47,47,0.8)]">Пошук</span>
-                        </div>
-                    </div>
-                    <div class="text-center md:text-left mt-2 md:mt-0">
-                        <h4 class="text-white font-bold text-lg mb-2 uppercase tracking-wide">ПОШУК СЕБЕ</h4>
-                        <p class="text-gray-300 font-light text-sm md:text-base leading-relaxed">«Я не знаю, чого хочу», «не розумію, куди рухатися», «ніби живу не своє життя». Пошук власних бажань, цінностей, напрямку реалізації та контакту із собою.</p>
-                    </div>
-                </div>
-
-                <div class="glass-card p-6 md:p-8 rounded-2xl flex flex-col md:flex-row gap-5 items-center md:items-start hover:border-redAccent/50 transition duration-300 relative overflow-hidden group shadow-lg">
-                    <div class="absolute top-0 right-0 w-24 h-24 bg-redAccent/5 rounded-full -mr-8 -mt-8 transition-transform group-hover:scale-150 blur-xl"></div>
-                    <div class="shrink-0 relative">
-                        <div class="absolute inset-0 bg-redAccent/30 rounded-full blur-md group-hover:bg-redAccent/60 transition duration-300"></div>
-                        <div class="relative flex items-center justify-center w-16 h-16 md:w-20 md:h-20 rounded-full border border-gray-600 bg-black/60 group-hover:border-redAccent transition duration-300 z-10 backdrop-blur-sm">
-                            <span class="text-[9px] md:text-[11px] font-extrabold text-redAccent uppercase tracking-widest group-hover:text-white transition duration-300 drop-shadow-[0_0_8px_rgba(211,47,47,0.8)]">Талант</span>
-                        </div>
-                    </div>
-                    <div class="text-center md:text-left mt-2 md:mt-0">
-                        <h4 class="text-white font-bold text-lg mb-2 uppercase tracking-wide">ТАЛАНТИ ТА ЗДІБНОСТІ</h4>
-                        <p class="text-gray-300 font-light text-sm md:text-base leading-relaxed">Пошук і розкриття природних талантів, сильних сторін та потенціалу. Робота із золотою тінню — якостями й здібностями, які людина бачить в інших, але ще не визнає у собі. Розуміння, у чому моя сила, що я можу реалізувати та як дати цьому проявитися.</p>
+                    <div class="text-center md:text-left mt-2 md:mt-0 z-10 relative">
+                        <h4 class="text-white font-bold text-lg mb-2 uppercase tracking-wide">Як розкрити здібності</h4>
+                        <p class="text-gray-300 font-light text-sm md:text-base leading-relaxed">Сформуємо орієнтири для подальшої практики: з чого почати, які навички тренувати, як спостерігати за своїм досвідом і які практики можуть допомогти розвивати здібності. Ти отримаєш напрямок для подальшого дослідження та розвитку власної практики.</p>
                     </div>
                 </div>
 
             </div>
             
             <div class="text-center">
-                <p class="text-xl md:text-2xl font-bold mb-6 uppercase">ЦІННІСТЬ — ЕКОНОМІЯ РОКІВ ЖИТТЯ <br class="hidden md:block"> В ІЛЮЗІЯХ ТА БОЛЮ</p>
-                <!-- Кнопка відкриття модалки -->
                 <button class="open-modal-btn inline-block w-full md:w-auto bg-redAccent hover:bg-red-700 text-white font-bold py-4 px-10 rounded-lg uppercase tracking-wide transition transform hover:scale-105 shadow-[0_0_20px_rgba(211,47,47,0.4)]">
-                    ХОЧУ НА КОНСУЛЬТАЦІЮ
+                    ЗАПИСАТИСЯ НА ДІАГНОСТИКУ
                 </button>
             </div>
         </div>
     </section>
 
-    <!-- БЛОК 3: ЯК ПРОХОДИТЬ КОНСУЛЬТАЦІЯ -->
-    <section class="py-20 px-4 max-w-4xl mx-auto border-t border-white/10 relative z-10">
-        <h2 class="text-2xl md:text-4xl font-bold text-center mb-10 uppercase leading-snug">
-            ЯК ПРОХОДИТЬ <br class="md:hidden"><span class="text-redAccent text-glow-red">КОНСУЛЬТАЦІЯ</span>
-        </h2>
+    <!-- БЛОК 3: ДІАГНОСТИКА НЕГАТИВУ (Окремий блок в іншому стилі) -->
+    <section class="py-24 px-4 bg-[#050202] border-t-2 border-redAccent/30 relative z-10 overflow-hidden">
         
-        <div class="glass-card p-6 md:p-10 rounded-3xl">
-            <p class="text-xl md:text-2xl font-bold text-white mb-8 border-l-4 border-redAccent pl-4 md:pl-6">
-                Ми беремо один головний запит і розбираємо його в причинно-наслідковому зв’язку:
+        <!-- Світіння фону для атмосфери -->
+        <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-redAccent/5 rounded-full blur-[150px] pointer-events-none"></div>
+        <div class="absolute top-0 left-0 w-full h-full bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0IiBoZWlnaHQ9IjQiPjxyZWN0IHdpZHRoPSI0IiBoZWlnaHQ9IjQiIGZpbGw9IiNmZmYiIGZpbGwtb3BhY2l0eT0iMC4wNSIvPjwvc3ZnPg==')] opacity-20 z-0"></div>
+        
+        <div class="max-w-4xl mx-auto relative z-10">
+            <h2 class="text-3xl md:text-5xl font-extrabold text-center mb-6 uppercase text-white tracking-widest drop-shadow-md">Діагностика <span class="text-redAccent">негативу</span></h2>
+            <p class="text-gray-400 text-center max-w-2xl mx-auto mb-16 text-sm md:text-base leading-relaxed">
+                Це дослідження твого стану та можливих негативних впливів. На діагностиці ми розглянемо, що може забирати сили, створювати перешкоди й впливати на різні сфери життя, звідки це походить і які дії допоможуть відновити рівновагу.
             </p>
             
-            <div class="bg-redAccent/10 border border-redAccent/30 p-6 md:p-8 rounded-2xl shadow-[0_0_15px_rgba(211,47,47,0.15)] mb-8">
-                <p class="text-white font-bold text-base md:text-lg leading-relaxed text-center">
-                    Що відбувається зараз <span class="text-redAccent">→</span> який сценарій повторюється <span class="text-redAccent">→</span> що його запускає <span class="text-redAccent">→</span> яка внутрішня причина його підтримує <span class="text-redAccent">→</span> що необхідно змінити <span class="text-redAccent">→</span> які конкретні дії зробити після консультації.
-                </p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
+                
+                <div class="bg-black/90 border-l-2 border-redAccent/50 p-6 rounded-r-lg hover:bg-[#110505] transition duration-300 flex flex-col justify-center">
+                    <h4 class="text-white font-bold text-base md:text-lg mb-2 uppercase tracking-wider">Загальний стан</h4>
+                    <p class="text-gray-400 font-light text-sm leading-relaxed">Подивимося, у якому стані перебуває твоє енергетичне поле: де відчувається виснаження, напруга або втрата опори. Визначимо, які сфери життя найбільше реагують на цей стан.</p>
+                </div>
+                
+                <div class="bg-black/90 border-l-2 border-redAccent/50 p-6 rounded-r-lg hover:bg-[#110505] transition duration-300 flex flex-col justify-center">
+                    <h4 class="text-white font-bold text-base md:text-lg mb-2 uppercase tracking-wider">Джерело негативу</h4>
+                    <p class="text-gray-400 font-light text-sm leading-relaxed">Дослідимо можливе походження негативного впливу: власні переживання й накопичене напруження, повторювані сценарії, вплив оточення або зовнішнє втручання. Це допоможе зрозуміти, з чим саме пов’язаний твій стан.</p>
+                </div>
+
+                <div class="bg-black/90 border-l-2 border-redAccent/50 p-6 rounded-r-lg hover:bg-[#110505] transition duration-300 flex flex-col justify-center">
+                    <h4 class="text-white font-bold text-base md:text-lg mb-2 uppercase tracking-wider">Вид і характер впливу</h4>
+                    <p class="text-gray-400 font-light text-sm leading-relaxed">Перевіримо, чи є ознаки пристріту, наврочення, прокляття, прив’язки або іншого негативного впливу. Розглянемо його характер, можливу силу та те, як він проявляється у твоєму житті.</p>
+                </div>
+                
+                <div class="bg-black/90 border-l-2 border-redAccent/50 p-6 rounded-r-lg hover:bg-[#110505] transition duration-300 flex flex-col justify-center">
+                    <h4 class="text-white font-bold text-base md:text-lg mb-2 uppercase tracking-wider">Сфера впливу</h4>
+                    <p class="text-gray-400 font-light text-sm leading-relaxed">Визначимо, на що саме впливає негатив: на самопочуття, стосунки, фінанси, реалізацію, внутрішній стан чи взаємодію з оточенням. Подивимося, які труднощі можуть бути пов’язані з цим впливом.</p>
+                </div>
+                
+                <div class="bg-black/90 border-l-2 border-redAccent/50 p-6 rounded-r-lg hover:bg-[#110505] transition duration-300 flex flex-col justify-center">
+                    <h4 class="text-white font-bold text-base md:text-lg mb-2 uppercase tracking-wider">Чи потрібна чистка</h4>
+                    <p class="text-gray-400 font-light text-sm leading-relaxed">З’ясуємо, чи потребує ситуація магічної чистки або достатньо інших дій для відновлення стану. Якщо чистка потрібна, визначимо її напрямок і на що варто звернути увагу під час подальшої роботи.</p>
+                </div>
+                
+                <div class="bg-black/90 border-l-2 border-redAccent/50 p-6 rounded-r-lg hover:bg-[#110505] transition duration-300 flex flex-col justify-center">
+                    <h4 class="text-white font-bold text-base md:text-lg mb-2 uppercase tracking-wider">Рекомендації та захист</h4>
+                    <p class="text-gray-400 font-light text-sm leading-relaxed">Ти отримаєш рекомендації щодо наступних кроків: як відновити сили, укріпити особисті межі й підтримувати свій стан після діагностики.</p>
+                </div>
+
             </div>
             
-            <p class="text-gray-300 font-light text-base md:text-lg mb-8 leading-relaxed">
-                Моя задача — не дати тобі універсальну пораду, а допомогти побачити структуру саме твоєї ситуації.
-            </p>
-            
-            <div class="flex items-start gap-4 bg-black/40 p-5 rounded-xl border border-gray-700">
-                <div class="text-redAccent mt-1 shrink-0">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
-                </div>
-                <p class="text-white font-bold text-base md:text-lg leading-relaxed">
-                    Після консультації ти виходиш із розумінням: що зі мною відбувається, чому це відбувається і що я можу зробити далі.
-                </p>
+            <div class="mt-12 text-center">
+                <button class="open-modal-btn inline-block border-2 border-redAccent text-redAccent hover:bg-redAccent hover:text-white font-bold py-3 px-10 rounded-lg uppercase tracking-wide transition transform hover:scale-105 shadow-[0_0_15px_rgba(211,47,47,0.2)] hover:shadow-[0_0_20px_rgba(211,47,47,0.5)] bg-transparent">
+                    ЗАПИСАТИСЯ НА ДІАГНОСТИКУ
+                </button>
             </div>
         </div>
     </section>
 
-    <!-- БЛОК 5: Про експерта -->
+    <!-- БЛОК 4: Про експерта -->
     <section class="py-20 px-4 max-w-5xl mx-auto flex flex-col md:flex-row items-center gap-8 md:gap-10 relative z-10 border-t border-white/10">
         
         <div class="w-full md:w-[45%]">
@@ -345,30 +322,30 @@
             <div class="inline-block text-redAccent border border-redAccent/30 px-3 py-1 rounded-full text-xs font-bold uppercase mb-4">Хто я?</div>
             
             <div class="space-y-6 text-gray-300 font-light text-base md:text-lg leading-relaxed mt-2">
-                <p class="text-white font-bold text-xl mb-6 uppercase text-glow-red">Мій шлях — це не про «світлу духовність», а про реальну силу:</p>
+                <p class="text-white font-bold text-xl mb-6 uppercase text-glow-red">Мій шлях — це не про «світлу езотерику», а про реальне відчуття енергії та сил:</p>
                 
                 <div>
-                    <strong class="text-redAccent font-bold">Кармолог та цілитель:</strong> Я аналізую твій шлях системно. Моя задача — знайти ту саму точку, де почався збій, і допомогти тобі розірвати кармічний цикл повторюваних невдач та болючих сценаріїв.
+                    <strong class="text-redAccent font-bold">Провідник до твоєї Сили:</strong> Я бачу те, що приховано у твоєму полі. Моя задача — допомогти тобі побачити свої справжні дари, які ти міг/могла ігнорувати або боятися роками.
                 </div>
                 
                 <div>
-                    <strong class="text-redAccent font-bold">Провідник до Твоєї Цілісності:</strong> Я не вчу тебе бути «зручною та правильною». Я показую, як вийти в absolute цілісність через прийняття своєї Тіні. Ти перестанеш пригнічувати себе і почнеш генерувати на цьому енергію.
+                    <strong class="text-redAccent font-bold">Робота з Тінню та Негативом:</strong> Я не прикрашаю реальність. Якщо у твоєму полі є деструктив, ми знайдемо його джерело. Ти зрозумієш, як розірвати ланцюг втрат і захистити свій ресурс.
                 </div>
                 
                 <div>
-                    <strong class="text-redAccent font-bold">Системний архітектор:</strong> Там, де ти бачиш хаос, я бачу чітку систему причин і наслідків. Ти зрозумієш, що карма — це механізм управління життям, і навчишся самостійно керувати своєю реальністю.
+                    <strong class="text-redAccent font-bold">Структура замість хаосу:</strong> Духовний шлях не має бути незрозумілим. Я дам тобі чіткі інструкції, як керувати своєю енергією, чути духів-помічників та вибудовувати власну практику безпечно.
                 </div>
             </div>
             
             <div class="mt-8 bg-redAccent/20 border-l-4 border-redAccent p-6 rounded-r-xl shadow-lg">
                 <p class="text-lg font-bold text-white drop-shadow-md">
-                    Я тут для того, щоб ти припинила «відлітати» від проблем і почала створювати свою реальність у матерії — через гроші, здоров’я та істинну свободу бути собою.
+                    Я тут для того, щоб ти припинив(-ла) сумніватися у своїх відчуттях і нарешті став(-ла) господарем своєї енергії та свого життя.
                 </p>
             </div>
         </div>
     </section>
 
-    <!-- БЛОК 6: ВІДГУКИ -->
+    <!-- БЛОК 5: ВІДГУКИ -->
     <section class="py-20 px-4 overflow-hidden border-t border-white/10 relative z-10 bg-black/40">
         <div class="max-w-6xl mx-auto">
             <h2 class="text-2xl md:text-4xl font-bold text-center mb-12 uppercase">Результати <span class="text-redAccent text-glow-red">моїх клієнтів</span></h2>
@@ -486,7 +463,7 @@
             <button id="close-modal" class="absolute top-4 right-5 text-gray-400 hover:text-redAccent text-3xl font-light focus:outline-none">&times;</button>
             
             <h3 class="text-xl md:text-3xl font-bold text-center mb-1 uppercase text-white drop-shadow-md">ЗАБРОНЮВАТИ МІСЦЕ</h3>
-            <p class="text-center text-gray-300 text-xs md:text-sm mb-6 font-light">Введіть дані для зв'язку та отримання консультації.</p>
+            <p class="text-center text-gray-300 text-xs md:text-sm mb-6 font-light">Введіть дані для зв'язку та отримання діагностики.</p>
             
             <form id="popupForm" class="space-y-3" novalidate>
                 <div>
